@@ -1,5 +1,4 @@
 <view>
-	<van-toast id="loading_toast"/>
 	<van-tabs animated sticky swipeable type="line" bind:change="change" active="{{ active }}">
 		<van-tab wx:for="{{category}}" wx:for-item="v"  wx:for-index="index" dot="{{false}}" title="{{v.text}}">
 			<view class="container">

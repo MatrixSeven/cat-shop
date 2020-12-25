@@ -1,7 +1,6 @@
 //index.js
 //获取应用实例
 const wx2 = require('../../utils/util.js')
-import Toast from '../../dist/toast/toast';
 
 const app = getApp()
 
@@ -27,7 +26,13 @@ Page({
             url: '../logs/logs'
         })
     },
+
+    onShow: function () {
+        this.getTabBar().init();
+      },
+    
     onLoad: function() {
+        
         this.setData({
             that: this
         })
@@ -77,13 +82,12 @@ Page({
     },
 
     changeBar: (index, bind) => {
-        Toast.loading({
-            message: '优惠加载中...',
-            forbidClick: true,
-            duration: 0,
-            selector: '#loading_toast'
-        });
-        wx2.requestSync(`https://cat-card.52python.cn/wai_mai/index?cate_id=${index}&&channel=wx`, {}, 'GET', () => Toast.clear())
+        wx.showLoading({
+            title:'优惠加载中....',
+            mask:true,
+
+        })
+        wx2.requestSync(`https://cat-card.52python.cn/wai_mai/index?cate_id=${index}&&channel=wx`, {}, 'GET', () => wx.hideLoading())
             .then(res => {
                 console.log(res);
                 let _category = res.category
@@ -108,7 +112,6 @@ Page({
     getArgs: data => data.currentTarget.dataset,
 
     getUserInfo: function(e) {
-        console.log(e)
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
             userInfo: e.detail.userInfo,
