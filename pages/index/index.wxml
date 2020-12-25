@@ -1,0 +1,48 @@
+<view>
+	<van-toast id="loading_toast"/>
+	<!-- <van-tabbar class="tab" fixed="{{false}}" active="{{ active }}" active-color="#07c160" >
+		<van-tabbar-item  wx:for="{{category}}" 
+						wx:for-item="v" name="{{v.text}}"
+						bindtap="change" data-item="{{v}}"  data-index="{{index}}"  wx:for-index="index"
+						icon="{{v.icon}}">{{v.text}}</van-tabbar-item>
+	</van-tabbar> -->
+
+	<van-tabs animated swipeable type="line" bind:change="change" active="{{ active }}">
+		 <van-tab  wx:for="{{category}}" wx:for-item="v" title="{{v.text}}">
+		 <slot>
+		 	 <image src="{{v.icon}}" />
+		 </slot>
+	
+		 <view class="container">
+			<view class="coupon">
+			<view class="item" wx:if="{{subscribe.show==true}}" style="padding-bottom: 0;">
+				<view class="bottom">
+					<image src="{{subscribe.logo}}" mode="widthFix" />
+				</view>
+			</view>
+			<view class="item" wx:for="{{projectList}}" wx:for-item="v" data-item="{{v}}"  wx:for-index="index" bindtap="toProject">
+				<view class="top">
+					<view class="left">
+						<view class="content">
+							<image  src="{{v.logo}}" class="icon" mode="widthFix"></image>
+							<view class="name">{{v.title}}</view>
+					
+						</view>
+						<view class="text"> {{v.tag ? v.tag : "天天可领"}}</view>
+					</view>
+					<view class="right">
+						<!-- <button class="right" open-type="share"> -->
+							点击分享
+						<!-- </button> -->
+					</view>
+				</view>
+				<view class="bottom">
+					<image src="{{v.image}}" mode="widthFix" />
+				</view>
+			</view>
+		</view>
+	</view>
+		 </van-tab>
+	</van-tabs>
+	
+</view>

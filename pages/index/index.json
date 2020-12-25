@@ -1,0 +1,13 @@
+{
+    "usingComponents": {
+        "van-button": "../../dist/button/index",
+        "van-toast": "../../dist/toast/index",
+        "van-tabbar": "../../dist/tabbar/index",
+        "van-tabbar-item": "../../dist/tabbar-item/index",
+        "van-tab": "../../dist/tab/index",
+        "van-tabs": "../../dist/tabs/index",
+        "van-grid": "../../dist/grid/index",
+        "van-grid-item": "../../dist/grid-item/index"
+
+    }
+}
