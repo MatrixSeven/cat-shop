@@ -71,14 +71,12 @@ Page({
 
     change: function(e) {
         console.log(e)
-        const { index, item } = this.getArgs(e)
-        console.log(item)
+        const { index, title } = e.detail
         this.setData({ active: index })
-        this.changeBar(item.tabId, this)
+        this.changeBar(index, this)
     },
 
     changeBar: (index, bind) => {
-        console.log(bind)
         Toast.loading({
             message: '优惠加载中...',
             forbidClick: true,
