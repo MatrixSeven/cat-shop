@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/cat/cat"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,6 +23,9 @@
       {
         "pagePath": "pages/logs/logs",
         "text": "打卡2"
+      }, {
+        "pagePath": "pages/cat/cat",
+        "text": "打卡3"
       }
     ]
   },

@@ -5,31 +5,31 @@ Component({
       {
         pagePath: "/pages/index/index",
         text: "打卡",
-        normal: '/images/tabbar/position.png',
-        active: '/images/tabbar/position-green.png'
+        // normal: '/images/tabbar/position.png',
+        // active: '/images/tabbar/position-green.png'
+      },
+      {
+        pagePath: "/pages/cat/cat",
+        text: "猫咪优惠",
+        // normal: '/images/tabbar/idcard.png',
+        // active: '/images/tabbar/idcard-green.png'
       },
       {
         pagePath: "pages/logs/logs",
         text: "上传_12",
-        normal: '/images/tabbar/idcard.png',
-        active: '/images/tabbar/idcard-green.png'
+        // normal: '/images/tabbar/idcard.png',
+        // active: '/images/tabbar/idcard-green.png'
       },
       {
         pagePath: "pages/logs/logs",
         text: "上传_12",
-        normal: '/images/tabbar/idcard.png',
-        active: '/images/tabbar/idcard-green.png'
-      },
-      {
-        pagePath: "pages/logs/logs",
-        text: "上传_12",
-        normal: '/images/tabbar/idcard.png',
-        active: '/images/tabbar/idcard-green.png'
+        // normal: '/images/tabbar/idcard.png',
+        // active: '/images/tabbar/idcard-green.png'
       }, {
         pagePath: "pages/logs/logs",
         text: "上传_12",
-        normal: '/images/tabbar/idcard.png',
-        active: '/images/tabbar/idcard-green.png'
+        // normal: '/images/tabbar/idcard.png',
+        // active: '/images/tabbar/idcard-green.png'
       }
     ]
   },
