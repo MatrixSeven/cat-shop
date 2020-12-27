@@ -18,6 +18,10 @@
       {
         "pagePath": "pages/index/index",
         "text": "打卡"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "打卡2"
       }
     ]
   },
