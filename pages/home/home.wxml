@@ -1,0 +1,37 @@
+<!--logs.wxml-->
+
+<scroll-view scroll-y="true" style="height: 100vh" bindscrolltolower="loadMore">
+        <view wx:for="{{products}}" wx:for-item="p" class="card-view">
+            <view class="pic-price-view">
+                <view class="pic-view">
+                    <image mode='widthFix' src="{{p.imageURL}}"></image>
+                </view>
+                <view class="text-view">
+                    <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">【超值】宠物鸡肉冻干生骨肉饼9块</view>
+                    <view style="display: flex;width: 100%;align-items: center">
+                        <view style="font-size: smaller">券后价:</view>
+                        <view style="color:#dd514c;margin-left: 5px;font-size: x-large">9.90</view>
+                    </view>
+                    <view style="display: flex;width:97%;justify-content: flex-start">
+                        <button style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
+                            立即购买
+                        </button>
+                    </view>
+                </view>
+            </view>
+
+            <view class="foot">
+
+                <view style="margin-left: 1vh;background-color: #3bb4f2;color: white">卷:10元</view>
+                <view style="margin-left: 1vh;color: #616161">在售价:100元</view>
+                <view style="margin-left: 1vh;color: #5eb95e">目前销量:10000</view>
+            </view>
+            <van-divider  customStyle="color:; border-color: #1989fa;"/>
+            <view>
+                111111111111
+            </view>
+
+
+        </view>
+
+</scroll-view>

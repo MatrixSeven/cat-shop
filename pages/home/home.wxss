@@ -1,0 +1,33 @@
+.card-view {
+    margin-top: 3vh;
+    display: flex;
+    flex-wrap: wrap;
+    /*background-color: darkgrey;*/
+}
+
+.pic-price-view {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vh;
+}
+
+.pic-view {
+    display: flex;
+    width: 30%;
+}
+
+.text-view {
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    align-items: flex-end;
+}
+
+.foot {
+    margin: 1vh;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vh;
+    font-size: smaller;
+}
