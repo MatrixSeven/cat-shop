@@ -15,22 +15,9 @@ Component({
         // active: '/images/tabbar/idcard-green.png'
       },
       {
-        pagePath: "pages/logs/logs",
-        text: "上传_12",
-        // normal: '/images/tabbar/idcard.png',
-        // active: '/images/tabbar/idcard-green.png'
+        pagePath: "/pages/subscribe/subscribe",
+        text: "豆瓣开车",
       },
-      {
-        pagePath: "pages/logs/logs",
-        text: "上传_12",
-        // normal: '/images/tabbar/idcard.png',
-        // active: '/images/tabbar/idcard-green.png'
-      }, {
-        pagePath: "pages/logs/logs",
-        text: "上传_12",
-        // normal: '/images/tabbar/idcard.png',
-        // active: '/images/tabbar/idcard-green.png'
-      }
     ]
   },
   methods: {

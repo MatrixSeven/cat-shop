@@ -1,0 +1,10 @@
+<view class="pages">
+    <view class="content">
+        <van-search
+                value="{{ value }}"
+                shape="round"
+                background="white"
+                placeholder="请输入搜索关键词"
+        />
+    </view>
+</view>

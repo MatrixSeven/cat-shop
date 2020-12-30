@@ -14,14 +14,14 @@ const formatNumber = n => {
     return n[1] ? n : '0' + n
 }
 
-const requestSync = (_url, _data, _method, _callcomplete) => {
-    let pro = new Promise(function(resolve, reject) {
+const requestSync = (url, data = {}, method = "GET", whenComplete = x => {}) => {
+    return new Promise(function (resolve, reject) {
         wx.request({
-            url: _url,
-            data: _data,
-            method: _method,
-            success: function(res) {
-                if (res.statusCode == 200) {
+            url: url,
+            data: data,
+            method: method,
+            success: function (res) {
+                if (res.statusCode === 200) {
                     console.log(`wx.request() is success : 200 ok`);
                     resolve(res.data); //任务成功就执行resolve(),其他情况下都执行reject()
                 } else {
@@ -29,18 +29,19 @@ const requestSync = (_url, _data, _method, _callcomplete) => {
                     reject(res.data);
                 }
             },
-            fail: function(res) {
+            fail: function (res) {
                 console.log("wx.request() is fail : " + res.errMsg);
                 reject(res);
             },
-            complete: function(res) {
+            complete: function (res) {
                 console.log("wx.request() is complete .");
-                if (_callcomplete) { _callcomplete(res); }
+                if (whenComplete) {
+                    whenComplete(res);
+                }
             }
         })
 
     });
-    return pro;
 }
 
 module.exports = {

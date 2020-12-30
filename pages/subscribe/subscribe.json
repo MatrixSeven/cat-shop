@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "查看启动日志",
+  "usingComponents": {
+    "van-card": "../../dist/card/index",
+    "van-button": "../../dist/button/index",
+    "van-divider": "../../dist/divider/index",
+    "van-search": "../../dist/search/index"
+  }
+}

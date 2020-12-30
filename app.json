@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/cat/cat"
+    "pages/cat/cat",
+    "pages/subscribe/subscribe"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,6 +27,9 @@
       }, {
         "pagePath": "pages/cat/cat",
         "text": "打卡3"
+      }, {
+        "pagePath": "pages/subscribe/subscribe",
+        "text": "订阅"
       }
     ]
   },
