@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/home/home",
     "pages/cat/cat",
     "pages/subscribe/subscribe"
   ],
@@ -19,17 +19,19 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "打卡"
+        "text": "外卖优惠"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "打卡2"
-      }, {
         "pagePath": "pages/cat/cat",
-        "text": "打卡3"
-      }, {
+        "text": "每日猫车"
+      },
+      {
         "pagePath": "pages/subscribe/subscribe",
-        "text": "订阅"
+        "text": "豆瓣开车"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的"
       }
     ]
   },
