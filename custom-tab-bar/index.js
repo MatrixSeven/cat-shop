@@ -1,6 +1,6 @@
 Component({
     data: {
-        // selected: 0,
+        selected: 0,
         list: [
             {
                 pagePath: "/pages/index/index",
@@ -30,7 +30,6 @@ Component({
             wx.switchTab({
                 url: this.data.list[e.detail].pagePath
             });
-
         },
         init() {
             const page = getCurrentPages().pop();
