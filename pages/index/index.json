@@ -1,12 +1,12 @@
 {
     "usingComponents": {
-        "van-button": "../../dist/button/index",
-        "van-tabbar": "../../dist/tabbar/index",
-        "van-tabbar-item": "../../dist/tabbar-item/index",
-        "van-tab": "../../dist/tab/index",
-        "van-tabs": "../../dist/tabs/index",
-        "van-grid": "../../dist/grid/index",
-        "van-grid-item": "../../dist/grid-item/index"
+        "van-button": "/@vant/weapp/dist/button/index",
+        "van-tabbar": "/@vant/weapp/dist/tabbar/index",
+        "van-tabbar-item": "/@vant/weapp/dist/tabbar-item/index",
+        "van-tab": "/@vant/weapp/dist/tab/index",
+        "van-tabs": "/@vant/weapp/dist/tabs/index",
+        "van-grid": "/@vant/weapp/dist/grid/index",
+        "van-grid-item": "/@vant/weapp/dist/grid-item/index"
 
     }
 }

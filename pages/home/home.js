@@ -2,19 +2,7 @@ import {formatTime, requestSync} from '../../utils/util'
 
 Page({
     data: {
-        products: [
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-        ]
+        isLogin: false
     },
     onLoad: function () {
         this.setData({

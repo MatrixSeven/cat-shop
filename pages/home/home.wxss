@@ -1,33 +1,44 @@
-.card-view {
-    margin-top: 3vh;
+.all_page {
     display: flex;
-    flex-wrap: wrap;
-    /*background-color: darkgrey;*/
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
 }
 
-.pic-price-view {
+.page_info {
+    align-content:center;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
-    width: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+.person_logo{
+    /*width: 100%;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height:5rem;
+    border-radius: 50%;
+    /*border: 2px solid #626565;*/
+    overflow: hidden;
+    margin: 10rpx;
+}
+.person_name{
+    color: #CCA;
+    /*font-size:10;*/
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.pic-view {
+.page_list {
+    background-color: white;
     display: flex;
-    width: 30%;
-}
-
-.text-view {
-    margin-left: 10%;
-    display: flex;
-    flex-wrap: wrap;
-    width: 60%;
-    align-items: flex-end;
-}
-
-.foot {
-    margin: 1vh;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100vh;
-    font-size: smaller;
+    width: 100%;
+    height: 70%;
 }

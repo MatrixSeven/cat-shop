@@ -2,8 +2,8 @@
 {
     "component": true,
       "usingComponents": {
-        "van-tabbar": "../dist/tabbar/index",
-        "van-tabbar-item": "../dist/tabbar-item/index",
-        "van-icon": "../dist/icon/index"
+        "van-tabbar": "/@vant/weapp/dist/tabbar/index",
+        "van-tabbar-item": "/@vant/weapp/dist/tabbar-item/index",
+        "van-icon": "/@vant/weapp/dist/icon/index"
       }
   }
