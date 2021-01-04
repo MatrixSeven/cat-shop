@@ -6,17 +6,33 @@
                        width="5rem"
                        height="5rem"
                        widthFix
-                       src="https://img.yzcdn.cn/vant/cat.jpeg"
+                       src="{{userInfo.avatarUrl}}"
             />
             <open-data wx:elif="{{!isLogin}}" type="userAvatarUrl"></open-data>
-
-
         </view>
-        <view wx:if="{{isLogin}}" class="person_name">1234543电风扇</view>
-        <van-button class="person_name" wx:elif="{{!isLogin}}" open-type="getUserInfo" plain type="primary">点击登录</van-button>
-<!--        <open-data class="person_name" wx:if="{{!isLogin}}" type="userNickName"></open-data>-->
+        <view wx:if="{{isLogin}}" class="person_name">{{userInfo.nickName}}</view>
+        <van-button class="person_name" wx:elif="{{!isLogin}}"
+                    open-type="getUserInfo"
+                    round
+                    bindgetuserinfo="bindGetUserInfo"
+                    plain type="primary">点击登录
+        </van-button>
 
     </view>
+    <van-grid>
+        <van-grid-item icon="photo-o" text="喵身份" use-slot>
+            <image
+                    style="width: 100%; height: 90px;"
+                    src="https://img.yzcdn.cn/vant/apple-2.jpg"
+            />
+        </van-grid-item>
+        <van-grid-item icon="photo-o" text="拼拼专享券" use-slot>
+            <image
+                    style="width: 100%; height: 90px;"
+                    src="https://img.yzcdn.cn/vant/apple-1.jpg"
+            />
+        </van-grid-item>
+    </van-grid>
     <view class="page_list">
         <van-cell-group style="width:100%">
             <van-cell icon="location-o" title="我的订阅" is-link style="width:100%;height:150%"/>

@@ -2,14 +2,44 @@ import {formatTime, requestSync} from '../../utils/util'
 
 Page({
     data: {
-        isLogin: false
+        isLogin: false,
+        userInfo: {}
     },
     onLoad: function () {
-        this.setData({
-            logs: (wx.getStorageSync('logs') || []).map(log => {
-                return formatTime(new Date(log))
+        const userInfo = wx.getStorageSync("userInfo")
+        if (userInfo) {
+            this.setData({
+                isLogin: true,
+                userInfo: userInfo,
             })
-        })
+        } else {
+            this.setData({
+                isLogin: false,
+            })
+        }
+
+    },
+    bindGetUserInfo: function (e) {
+        /**
+         avatarUrl:""
+         city: ""
+         country: ""
+         gender: 0
+         language: "zh_CN"
+         nickName: "Accelerator、"
+         province: ""
+         */
+        console.log(e.detail.userInfo)
+        const userInfo = e.detail.userInfo
+        if (userInfo) {
+            wx.setStorageSync("userInfo", userInfo)
+            this.setData({
+                userInfo: userInfo,
+                isLogin: true,
+            })
+        } else {
+            //用户按了拒绝按钮
+        }
     },
     loadMore: function () {
         wx.showLoading({
