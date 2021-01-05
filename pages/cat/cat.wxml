@@ -48,49 +48,47 @@
         <!--                <van-grid-item icon="photo-o" text="文字" />-->
         <!--                <van-grid-item icon="photo-o" text="文字" />-->
         <!--            </van-grid>-->
-        <van-sticky offset-top="{{ 345 }}">
-            <van-tabs active="{{ active }}" animated swipeable bind:change="onTabChange">
-                <van-tab title="{{v}}" wx:for="{{tabs}}" wx:for-item="v" wx:wx:key="{{v}}">
-                    <view wx:for="{{products}}" wx:for-item="p" style="display:flex;justify-content: center">
-                        <view class="card-view">
-                            <view class="pic-price-view">
-                                <view class="pic-view">
-                                    <image mode='widthFix' src="{{p.mainPic}}"></image>
+        <van-tabs active="{{ active }}" animated swipeable bind:change="onTabChange">
+            <van-tab title="{{v}}" wx:for="{{tabs}}" wx:for-item="v" wx:wx:key="{{v}}">
+                <view wx:for="{{products}}" wx:for-item="p" style="display:flex;justify-content: center">
+                    <view class="card-view">
+                        <view class="pic-price-view">
+                            <view class="pic-view">
+                                <image mode='widthFix' src="{{p.mainPic}}"></image>
+                            </view>
+                            <view class="text-view">
+                                <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">{{p.title}}
                                 </view>
-                                <view class="text-view">
-                                    <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">{{p.title}}
-                                    </view>
-                                    <view style="display: flex;width: 100%;align-items:baseline;">
-                                        <view style="font-size: smaller">券后价:</view>
-                                        <view style="color:#dd514c;margin-left: 5px;font-size: x-large">{{p.actualPrice}}
-                                        </view>
-                                    </view>
-                                    <view style="display: flex;width:97%;justify-content: flex-start">
-                                        <button style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
-                                            立即购买
-                                        </button>
+                                <view style="display: flex;width: 100%;align-items:baseline;">
+                                    <view style="font-size: smaller">券后价:</view>
+                                    <view style="color:#dd514c;margin-left: 5px;font-size: x-large">{{p.actualPrice}}
                                     </view>
                                 </view>
-                            </view>
-
-                            <view class="foot">
-
-                                <view style="margin-left: 1vh;background-color: #3bb4f2;color: white">卷:{{p.couponPrice}}元
+                                <view style="display: flex;width:97%;justify-content: flex-start">
+                                    <button style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
+                                        立即购买
+                                    </button>
                                 </view>
-                                <view style="margin-left: 1vh;color: #616161">在售价:{{p.originalPrice}}元</view>
-                                <view style="margin-left: 1vh;color: #5eb95e">月销量:{{p.monthSales}}</view>
                             </view>
-                            <van-divider dashed contentPosition="left">群友推荐</van-divider>
-                            <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">
-                                {{p.syncMsg}}
-                            </view>
-
                         </view>
+
+                        <view class="foot">
+
+                            <view style="margin-left: 1vh;background-color: #3bb4f2;color: white">卷:{{p.couponPrice}}元
+                            </view>
+                            <view style="margin-left: 1vh;color: #616161">在售价:{{p.originalPrice}}元</view>
+                            <view style="margin-left: 1vh;color: #5eb95e">月销量:{{p.monthSales}}</view>
+                        </view>
+                        <van-divider dashed contentPosition="left">群友推荐</van-divider>
+                        <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">
+                            {{p.syncMsg}}
+                        </view>
+
                     </view>
-                </van-tab>
+                </view>
+            </van-tab>
 
 
-            </van-tabs>
-        </van-sticky>
+        </van-tabs>
     </scroll-view>
 </view>
