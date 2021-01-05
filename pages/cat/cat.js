@@ -9,7 +9,7 @@ Page({
         size: 10,
         value: '',
         active: 0,
-        tabs: ['每日猫车', '每日人车', '罐头', '零食', '猫窝', '猫沙']
+        tabs: ['每日猫车', '每日人车', '罐头', '零食', '猫窝', '猫沙'],
     },
     onLoad: function () {
         wx.showLoading({
@@ -23,10 +23,13 @@ Page({
             })
         })
     },
+
+
     onTabChange: function (e) {
 
     },
-    onSearch: function () {
+    onSearch: function (e) {
+        console.log(e)
 
     },
     onChange: function (e) {

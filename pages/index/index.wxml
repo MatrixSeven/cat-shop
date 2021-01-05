@@ -1,4 +1,6 @@
 <view>
+	<navBar title='外卖优惠' background='#fff' back="{{true}}" home="{{true}}" bindback="handlerGobackClick"
+			bindhome="handlerGohomeClick"></navBar>
 	<van-tabs animated sticky swipeable type="line" bind:change="change" active="{{ active }}">
 		<van-tab wx:for="{{category}}" wx:for-item="v"  wx:for-index="index" dot="{{false}}" title="{{v.text}}">
 			<view class="container">

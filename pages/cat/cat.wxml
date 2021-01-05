@@ -1,72 +1,96 @@
 <!--logs.wxml-->
 <view>
-    <view class="content">
-        <van-search
-                value="{{ value }}"
-                shape="round"
-                background="white"
-                bind:search="onSearch"
-                bind:change="onChange"
-                placeholder="请输入搜索关键词"
-                use-action-slot="true"
-        >
-            <view slot="action" bind:tap="onSearch">搜索</view>
-        </van-search>
-    </view>
-    <van-tabs active="{{ active }}" animated swipeable bind:change="onTabChange">
+    <navBar searchBar="{{true}}" background='#fff' back="{{false}}" home="{{false}}" bindback="handlerGobackClick"
+            bindhome="handlerGohomeClick" bindsearch="onSearch">
 
-        <scroll-view scroll-y="true" style="height: 100vh;display:flex;justify-content: center;"
-                     lower-threshold="5vh"
-                     refresher-enabled="true"
-                     refresher-triggered="{{refresherStatus}}"
-                     bindrefresherrefresh="refresher"
-                     scroll-with-animation="true"
-                     bindscrolltolower="loadMore">
-            <van-grid>
-                <van-grid-item icon="photo-o" text="文字" />
-                <van-grid-item icon="photo-o" text="文字" />
-                <van-grid-item icon="photo-o" text="文字" />
-                <van-grid-item icon="photo-o" text="文字" />
-            </van-grid>
-            <van-tab title="{{v}}" wx:for="{{tabs}}" wx:for-item="v">
-                <view wx:for="{{products}}" wx:for-item="p" style="display:flex;justify-content: center">
-                    <view class="card-view">
-                        <view class="pic-price-view">
-                            <view class="pic-view">
-                                <image mode='widthFix' src="{{p.mainPic}}"></image>
-                            </view>
-                            <view class="text-view">
-                                <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">{{p.title}}
+
+    </navBar>
+    <!--    <view class="content">-->
+    <!--        <van-search-->
+    <!--                value="{{ value }}"-->
+    <!--                shape="round"-->
+    <!--                background="white"-->
+    <!--                bind:search="onSearch"-->
+    <!--                bind:change="onChange"-->
+    <!--                placeholder="请输入搜索关键词"-->
+    <!--                use-action-slot="true"-->
+    <!--        >-->
+    <!--            <view slot="action" bind:tap="onSearch">搜索</view>-->
+    <!--        </van-search>-->
+    <!--    </view>-->
+
+
+    <scroll-view scroll-y="true" style="height: 100vh;display:flex;justify-content: center;"
+                 lower-threshold="5vh"
+                 refresher-enabled="true"
+                 refresher-triggered="{{refresherStatus}}"
+                 bindrefresherrefresh="refresher"
+                 scroll-with-animation="true"
+                 id="scroller"
+                 bindscrolltolower="loadMore">
+        <view style="display:flex;justify-content: center;width:100vw">
+            <swiper style="display: flex;width:90%;border-radius: 20px" indicator-dots="true" indicator-color="#f4f4f4"
+                    indicator-active-color="#4eb8b8" autoplay="true"
+                    interval='2000' circular='true'>
+                <swiper-item>
+                    <image mode="widthFix"
+                           src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1139464753,3343155444&fm=26&gp=0.jpg"></image>
+                </swiper-item>
+                <swiper-item>
+                    <image mode="widthFix"
+                           src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2026380808,732238803&fm=26&gp=0.jpg"></image>
+                </swiper-item>
+            </swiper>
+        </view>
+        <!--            <van-grid>-->
+        <!--                <van-grid-item icon="photo-o" text="文字" />-->
+        <!--                <van-grid-item icon="photo-o" text="文字" />-->
+        <!--                <van-grid-item icon="photo-o" text="文字" />-->
+        <!--                <van-grid-item icon="photo-o" text="文字" />-->
+        <!--            </van-grid>-->
+        <van-sticky offset-top="{{ 345 }}">
+            <van-tabs active="{{ active }}" animated swipeable bind:change="onTabChange">
+                <van-tab title="{{v}}" wx:for="{{tabs}}" wx:for-item="v" wx:wx:key="{{v}}">
+                    <view wx:for="{{products}}" wx:for-item="p" style="display:flex;justify-content: center">
+                        <view class="card-view">
+                            <view class="pic-price-view">
+                                <view class="pic-view">
+                                    <image mode='widthFix' src="{{p.mainPic}}"></image>
                                 </view>
-                                <view style="display: flex;width: 100%;align-items:baseline;">
-                                    <view style="font-size: smaller">券后价:</view>
-                                    <view style="color:#dd514c;margin-left: 5px;font-size: x-large">{{p.actualPrice}}
+                                <view class="text-view">
+                                    <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">{{p.title}}
+                                    </view>
+                                    <view style="display: flex;width: 100%;align-items:baseline;">
+                                        <view style="font-size: smaller">券后价:</view>
+                                        <view style="color:#dd514c;margin-left: 5px;font-size: x-large">{{p.actualPrice}}
+                                        </view>
+                                    </view>
+                                    <view style="display: flex;width:97%;justify-content: flex-start">
+                                        <button style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
+                                            立即购买
+                                        </button>
                                     </view>
                                 </view>
-                                <view style="display: flex;width:97%;justify-content: flex-start">
-                                    <button style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
-                                        立即购买
-                                    </button>
+                            </view>
+
+                            <view class="foot">
+
+                                <view style="margin-left: 1vh;background-color: #3bb4f2;color: white">卷:{{p.couponPrice}}元
                                 </view>
+                                <view style="margin-left: 1vh;color: #616161">在售价:{{p.originalPrice}}元</view>
+                                <view style="margin-left: 1vh;color: #5eb95e">月销量:{{p.monthSales}}</view>
                             </view>
-                        </view>
-
-                        <view class="foot">
-
-                            <view style="margin-left: 1vh;background-color: #3bb4f2;color: white">卷:{{p.couponPrice}}元
+                            <van-divider dashed contentPosition="left">群友推荐</van-divider>
+                            <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">
+                                {{p.syncMsg}}
                             </view>
-                            <view style="margin-left: 1vh;color: #616161">在售价:{{p.originalPrice}}元</view>
-                            <view style="margin-left: 1vh;color: #5eb95e">月销量:{{p.monthSales}}</view>
-                        </view>
-                        <van-divider dashed contentPosition="left">群友推荐</van-divider>
-                        <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">
-                            {{p.syncMsg}}
-                        </view>
 
+                        </view>
                     </view>
-                </view>
-            </van-tab>
-        </scroll-view>
+                </van-tab>
 
-    </van-tabs>
+
+            </van-tabs>
+        </van-sticky>
+    </scroll-view>
 </view>
