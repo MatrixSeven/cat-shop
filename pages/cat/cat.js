@@ -7,6 +7,9 @@ Page({
         type: 1,
         page: 1,
         size: 10,
+        value: '',
+        active: 0,
+        tabs: ['每日猫车', '每日人车', '罐头', '零食', '猫窝', '猫沙']
     },
     onLoad: function () {
         wx.showLoading({
@@ -19,6 +22,17 @@ Page({
                 page: page + 1
             })
         })
+    },
+    onTabChange: function (e) {
+
+    },
+    onSearch: function () {
+
+    },
+    onChange: function (e) {
+        this.setData({
+            value: e.detail,
+        });
     },
     refresher: function () {
         wx.showLoading({
