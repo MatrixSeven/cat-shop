@@ -14,7 +14,7 @@ const formatNumber = n => {
     return n[1] ? n : '0' + n
 }
 
-const requestSync = (url, data = {}, method = "GET", whenComplete = x => {}) => {
+const requestSync = (url, {data = {}, method = "GET", whenComplete = x => wx.hideLoading()} = {}) => {
     return new Promise(function (resolve, reject) {
         wx.request({
             url: url,
@@ -43,6 +43,7 @@ const requestSync = (url, data = {}, method = "GET", whenComplete = x => {}) => 
 
     });
 }
+
 
 module.exports = {
     formatTime: formatTime,

@@ -45,13 +45,12 @@ Page({
         wx.showLoading({
             title: "loading"
         })
-        requestSync('https://cat-card.52python.cn/wai_mai/product', {}, 'GET', () => wx.hideLoading())
-            .then(res => {
-                console.log(res)
-                this.setData({
-                    products: [...this.data.products, ...res.data]
-                })
+        requestSync('https://cat-card.52python.cn/wai_mai/product').then(res => {
+            console.log(res)
+            this.setData({
+                products: [...this.data.products, ...res.data]
             })
+        })
 
     }
 })

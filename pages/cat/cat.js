@@ -2,38 +2,60 @@ import {formatTime, requestSync} from '../../utils/util'
 
 Page({
     data: {
-        products: [
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-            {imageURL: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1511962197,3377453560&fm=11&gp=0.jpg'},
-        ]
+        products: [],
+        refresherStatus: false,
+        type: 1,
+        page: 1,
+        size: 10,
     },
     onLoad: function () {
+        wx.showLoading({
+            title: "优惠加载中ing"
+        })
+        const {type, page, size} = this.data
+        requestSync(`https://cat-card.52python.cn/shop/goods/list/${type}/${page}/${size}`).then(ret => {
+            this.setData({
+                products: [...this.data.products, ...ret.data],
+                page: page + 1
+            })
+        })
+    },
+    refresher: function () {
+        wx.showLoading({
+            title: "优惠加载中ing"
+        })
         this.setData({
-            logs: (wx.getStorageSync('logs') || []).map(log => {
-                return formatTime(new Date(log))
+            refresherStatus: true
+        })
+        const {type, size} = this.data
+        const page = 1;
+        requestSync(`https://cat-card.52python.cn/shop/goods/list/${type}/${page}/${size}`, {
+            whenComplete: x => {
+                wx.hideLoading();
+                this.setData({
+                    refresherStatus: false
+                })
+            }
+        }).then(ret => {
+            this.setData({
+                products: ret.data,
+                page: page + 1,
+
             })
         })
     },
     loadMore: function () {
         wx.showLoading({
-            title: "loading"
+            title: "优惠加载中ing"
         })
-        requestSync('https://cat-card.52python.cn/wai_mai/product', {}, 'GET', () => wx.hideLoading())
-            .then(res => {
-                console.log(res)
-                this.setData({
-                    products: [...this.data.products, ...res.data]
-                })
+        const {type, page, size} = this.data
+        requestSync(`https://cat-card.52python.cn/shop/goods/list/${type}/${page}/${size}`).then(ret => {
+            this.setData({
+                products: [...this.data.products, ...ret.data],
+                page: page + 1
             })
+        })
+
 
     }
 })

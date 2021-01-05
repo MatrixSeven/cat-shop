@@ -1,7 +1,7 @@
 .card-view {
     margin-top: 3vh;
     display: flex;
-    width: 98vw;
+    width: 95vw;
     align-content: center;
     justify-content: center;
     align-items: center;

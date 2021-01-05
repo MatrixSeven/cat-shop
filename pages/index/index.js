@@ -7,13 +7,8 @@ const app = getApp()
 Page({
     data: {
         active: 0,
-        category: [
-
-        ],
-        subscribe: {
-
-
-        },
+        category: [],
+        subscribe: {},
         projectList: [],
         motto: 'Hello World',
         userInfo: {},
@@ -21,7 +16,7 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
     //事件处理函数
-    bindViewTap: function() {
+    bindViewTap: function () {
         wx.navigateTo({
             url: '../logs/logs'
         })
@@ -29,10 +24,10 @@ Page({
 
     onShow: function () {
         this.getTabBar().init();
-      },
-    
-    onLoad: function() {
-        
+    },
+
+    onLoad: function () {
+
         this.setData({
             that: this
         })
@@ -74,20 +69,21 @@ Page({
         })
     },
 
-    change: function(e) {
+    change: function (e) {
         console.log(e)
-        const { index, title } = e.detail
-        this.setData({ active: index })
+        const {index, title} = e.detail
+        this.setData({active: index})
         this.changeBar(index, this)
     },
 
     changeBar: (index, bind) => {
         wx.showLoading({
-            title:'优惠加载中....',
-            mask:true,
+            title: '优惠加载中....',
+            mask: true,
 
         })
-        wx2.requestSync(`https://cat-card.52python.cn/wai_mai/index?cate_id=${index}&&channel=wx`, {}, 'GET', () => wx.hideLoading())
+        wx2.requestSync(`https://cat-card.52python.cn/wai_mai/index?cate_id=${index}&&channel=wx`,
+            {whenComplete: () => wx.hideLoading()})
             .then(res => {
                 console.log(res);
                 let _category = res.category
@@ -111,7 +107,7 @@ Page({
 
     getArgs: data => data.currentTarget.dataset,
 
-    getUserInfo: function(e) {
+    getUserInfo: function (e) {
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
             userInfo: e.detail.userInfo,
