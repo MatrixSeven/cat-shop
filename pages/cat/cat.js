@@ -9,7 +9,14 @@ Page({
         size: 10,
         value: '',
         active: 0,
-        tabs: ['每日猫车', '每日人车', '罐头', '零食', '猫窝', '猫沙'],
+        next: true,
+        tabs: [
+            {name: '每日猫车', type: 1},
+            {name: '每日人车', type: 2},
+            {name: '罐头', type: 3},
+            {name: '零食', type: 4},
+            {name: '猫窝', type: 5},
+        ],
     },
 
 
@@ -29,7 +36,19 @@ Page({
 
 
     onTabChange: function (e) {
-
+        const {index, title} = e.detail
+        this.setData({
+            active: index,
+            product: [],
+            page:1,
+            next:true,
+            clear: true,
+            type: this.data.tabs[index].type
+        })
+        const {size,clear=false} = this.data
+        this.loadMoreAux({...this.data,
+            clear:true,page:1,next:true,
+            type:this.data.tabs[index].type,size})
     },
     onSearch: function (e) {
         console.log(e)
@@ -68,15 +87,34 @@ Page({
         wx.showLoading({
             title: "优惠加载中ing"
         })
-        const {type, page, size} = this.data
+        this.loadMoreAux(this.data)
+
+    },
+    loadMoreAux: function (data) {
+        const {type, page, size, next,clear=false} = data
+        if (!next) {
+            wx.showToast({
+                title: "到底啦～",
+                duration: 2000
+            })
+            return
+        }
+
         makeAsyncFunc(async () => {
-            const {data = []} = await requestSync(`https://cat-card.52python.cn/shop/goods/list/${type}/${page}/${size}`)
+            let {data = []} = await requestSync(`https://cat-card.52python.cn/shop/goods/list/${type}/${page}/${size}`)
+            if (data === ({})) {
+                data = []
+            }
+            let p = data
+            if (!clear) {
+                p = [...this.data.products, ...data]
+            }
             this.setData({
-                products: [...this.data.products, ...data],
-                page: page + 1
+                products: p,
+                clear: false,
+                page: page + 1,
+                next: data.length === size
             })
         })
-
-
     }
 })

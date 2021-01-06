@@ -1,5 +1,5 @@
 .card-view {
-    margin-top: 3vh;
+    margin-top: 2vh;
     display: flex;
     width: 95vw;
     align-content: center;

@@ -2,8 +2,6 @@
 <view>
     <navBar searchBar="{{true}}" background='#fff' back="{{false}}" home="{{false}}" bindback="handlerGobackClick"
             bindhome="handlerGohomeClick" bindsearch="onSearch">
-
-
     </navBar>
     <!--    <view class="content">-->
     <!--        <van-search-->
@@ -20,7 +18,7 @@
     <!--    </view>-->
 
 
-    <scroll-view scroll-y="true" style="height: 100vh;display:flex;justify-content: center;"
+    <scroll-view scroll-y="true" style="height: 90vh;display:flex;justify-content: center;"
                  lower-threshold="5vh"
                  refresher-enabled="true"
                  refresher-triggered="{{refresherStatus}}"
@@ -48,9 +46,9 @@
         <!--                <van-grid-item icon="photo-o" text="文字" />-->
         <!--                <van-grid-item icon="photo-o" text="文字" />-->
         <!--            </van-grid>-->
-        <van-tabs active="{{ active }}" animated swipeable bind:change="onTabChange">
-            <van-tab title="{{v}}" wx:for="{{tabs}}" wx:for-item="v" wx:wx :key="{{v}}">
-                <view wx:for="{{products}}" wx:for-item="p" style="display:flex;justify-content: center">
+        <van-tabs active="{{ active }}" style="margin-top:5vh" animated swipeable bind:change="onTabChange">
+            <van-tab title="{{v.name}}" wx:for="{{tabs}}" wx:for-item="v" wx:key="{{v.type}}">
+                <view wx:for="{{products}}" wx:for-item="p" wx:if="{{v.type===type}}" style="display:flex;justify-content: center">
                     <view class="card-view">
                         <view class="pic-price-view">
                             <view class="pic-view">
@@ -74,8 +72,7 @@
                         </view>
 
                         <view class="foot">
-
-                            <view style="margin-left: 1vh;background-color: #3bb4f2;color: white">卷:{{p.couponPrice}}元
+                            <view style="background-color: #3bb4f2;color: white">卷:{{p.couponPrice}}元
                             </view>
                             <view style="margin-left: 1vh;color: #616161">在售价:{{p.originalPrice}}元</view>
                             <view style="margin-left: 1vh;color: #5eb95e">月销量:{{p.monthSales}}</view>
