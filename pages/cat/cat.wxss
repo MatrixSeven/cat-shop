@@ -29,7 +29,13 @@
     width: 60%;
     align-items: flex-end;
 }
-
+.divLine{
+    background: #E0E3DA;
+    width: 100%;
+    height: 5rpx;
+    text-align: left;
+    color: #aaa;
+}
 .foot {
     margin: 1vh;
     display: flex;

@@ -43,9 +43,12 @@ const requestSync = (url, {data = {}, method = "GET", whenComplete = x => wx.hid
 
     });
 }
-
+const makeAsyncFunc = function (fn) {
+    return fn().then(r => r)
+}
 
 module.exports = {
     formatTime: formatTime,
-    requestSync: requestSync
+    requestSync: requestSync,
+    makeAsyncFunc: makeAsyncFunc,
 }
