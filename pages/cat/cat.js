@@ -36,6 +36,9 @@ Page({
 
 
     onTabChange: function (e) {
+        wx.showLoading({
+            title: "优惠加载中ing"
+        })
         const {index, title} = e.detail
         this.setData({
             active: index,
