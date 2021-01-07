@@ -1,3 +1,24 @@
+
+.tabs_title{
+    position: sticky;
+    z-index: 99999;
+}
+
+.info_view {
+    display: flex;
+    justify-content: space-around;
+    height: 8vh;
+    width: 100vw;
+    margin: 1vh 0 1vh 0;
+}
+
+.info_view_card {
+    display: flex;
+    width: 45%;
+    border-radius:1vh;
+    box-shadow: 0 0 5px #d0d0d0
+}
+
 .card-view {
     margin-top: 2vh;
     display: flex;
@@ -8,7 +29,7 @@
     align-self: center;
     flex-wrap: wrap;
     /*background-color: darkgrey;*/
-    box-shadow:0 0 15px #d0d0d0
+    box-shadow: 0 0 15px #d0d0d0
 }
 
 .pic-price-view {
@@ -29,13 +50,15 @@
     width: 60%;
     align-items: flex-end;
 }
-.divLine{
+
+.divLine {
     background: #E0E3DA;
     width: 100%;
-    height: 5rpx;
+    height: 5 rpx;
     text-align: left;
     color: #aaa;
 }
+
 .foot {
     margin: 1vh;
     display: flex;

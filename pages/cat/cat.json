@@ -6,6 +6,9 @@
     "van-tabs": "/@vant/weapp/dist/tabs/index",
     "van-grid": "/@vant/weapp/dist/grid/index",
     "van-grid-item": "/@vant/weapp/dist/grid-item/index",
-    "van-icon": "/@vant/weapp/dist/icon/index"
-  }
+    "van-icon": "/@vant/weapp/dist/icon/index",
+    "van-loading": "/@vant/weapp/dist/loading/index"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 60
 }

@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const wx2 = require('../../utils/util.js')
+import {reqUrls} from '../../utils/config'
 
 const app = getApp()
 
@@ -82,7 +83,7 @@ Page({
             mask: true,
 
         })
-        wx2.requestSync(`https://cat-card.52python.cn/wai_mai/index?cate_id=${index}&&channel=wx`,
+        wx2.requestSync(`${reqUrls}/wai_mai/index?cate_id=${index}&&channel=wx`,
             {whenComplete: () => wx.hideLoading()})
             .then(res => {
                 console.log(res);

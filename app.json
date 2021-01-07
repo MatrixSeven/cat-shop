@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/home/home",
     "pages/cat/cat",
-    "pages/subscribe/subscribe"
+    "pages/subscribe/subscribe",
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

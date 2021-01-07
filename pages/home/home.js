@@ -1,4 +1,5 @@
 import {formatTime, requestSync} from '../../utils/util'
+import {reqUrls} from '../../utils/config'
 
 Page({
     data: {
@@ -45,7 +46,7 @@ Page({
         wx.showLoading({
             title: "loading"
         })
-        requestSync('https://cat-card.52python.cn/wai_mai/product').then(res => {
+        requestSync(`${reqUrls}/wai_mai/product`).then(res => {
             console.log(res)
             this.setData({
                 products: [...this.data.products, ...res.data]
