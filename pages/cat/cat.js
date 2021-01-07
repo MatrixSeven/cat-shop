@@ -33,6 +33,7 @@ Page({
                 products: [...this.data.products, ...data],
                 page: page + 1
             })
+            this.selectComponent('#tabs').resize();
         })
     },
 

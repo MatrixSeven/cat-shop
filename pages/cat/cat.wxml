@@ -14,17 +14,27 @@
         <swiper style="display: flex;width:90%;border-radius: 20px" indicator-dots="true"
                 indicator-color="#f4f4f4"
                 indicator-active-color="#4eb8b8" autoplay="true"
-                interval='2000' circular='true'>
+                interval='4000' circular='true'>
             <swiper-item>
-                <image mode="widthFix"
+                <image mode="scaleToFill"
                        src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1139464753,3343155444&fm=26&gp=0.jpg"></image>
             </swiper-item>
             <swiper-item>
-                <image mode="widthFix"
+                <image mode="scaleToFill"
                        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2026380808,732238803&fm=26&gp=0.jpg"></image>
             </swiper-item>
         </swiper>
     </view>
+    <scroll-view scroll-x="{{true}}" class="category_cat" scroll-with-animation='true'>
+            <view class="category_item" style="background:green">1</view>
+            <view class="category_item" style="background:red">1</view>
+            <view class="category_item" style="background:green">1</view>
+            <view class="category_item" style="background:red">1</view>
+            <view class="category_item" style="background:green">1</view>
+            <view class="category_item" style="background:red">1</view>
+            <view class="category_item" style="background:green">1</view>
+            <view class="category_item" style="background:red">1</view>
+    </scroll-view>
     <view class="info_view">
         <view class="info_view_card" style="background: #E0E3DA;">
         </view>
@@ -33,6 +43,7 @@
     <view style=" position: sticky; z-index: 1;  top:{{navHeight}};">
         <van-tabs offset-top="{{navHeight}}" z-index="9999" active="{{ active }}" style="margin-top:5vh" sticky
                   swipeable
+                  id="tabs"
                   bind:change="onTabChange">
             <van-tab title="{{v.name}}" wx:for="{{tabs}}" wx:for-item="v" wx:key="{{v.type}}">
                 <view wx:for="{{products}}" wx:for-item="p" wx:if="{{v.type===type}}"
