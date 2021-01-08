@@ -80,7 +80,7 @@ Page({
     changeBar: (index, bind) => {
         wx.showLoading({
             title: '优惠加载中....',
-            mask: true,
+            mask:false,
 
         })
         wx2.requestSync(`${reqUrls}/wai_mai/index?cate_id=${index}&&channel=wx`,

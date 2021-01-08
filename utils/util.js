@@ -43,12 +43,30 @@ const requestSync = (url, {data = {}, method = "GET", whenComplete = x => wx.hid
 
     });
 }
-const makeAsyncFunc = function (fn) {
-    return fn().then(r => r)
+const requestSyncR = (url, {
+    data = {}, method = "GET", whenComplete = x => {
+    }
+} = {}) => {
+    return requestSync(url, {
+        data, method, whenComplete
+    })
+}
+
+const makeAsyncFunc = function (fn, complete = () => {
+}) {
+    try {
+        return fn().then(r => r);
+
+    } catch (e) {
+        console.log(e)
+    } finally {
+        complete()
+    }
 }
 
 module.exports = {
     formatTime: formatTime,
     requestSync: requestSync,
+    requestSyncR: requestSyncR,
     makeAsyncFunc: makeAsyncFunc,
 }

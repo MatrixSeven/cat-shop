@@ -44,6 +44,7 @@ Page({
     },
     loadMore: function () {
         wx.showLoading({
+            mask:false,
             title: "loading"
         })
         requestSync(`${reqUrls}/wai_mai/product`).then(res => {

@@ -1,5 +1,5 @@
 
-.tabs_title{
+.tabs_title {
     position: sticky;
     z-index: 99999;
 }
@@ -12,7 +12,28 @@
     margin: 1vh 0 1vh 0;
 }
 
-.category_cat{
+.other_info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin-right: 1vh;
+}
+
+.other_item {
+    display: flex;
+    width: 15%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    font-size: smaller;
+    color: rgba(59, 59, 59, 0.53);
+    margin-left: 1vh;
+    margin-top: 1vh;
+}
+
+.category_cat {
     width: 100vw;
     margin: 2vh;
     height: 8vh;
@@ -20,20 +41,20 @@
     /*border-bottom: 2rpx solid #f0f0f0;*/
 }
 
-.category_item{
-    display:inline-block;
-    margin-left:2vh;
-    width:30vw;
-    height:100%;
-    background:green;
-    border-radius:1vh;
+.category_item {
+    display: inline-block;
+    margin-left: 2vh;
+    width: 30vw;
+    height: 100%;
+    background: green;
+    border-radius: 1vh;
     box-shadow: 0 0 5px #d0d0d0
 }
 
 .info_view_card {
     display: flex;
     width: 45%;
-    border-radius:1vh;
+    border-radius: 1vh;
     box-shadow: 0 0 5px #d0d0d0
 }
 
@@ -72,7 +93,7 @@
 .divLine {
     background: #E0E3DA;
     width: 100%;
-    height: 5 rpx;
+    height: 5rpx;
     text-align: left;
     color: #aaa;
 }

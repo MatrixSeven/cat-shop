@@ -1,40 +1,38 @@
 <!--logs.wxml-->
 <view>
-    <navBar searchBar="{{true}}" background='#fff' back="{{false}}" home="{{false}}" bindsearch="onSearch">
-    </navBar>
-
-
-    <!--            <van-grid>-->
-    <!--                <van-grid-item icon="photo-o" text="文字" />-->
-    <!--                <van-grid-item icon="photo-o" text="文字" />-->
-    <!--                <van-grid-item icon="photo-o" text="文字" />-->
-    <!--                <van-grid-item icon="photo-o" text="文字" />-->
-    <!--            </van-grid>-->
+    <navBar searchBar="{{true}}" background='#fff' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
     <view style="display:flex;justify-content: center;width:100vw">
         <swiper style="display: flex;width:90%;border-radius: 20px" indicator-dots="true"
                 indicator-color="#f4f4f4"
                 indicator-active-color="#4eb8b8" autoplay="true"
                 interval='4000' circular='true'>
             <swiper-item>
-                <image mode="scaleToFill"
-                       src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1139464753,3343155444&fm=26&gp=0.jpg"></image>
+                <image mode="widthFix"
+                       bindload='imgH'
+                       src="http://wx-cat.52python.cn/banner_1_meitu_1.jpg"></image>
             </swiper-item>
             <swiper-item>
-                <image mode="scaleToFill"
+                <image mode="widthFix"
                        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2026380808,732238803&fm=26&gp=0.jpg"></image>
             </swiper-item>
         </swiper>
     </view>
-    <scroll-view scroll-x="{{true}}" class="category_cat" scroll-with-animation='true'>
-            <view class="category_item" style="background:green">1</view>
-            <view class="category_item" style="background:red">1</view>
-            <view class="category_item" style="background:green">1</view>
-            <view class="category_item" style="background:red">1</view>
-            <view class="category_item" style="background:green">1</view>
-            <view class="category_item" style="background:red">1</view>
-            <view class="category_item" style="background:green">1</view>
-            <view class="category_item" style="background:red">1</view>
-    </scroll-view>
+    <view class="other_info">
+        <view class="other_item" wx:for="{{more}}" wx:for-item="v" wx:key="{{v.name}}">
+            <image style="width:75%" mode="widthFix" src="{{v.icon}}"/>
+            <text style="width:100%;text-align:center;margin-top:1vh;font-size: smaller;">{{v.name}}</text>
+        </view>
+    </view>
+    <!--    <scroll-view scroll-x="{{true}}" class="category_cat" scroll-with-animation='true'>-->
+    <!--            <view class="category_item" style="background:green">1</view>-->
+    <!--            <view class="category_item" style="background:red">1</view>-->
+    <!--            <view class="category_item" style="background:green">1</view>-->
+    <!--            <view class="category_item" style="background:red">1</view>-->
+    <!--            <view class="category_item" style="background:green">1</view>-->
+    <!--            <view class="category_item" style="background:red">1</view>-->
+    <!--            <view class="category_item" style="background:green">1</view>-->
+    <!--            <view class="category_item" style="background:red">1</view>-->
+    <!--    </scroll-view>-->
     <view class="info_view">
         <view class="info_view_card" style="background: #E0E3DA;">
         </view>
@@ -46,7 +44,7 @@
                   id="tabs"
                   bind:change="onTabChange">
             <van-tab title="{{v.name}}" wx:for="{{tabs}}" wx:for-item="v" wx:key="{{v.type}}">
-                <view wx:for="{{products}}" wx:for-item="p" wx:if="{{v.type===type}}"
+                <view wx:for="{{products}}" wx:for-item="p" wx:key="{{p.syncId}}" wx:if="{{v.type===type}}"
                       style="display:flex;justify-content: center">
                     <view class="card-view">
                         <view class="pic-price-view">

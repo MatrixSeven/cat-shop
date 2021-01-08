@@ -1,4 +1,4 @@
-import {formatTime, makeAsyncFunc, requestSync} from '../../utils/util'
+import {formatTime, makeAsyncFunc, requestSyncR, requestSync} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
 
 const app = getApp();
@@ -13,22 +13,33 @@ Page({
         active: 0,
         next: true,
         tabs: [],
+        more: [],
+        Hei: '',
         navHeight: ((app.menu.top - app.system.statusBarHeight) * 2 + app.menu.height + app.system.statusBarHeight + 1),
     },
-
+    imgH: function (e) {
+        var winWid = wx.getSystemInfoSync().windowWidth;         //获取当前屏幕的宽度
+        var imgh = e.detail.height;　　　　　　　　　　　　　　　　//图片高度
+        var imgw = e.detail.width;
+        var swiperH = winWid * imgh / imgw + "px"　　　　　　　　　　//等比设置swiper的高度。  即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度    ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+        this.setData({
+            Hei: swiperH　　　　　　　　//设置高度
+        })
+    },
 
     onLoad: function () {
         wx.showLoading({
+            mask: false,
             title: "优惠加载中ing"
         })
         makeAsyncFunc(async () => {
             const {page, size} = this.data
-            const {data: tabs} = await requestSync(`${reqUrls}/shop/tabs`)
-            console.log(tabs)
+            const {data: {tabs, more}} = await requestSync(`${reqUrls}/shop/tabs`)
             const defaultType = tabs[0].type
             const {data} = await requestSync(`${reqUrls}/shop/goods/list/${defaultType}/${page}/${size}`)
             this.setData({
                 tabs: tabs,
+                more: more,
                 type: defaultType,
                 products: [...this.data.products, ...data],
                 page: page + 1
@@ -40,14 +51,17 @@ Page({
 
     onTabChange: function (e) {
         wx.showLoading({
+            mask: false,
             title: "优惠加载中ing"
         })
         const {index, title} = e.detail
-        const {size} = this.data
+        const {size, tabs} = this.data
+        console.log(tabs)
+        console.log(index)
         this.loadMoreAux({
             ...this.data,
             page: 1, next: true, clear: true,
-            type: this.data.tabs[index].type, size
+            type: tabs[index].type, size
         })
     },
     onSearch: function (e) {
@@ -72,26 +86,29 @@ Page({
 
     refresher: function () {
         wx.showLoading({
+            mask: false,
             title: "优惠加载中ing"
         })
         const {type, size} = this.data
         const page = 1;
-        requestSync(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`, {
-            whenComplete: x => {
+        makeAsyncFunc(async () => {
+                const {data: product} = await requestSyncR(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
+                const {data: {tabs, more}} = await requestSyncR(`${reqUrls}/shop/tabs`)
+                this.setData({
+                    product: product,
+                    tabs: tabs,
+                    more: more,
+                })
+            }, () => {
                 wx.hideLoading();
                 wx.stopPullDownRefresh();
             }
-        }).then(ret => {
-            this.setData({
-                products: ret.data,
-                page: page + 1,
-
-            })
-        })
+        )
     },
 
     loadMore: function () {
         wx.showLoading({
+            mask: false,
             title: "优惠加载中ing"
         })
         this.loadMoreAux(this.data)
