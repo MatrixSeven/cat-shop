@@ -9,6 +9,68 @@
     border-radius: 2vh 2vh 2vh 2vh;
 }
 
+.buy_plan {
+    display: flex;
+    width: 60vw;
+    height: 40vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.buy_title{
+    display: flex;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #dd514c;
+    width: 100%;
+    height: 15%;
+}
+.buy_ling{
+    display: flex;
+    width: 80%;
+    height: 35%;
+    margin-top: 1vh;
+    border-width: thin;
+    border-style: dashed;
+    border-color: #dd514c;
+    border-bottom-style: dot-dash;
+}
+.buy_button{
+    width: max-content;
+    color: white;
+    font-size: large;
+    height: min-content;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 2vh 2vh 2vh 2vh;
+    margin-top: 2vh;
+    background-color: #dd514c;
+}
+.buy_step{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.page {
+
+    padding-bottom: 20vh;
+}
+
+/*.page::after {*/
+/*    width: 140vw;*/
+/*    height: 40vh;*/
+/*    position: absolute;*/
+/*    left: -20%;*/
+/*    top: 0;*/
+/*    z-index: -1;*/
+/*    content: '';*/
+/*    border-radius: 0 0 50% 50%;*/
+/*    background: linear-gradient(#f80606, #ffffff 70%);*/
+/*}*/
 
 .swiper {
     display: flex;
@@ -102,6 +164,7 @@
     width: 30%;
 }
 
+
 .text-view {
     margin-left: 10%;
     display: flex;
@@ -113,7 +176,7 @@
 .divLine {
     background: #E0E3DA;
     width: 100%;
-    height: 5 rpx;
+    height: 5rpx;
     text-align: left;
     color: #aaa;
 }

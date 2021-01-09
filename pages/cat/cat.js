@@ -16,6 +16,25 @@ Page({
         active: 0,
         next: true,
         Hei: '',
+        showBuy: {
+            show: false,
+            ling: ''
+        },
+        buySteps: [{
+            // text: '',
+            desc: '选择全部',
+            inactiveIcon: 'arrow'
+        },
+            {
+                // text: '复制',
+                desc: '复制',
+                inactiveIcon: 'arrow'
+            },
+            {
+                // text: '',
+                desc: '打开Tao宝',
+                inactiveIcon: 'arrow'
+            }],
         navHeight: ((app.menu.top - app.system.statusBarHeight) * 2 + app.menu.height + app.system.statusBarHeight + 1),
     },
     imgH: function (e) {
@@ -56,6 +75,11 @@ Page({
             showPopupInfo: {show: false},
         })
     },
+    onBuyPopup: function () {
+        this.setData({
+            showBuy: {show: false}
+        })
+    },
     onClickSwiper: function (e) {
         const {type, data} = getArgs(e)
         console.log(getArgs(e))
@@ -77,6 +101,24 @@ Page({
         event[type]()
 
 
+    },
+
+    goBuy: function (e) {
+        const {ling} = getArgs(e)
+        wx.setClipboardData({
+            data: ling, success:()=>{
+                wx.showToast({
+                    title: "已经成功复制tao宝口令到剪贴板,马上打开淘宝即可领取优惠券,赶紧出发吧！GO",
+                    duration: 3000
+                })
+                this.setData({
+                    showBuy: {
+                        show: true,
+                        ling
+                    }
+                })
+            }
+        })
     },
 
     onTabChange: function (e) {

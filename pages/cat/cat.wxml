@@ -3,7 +3,9 @@
 <van-popup
         show="{{ showPopupInfo.show }}"
         closeable
-        overlay="{{false}}"
+        round
+        duration="1000"
+        overlay="{{true}}"
         bind:close="onClosePopup">
     <view class="popup_show">
         <image src="{{showPopupInfo.img}}"></image>
@@ -11,11 +13,37 @@
             <text>{{showPopupInfo.content}}</text>
         </view>
     </view>
+</van-popup>
+
+<van-popup
+        show="{{ showBuy.show }}"
+        closeable
+        round
+        duration="1000"
+        overlay="{{true}}"
+        bind:close="onBuyPopup">
+    <view class="buy_plan">
+        <view class="buy_title">
+            口令购买
+        </view>
+        <view class="buy_ling">
+            <textarea disabled value="{{showBuy.ling}}"/>
+        </view>
+        <view class="buy_step">
+            <button class="buy_button">
+                一键复制
+            </button>
+        </view>
+        <view class="buy_step">
+            <van-steps style="width:100%" steps="{{ buySteps }}" active="{{ 3 }}"/>
+        </view>
+    </view>
 
 </van-popup>
 
-<view>
-    <navBar searchBar="{{true}}" background='#fff' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
+
+<view class="page">
+    <navBar searchBar="{{true}}" background='#FFF' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
     <view style="display:flex;justify-content: center;width:100vw">
         <swiper class="swiper" indicator-color="#f4f4f4"
                 indicator-dots="true"
@@ -33,21 +61,15 @@
             <text style="width:100%;text-align:center;margin-top:1vh;font-size: smaller;">{{v.name}}</text>
         </view>
     </view>
-    <!--    <scroll-view scroll-x="{{true}}" class="category_cat" scroll-with-animation='true'>-->
-    <!--            <view class="category_item" style="background:green">1</view>-->
-    <!--            <view class="category_item" style="background:red">1</view>-->
-    <!--            <view class="category_item" style="background:green">1</view>-->
-    <!--            <view class="category_item" style="background:red">1</view>-->
-    <!--            <view class="category_item" style="background:green">1</view>-->
-    <!--            <view class="category_item" style="background:red">1</view>-->
-    <!--            <view class="category_item" style="background:green">1</view>-->
-    <!--            <view class="category_item" style="background:red">1</view>-->
-    <!--    </scroll-view>-->
-    <view class="info_view">
-        <view class="info_view_card" style="background: #E0E3DA;">
-        </view>
-        <view class="info_view_card" style="background: red;"></view>
-    </view>
+    <!--    <view class="info_view">-->
+    <!--        <view class="info_view_card" style="background: #E0E3DA;">-->
+    <!--            <image-->
+    <!--                    style="width: 100%; height: 100%;"-->
+    <!--                    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F9vo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fa5c27d1ed21b0ef45aa62aced1c451da80cb3ed7.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1612787545&t=35fedd95aa527059164c93a330c4bafb">-->
+    <!--            </image>-->
+    <!--        </view>-->
+    <!--        <view class="info_view_card" style="background: red;"></view>-->
+    <!--    </view>-->
     <view style=" position: sticky; z-index: 1;  top:{{navHeight}};">
         <van-tabs offset-top="{{navHeight}}" z-index="9999" active="{{ active }}" style="margin-top:5vh" sticky
                   swipeable
@@ -69,13 +91,15 @@
                                     <view style="color:#dd514c;margin-left: 5px;font-size: x-large">{{p.actualPrice}}
                                     </view>
                                     <view style="margin-left:2vw;border-right: 100% solid #5EB95E;border-top: 100% solid transparent;border-bottom:100% solid transparent;  "/>
-                                    <view style="align-items:center;background-color: #5EB95E;font-size: smaller;color:#FFFF;text-align:center">
-                                        包邮
-                                    </view>
+                                    <van-tag type="success" plain color="#5EB95E" style="align-self:center">包邮</van-tag>
+                                    <!--                                    <view style="align-items:center;background-color: #5EB95E;font-size: smaller;color:#FFFF;text-align:center">-->
+                                    <!--                                        包邮-->
+                                    <!--                                    </view>-->
                                 </view>
                                 <view style="display: flex;width:97%;justify-content: flex-start">
-                                    <button style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
-                                        立即购买
+                                    <button bind:tap="goBuy" data-item="{{p}}"
+                                            style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
+                                        领劵购买
                                         <van-icon name="cart"/>
                                     </button>
                                 </view>
