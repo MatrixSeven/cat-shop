@@ -1,7 +1,48 @@
 
-.tabs_title {
-    position: sticky;
-    z-index: 99999;
+.popup_show {
+    display: flex;
+    padding: 2vh;
+    box-shadow: 0 0 5px #d0d0d0;
+    border-bottom-color: #999999;
+    width: 50vw;
+    height: 35vh;
+    border-radius: 2vh 2vh 2vh 2vh;
+}
+
+
+.swiper {
+    display: flex;
+    width: 90%;
+    border-radius: 2vh 2vh 2vh 2vh;
+}
+
+.swiper_item {
+    z-index: 1;
+    border-radius: 2vh 2vh 2vh 2vh;
+    box-shadow: 0 0 5px #d0d0d0;
+    width: 100%;
+    height: 100%;
+}
+
+.other_info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.other_item {
+    display: flex;
+    width: 15%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    font-size: smaller;
+    color: rgba(59, 59, 59, 0.53);
+    margin-left: 1vh;
 }
 
 .info_view {
@@ -10,27 +51,6 @@
     height: 8vh;
     width: 100vw;
     margin: 1vh 0 1vh 0;
-}
-
-.other_info {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100vw;
-    margin-right: 1vh;
-}
-
-.other_item {
-    display: flex;
-    width: 15%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: white;
-    font-size: smaller;
-    color: rgba(59, 59, 59, 0.53);
-    margin-left: 1vh;
-    margin-top: 1vh;
 }
 
 .category_cat {
@@ -93,7 +113,7 @@
 .divLine {
     background: #E0E3DA;
     width: 100%;
-    height: 5rpx;
+    height: 5 rpx;
     text-align: left;
     color: #aaa;
 }

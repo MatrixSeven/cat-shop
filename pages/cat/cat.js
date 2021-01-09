@@ -1,19 +1,20 @@
-import {formatTime, makeAsyncFunc, requestSyncR, requestSync} from '../../utils/util'
+import {getArgs, makeAsyncFunc, requestSyncR, requestSync} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
 
 const app = getApp();
-console.log(app)
 Page({
     data: {
+        category: [],
         products: [],
+        centerCategory: [],
+        swiper: [],
+        showPopupInfo: {show: false},
         type: 1,
         page: 1,
         size: 10,
         value: '',
         active: 0,
         next: true,
-        tabs: [],
-        more: [],
         Hei: '',
         navHeight: ((app.menu.top - app.system.statusBarHeight) * 2 + app.menu.height + app.system.statusBarHeight + 1),
     },
@@ -34,12 +35,13 @@ Page({
         })
         makeAsyncFunc(async () => {
             const {page, size} = this.data
-            const {data: {tabs, more}} = await requestSync(`${reqUrls}/shop/tabs`)
-            const defaultType = tabs[0].type
+            const {data: {category, centerCategory, swiper}} = await requestSync(`${reqUrls}/shop/tabs`)
+            const defaultType = category[0].type
             const {data} = await requestSync(`${reqUrls}/shop/goods/list/${defaultType}/${page}/${size}`)
             this.setData({
-                tabs: tabs,
-                more: more,
+                category,
+                centerCategory,
+                swiper,
                 type: defaultType,
                 products: [...this.data.products, ...data],
                 page: page + 1
@@ -48,6 +50,34 @@ Page({
         })
     },
 
+    onClosePopup: function () {
+        console.log(1)
+        this.setData({
+            showPopupInfo: {show: false},
+        })
+    },
+    onClickSwiper: function (e) {
+        const {type, data} = getArgs(e)
+        console.log(getArgs(e))
+        /**
+         * 0 webView
+         * 10 mask-->{data:{title|content|img}}
+         * 20 page
+         */
+        const event = {
+            10: () => {
+                this.setData({
+                    showPopupInfo: {
+                        show: true,
+                        ...data
+                    }
+                })
+            }
+        }
+        event[type]()
+
+
+    },
 
     onTabChange: function (e) {
         wx.showLoading({
@@ -55,13 +85,11 @@ Page({
             title: "优惠加载中ing"
         })
         const {index, title} = e.detail
-        const {size, tabs} = this.data
-        console.log(tabs)
-        console.log(index)
+        const {size, category} = this.data
         this.loadMoreAux({
             ...this.data,
             page: 1, next: true, clear: true,
-            type: tabs[index].type, size
+            type: category[index].type, size
         })
     },
     onSearch: function (e) {
@@ -93,11 +121,12 @@ Page({
         const page = 1;
         makeAsyncFunc(async () => {
                 const {data: product} = await requestSyncR(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
-                const {data: {tabs, more}} = await requestSyncR(`${reqUrls}/shop/tabs`)
+                const {data: {category, centerCategory, swiper}} = await requestSyncR(`${reqUrls}/shop/tabs`)
                 this.setData({
-                    product: product,
-                    tabs: tabs,
-                    more: more,
+                    product,
+                    swiper,
+                    category,
+                    centerCategory,
                 })
             }, () => {
                 wx.hideLoading();

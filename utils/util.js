@@ -64,9 +64,12 @@ const makeAsyncFunc = function (fn, complete = () => {
     }
 }
 
+const getArgs = data => data.currentTarget.dataset.item
+
 module.exports = {
     formatTime: formatTime,
     requestSync: requestSync,
     requestSyncR: requestSyncR,
     makeAsyncFunc: makeAsyncFunc,
+    getArgs: getArgs
 }

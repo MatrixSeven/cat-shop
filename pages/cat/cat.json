@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-tab": "/@vant/weapp/dist/tab/index",
     "van-tabs": "/@vant/weapp/dist/tabs/index",
+    "van-popup": "/@vant/weapp/dist/popup/index",
     "van-icon": "/@vant/weapp/dist/icon/index"
   },
   "enablePullDownRefresh": true,
