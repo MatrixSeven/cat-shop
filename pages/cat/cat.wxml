@@ -27,14 +27,20 @@
             口令购买
         </view>
         <view class="buy_ling">
-            <textarea disabled value="{{showBuy.ling}}"/>
+            <textarea disabled focus
+                      value="{{showBuy.ling}}"/>
         </view>
-        <view class="buy_step">
+        <view class="buy_step;" style="    flex-direction: column;">
             <button class="buy_button">
                 一键复制
             </button>
+            <view class="buy_button_text">
+                如果复制失败,请手动复制口令
+            </view>
+
         </view>
         <view class="buy_step">
+
             <van-steps style="width:100%" steps="{{ buySteps }}" active="{{ 3 }}"/>
         </view>
     </view>

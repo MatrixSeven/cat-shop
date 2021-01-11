@@ -106,17 +106,19 @@ Page({
     goBuy: function (e) {
         const {ling} = getArgs(e)
         wx.setClipboardData({
-            data: ling, success:()=>{
+            data: ling, success: () => {
                 wx.showToast({
-                    title: "已经成功复制tao宝口令到剪贴板,马上打开淘宝即可领取优惠券,赶紧出发吧！GO",
-                    duration: 3000
+                    title: "恭喜,现在打开淘宝即可领取优惠券,赶紧出发吧！GO",
+                    duration: 3000,
+                    icon: 'none',
                 })
-                this.setData({
-                    showBuy: {
-                        show: true,
-                        ling
-                    }
-                })
+                setTimeout(() => this.setData({
+                        showBuy: {
+                            show: true,
+                            ling:ling.substr(0,45)
+                        }
+                    })
+                    , 3000);
             }
         })
     },

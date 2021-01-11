@@ -11,12 +11,13 @@
 
 .buy_plan {
     display: flex;
-    width: 60vw;
+    width: 80vw;
     height: 40vh;
     flex-wrap: wrap;
     justify-content: center;
 }
-.buy_title{
+
+.buy_title {
     display: flex;
     color: white;
     text-align: center;
@@ -26,7 +27,8 @@
     width: 100%;
     height: 15%;
 }
-.buy_ling{
+
+.buy_ling {
     display: flex;
     width: 80%;
     height: 35%;
@@ -36,10 +38,11 @@
     border-color: #dd514c;
     border-bottom-style: dot-dash;
 }
-.buy_button{
+
+.buy_button {
     width: max-content;
     color: white;
-    font-size: large;
+    font-size: x-large;
     height: min-content;
     text-align: center;
     align-items: center;
@@ -49,7 +52,21 @@
     margin-top: 2vh;
     background-color: #dd514c;
 }
-.buy_step{
+
+.buy_button_text {
+    width: max-content;
+    color: gray;
+    font-size: x-small;
+    height: min-content;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+    margin-top: 1vh;
+}
+
+.buy_step {
     display: flex;
     width: 100%;
     height: auto;

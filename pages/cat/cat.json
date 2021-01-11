@@ -6,7 +6,8 @@
     "van-popup": "/@vant/weapp/dist/popup/index",
     "van-icon": "/@vant/weapp/dist/icon/index",
     "van-tag": "/@vant/weapp/dist/tag/index",
-    "van-steps": "/@vant/weapp/dist/steps/index"
+    "van-steps": "/@vant/weapp/dist/steps/index",
+    "van-toast": "/@vant/weapp/dist/toast/index"
   },
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 60
