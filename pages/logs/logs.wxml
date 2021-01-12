@@ -32,48 +32,24 @@
     <view class="search_near" style="margin-top:3vh">
         猜你喜欢
     </view>
-    <view wx:for="{{products}}" wx:for-item="p" wx:key="{{p.syncId}}"
-          style="display:flex;justify-content: center">
-        <view class="card-view">
-            <view class="pic-price-view">
-                <view class="pic-view">
-                    <image mode='widthFix' src="{{p.mainPic}}"></image>
+<!--    <image wx:for="{{products}}" data-product="{{item}}" style="display:none;" wx:key="*this"-->
+<!--           bindload="imgLoad"-->
+<!--           mode="widthFix" src="{{item.mainPic}}"/>-->
+    <view class="content">
+        <view class="left">
+            <view wx:for="{{products}}" wx:key="*this" class="product-item">
+                <view class="product-img">
+                    <image mode="widthFix" src="{{item.mainPic}}"></image>
                 </view>
-                <view class="text-view">
-                    <view style="display: flex;width: 100%;font-size:smaller;color: #8f8f8f">{{p.title}}
-                    </view>
-                    <view style="display: flex;width: 100%;align-items:baseline;">
-                        <view style="font-size: smaller">券后价:</view>
-                        <view style="color:#dd514c;margin-left: 5px;font-size: x-large">{{p.actualPrice}}
-                        </view>
-                        <view style="margin-left:2vw;border-right: 100% solid #5EB95E;border-top: 100% solid transparent;border-bottom:100% solid transparent;  "/>
-                        <van-tag type="success" plain color="#5EB95E" style="align-self:center">包邮</van-tag>
-                        <!--                                    <view style="align-items:center;background-color: #5EB95E;font-size: smaller;color:#FFFF;text-align:center">-->
-                        <!--                                        包邮-->
-                        <!--                                    </view>-->
-                    </view>
-                    <view style="display: flex;width:97%;justify-content: flex-start">
-                        <button bind:tap="goBuy" data-item="{{p}}"
-                                style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
-                            领劵购买
-                            <van-icon name="cart"/>
-                        </button>
-                    </view>
+                <view class="product-title">
+                    {{item.title}}
+                </view>
+                <view class="product-price">
+                    {{item.actualPrice}}
                 </view>
             </view>
-
-            <view class="foot">
-                <view style="background-color: #3bb4f2;color: white">卷:{{p.couponPrice}}元
-                </view>
-                <view style="margin-left: 1vh;color: #616161">在售价:{{p.originalPrice}}元</view>
-                <view style="margin-left: 1vh;color: #5eb95e">月销量:{{p.monthSales}}</view>
-            </view>
-            <view class="divLine"/>
-            <view style="display:flex;width: 100%;font-size:smaller;color: #8f8f8f">
-                {{p.syncMsg}}
-            </view>
-
         </view>
     </view>
+
 
 </view>

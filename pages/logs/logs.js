@@ -4,9 +4,14 @@ import {reqUrls} from '../../utils/config'
 Page({
     data: {
         searchHistory: [],
+        products:[],
         page: 1,
         size: 10,
         currentKeyWord: '',
+        lHeight:0,
+        rHeight:0,
+        lList:[],
+        rList:[],
     },
     onLoad: function () {
         this.setData({
@@ -53,5 +58,5 @@ Page({
                 searchHistory: searchHistory_
             })
         })
-    }
+    },
 })
