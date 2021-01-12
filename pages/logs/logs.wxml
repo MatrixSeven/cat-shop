@@ -15,6 +15,7 @@
     <view class="search_near">
         最近搜索
     </view>
+    <van-icon bind:tap="clearSearchHistory" name="delete"/>
     <view>
         <van-tag type="primary"
                  size="medium"
@@ -76,4 +77,3 @@
     </view>
 
 </view>
-

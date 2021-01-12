@@ -25,10 +25,15 @@ Page({
             currentKeyWord: e.detail,
         });
     },
+    clearSearchHistory: function () {
+        this.setData({
+            searchHistory: []
+        })
+        wx.setStorageSync("searchHistory", [])
+    },
 
     tagClick: function (e) {
         const tag = getArgs(e)
-        console.log(tag)
         this.setData({
             currentKeyWord: tag
         })
