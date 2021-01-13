@@ -105,7 +105,7 @@
 
 .other_info {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 100vw;
     margin-top: 2vh;

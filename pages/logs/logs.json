@@ -3,6 +3,9 @@
   "usingComponents": {
     "van-search": "/@vant/weapp/dist/search/index",
     "van-tag": "/@vant/weapp/dist/tag/index",
-    "van-icon": "/@vant/weapp/dist/icon/index"
+    "van-icon": "/@vant/weapp/dist/icon/index",
+    "van-sticky": "/@vant/weapp/dist/sticky/index",
+    "van-empty": "/@vant/weapp/dist/empty/index",
+    "van-button": "/@vant/weapp/dist/button/index"
   }
 }

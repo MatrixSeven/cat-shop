@@ -69,17 +69,52 @@ Page({
         })
     },
 
-    onClosePopup: function () {
-        console.log(1)
-        this.setData({
-            showPopupInfo: {show: false},
-        })
-    },
+    onClickOtherItem: function (e) {
+        const {type, args} = getArgs(e)
+        const mapping = {
+            //啥都不做
+            0: () => {
+            },
+            //转跳
+            10: () => {
+                wx.navigateTo({
+                    url: args,
+                });
+            },
+            //webview
+            20: () => {
+                wx.navigateTo({
+                    url: `/pages/web/web?url=${args}`,
+                })
+            },
+            //转跳不带返回
+            30: () => {
+
+            },
+            //提示
+            40: () => {
+                wx.showToast({title: args, icon: 'none'});
+            }
+        }
+        mapping[type]()
+    }
+    ,
+    onClosePopup:
+
+        function () {
+            console.log(1)
+            this.setData({
+                showPopupInfo: {show: false},
+            })
+        }
+
+    ,
     onBuyPopup: function () {
         this.setData({
             showBuy: {show: false}
         })
-    },
+    }
+    ,
     onClickSwiper: function (e) {
         const {type, data} = getArgs(e)
         console.log(getArgs(e))
@@ -101,7 +136,8 @@ Page({
         event[type]()
 
 
-    },
+    }
+    ,
 
     goBuy: function (e) {
         const {ling} = getArgs(e)
@@ -115,13 +151,14 @@ Page({
                 setTimeout(() => this.setData({
                         showBuy: {
                             show: true,
-                            ling:ling.substr(0,45)
+                            ling: ling.substr(0, 45)
                         }
                     })
                     , 3000);
             }
         })
-    },
+    }
+    ,
 
     onTabChange: function (e) {
         wx.showLoading({
@@ -135,25 +172,29 @@ Page({
             page: 1, next: true, clear: true,
             type: category[index].type, size
         })
-    },
+    }
+    ,
     onSearch: function (e) {
-        console.log(e)
         wx.navigateTo({
             url: '/pages/logs/logs',
         });
-    },
+    }
+    ,
     onChange: function (e) {
         this.setData({
             value: e.detail,
         });
-    },
+    }
+    ,
 
     onPullDownRefresh: function () {
         this.refresher();
-    },
+    }
+    ,
     onReachBottom: function () {
         this.loadMore();
-    },
+    }
+    ,
 
 
     refresher: function () {
@@ -164,8 +205,8 @@ Page({
         const {type, size} = this.data
         const page = 1;
         makeAsyncFunc(async () => {
-                const {data: product} = await requestSyncR(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
-                const {data: {category, centerCategory, swiper}} = await requestSyncR(`${reqUrls}/shop/tabs`)
+                const {data: product} = await requestSyncR(`${reqUrls} / shop / goods / list /${type}/${page}/${size}`)
+                const {data: {category, centerCategory, swiper}} = await requestSyncR(`${reqUrls} / shop / tabs`)
                 this.setData({
                     product,
                     swiper,
@@ -177,7 +218,8 @@ Page({
                 wx.stopPullDownRefresh();
             }
         )
-    },
+    }
+    ,
 
     loadMore: function () {
         wx.showLoading({
@@ -186,7 +228,8 @@ Page({
         })
         this.loadMoreAux(this.data)
 
-    },
+    }
+    ,
     loadMoreAux: function (data) {
         const {type, page, size, next, clear = false} = data
         if (!next) {
@@ -198,7 +241,7 @@ Page({
         }
 
         makeAsyncFunc(async () => {
-            let {data = []} = await requestSync(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
+            let {data = []} = await requestSync(`${reqUrls} / shop / goods / list /${type}/${page}/${size}`)
             if (data === ({})) {
                 data = []
             }

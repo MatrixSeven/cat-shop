@@ -1,17 +1,19 @@
 <!--logs.wxml-->
-<navBar searchBar="{{false}}" title="搜索" background='#fff' back="{{true}}" home="{{false}}"/>
+<navBar searchBar="{{false}}" bindback="gotoBack" title="搜索" background='#fff' back="{{true}}" home="{{false}}"/>
 
 <view class="all_page">
-    <van-search
-            style="width: 100%;"
-            value="{{ currentKeyWord }}"
-            focus
-            bind:change="onChange"
-            bind:search="onSearch"
-            shape="round"
-            background="#FFF"
-            placeholder="请输入搜索关键词"
-    />
+    <van-sticky style="width: 100%;" offset-top="{{ navHeight }}">
+        <van-search
+                style="width: 100%;"
+                value="{{ currentKeyWord }}"
+                focus
+                bind:change="onChange"
+                bind:search="onSearch"
+                shape="round"
+                background="#FFF"
+                placeholder="请输入搜索关键词"
+        />
+    </van-sticky>
     <view class="search_near">
         最近搜索
     </view>
@@ -30,11 +32,19 @@
     </view>
 
     <view class="search_near" style="margin-top:3vh">
-        猜你喜欢
+        {{showSearchTitle}}
     </view>
-<!--    <image wx:for="{{products}}" data-product="{{item}}" style="display:none;" wx:key="*this"-->
-<!--           bindload="imgLoad"-->
-<!--           mode="widthFix" src="{{item.mainPic}}"/>-->
+    <view wx:if="{{showEmpty}}" style="display:flex;width:100vw;flex-wrap: wrap;">
+        <van-empty style="width:100%" image="search" description="啥都没有,换个词试一试吧">
+            <van-button round type="danger" class="bottom-button">
+                GO 去商城看一看
+            </van-button>
+        </van-empty>
+        <view class="search_near">
+            猜你喜欢
+        </view>
+    </view>
+
     <view class="content">
         <view class="left">
             <view wx:for="{{products}}" wx:key="*this" class="product-item">
@@ -44,12 +54,19 @@
                 <view class="product-title">
                     {{item.title}}
                 </view>
-                <view class="product-price">
-                    {{item.actualPrice}}
+                <view class="text-view">
+                    <view style="display: flex;width: 100%;align-items:baseline;">
+                        <view style="font-size: smaller">券后价:</view>
+                        <view style="color:#dd514c;margin-left: 5px;font-size: x-large">{{item.actualPrice}}</view>
+                        <view style="margin-left:2vw;border-right: 100% solid #5EB95E;border-top: 100% solid transparent;border-bottom:100% solid transparent;  "/>
+                        <van-tag type="success" plain color="#5EB95E" style="align-self:center">包邮</van-tag>
+                    </view>
+                    <view style="display: flex;width: 100%;align-items:baseline;">
+                        <view style="font-size: smaller;color: #5eb95e">原价: {{item.originalPrice}}</view>
+                        <view style="margin-left: 1vh;color: #5eb95e;font-size: smaller">月销量:{{item.monthSales}}</view>
+                    </view>
                 </view>
             </view>
         </view>
     </view>
-
-
 </view>

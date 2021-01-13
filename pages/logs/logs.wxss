@@ -53,38 +53,7 @@
 }
 
 
-.text-view {
-    margin-left: 10%;
-    display: flex;
-    flex-wrap: wrap;
-    width: 60%;
-    align-items: flex-end;
-}
 
-.divLine {
-    background: #E0E3DA;
-    width: 100%;
-    height: 5rpx;
-    text-align: left;
-    color: #aaa;
-}
-
-.foot {
-    margin: 1vh;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100vh;
-    font-size: smaller;
-}
-
-
-
-
-/*  flex-pll */
-
-/*page{*/
-/*    background-color: #d1d0d0;*/
-/*}*/
 .content{
     display: flex;
     flex-wrap: wrap;
@@ -128,4 +97,14 @@
     font-weight: 700;
     font-size: 32rpx;
     padding: 0 20rpx;
+}
+
+
+
+.text-view {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1vh;
+    width:100%;
+    justify-content: flex-start;
 }
