@@ -99,9 +99,7 @@ Page({
         mapping[type]()
     }
     ,
-    onClosePopup:
-
-        function () {
+    onClosePopup: function () {
             console.log(1)
             this.setData({
                 showPopupInfo: {show: false},
@@ -140,23 +138,26 @@ Page({
     ,
 
     goBuy: function (e) {
-        const {ling} = getArgs(e)
-        wx.setClipboardData({
-            data: ling, success: () => {
-                wx.showToast({
-                    title: "恭喜,现在打开淘宝即可领取优惠券,赶紧出发吧！GO",
-                    duration: 3000,
-                    icon: 'none',
-                })
-                setTimeout(() => this.setData({
-                        showBuy: {
-                            show: true,
-                            ling: ling.substr(0, 45)
-                        }
-                    })
-                    , 3000);
-            }
+        const {ling,syncId} = getArgs(e)
+        wx.navigateTo({
+            url: `/pages/detail/detail?id=${syncId}`,
         })
+        // wx.setClipboardData({
+        //     data: ling, success: () => {
+        //         wx.showToast({
+        //             title: "恭喜,现在打开淘宝即可领取优惠券,赶紧出发吧！GO",
+        //             duration: 3000,
+        //             icon: 'none',
+        //         })
+        //         setTimeout(() => this.setData({
+        //                 showBuy: {
+        //                     show: true,
+        //                     ling: ling.substr(0, 45)
+        //                 }
+        //             })
+        //             , 3000);
+        //     }
+        // })
     }
     ,
 
@@ -241,7 +242,7 @@ Page({
         }
 
         makeAsyncFunc(async () => {
-            let {data = []} = await requestSync(`${reqUrls} / shop / goods / list /${type}/${page}/${size}`)
+            let {data = []} = await requestSync(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
             if (data === ({})) {
                 data = []
             }

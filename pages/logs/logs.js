@@ -52,6 +52,9 @@ Page({
 
     onSearch: function () {
         const {currentKeyWord, searchHistory, page, size, products} = this.data
+        if (currentKeyWord.trim() === '') {
+            return
+        }
         const searchHistory_ = [currentKeyWord, ...searchHistory.filter(it => it !== currentKeyWord)]
         wx.setStorageSync("searchHistory", searchHistory_)
         wx.showLoading({

@@ -3,9 +3,9 @@
     "pages/cat/cat",
     "pages/index/index",
     "pages/home/home",
-
     "pages/subscribe/subscribe",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

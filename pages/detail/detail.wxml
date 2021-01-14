@@ -1,0 +1,72 @@
+<!--pages/detail/detail.wxml-->
+
+<wxs module="m2">
+    var imgToFix = function (value) {
+        if (value.imgs) {
+            return value.imgs.split(',')
+        }
+        return [value.mainPic]
+    }
+    module.exports.imgToFix = imgToFix;
+</wxs>
+<navBar searchBar="{{false}}" bindback="gotoBack" bindHome="gotoHome" title="商品详情"
+        background='#fff' back="{{!showGoHome}}" home="{{showGoHome}}"/>
+
+<view class="container detail-container" wx:if="detail">
+    <swiper class='carousel_swiper' indicator-dots="true" indicator-color="#f4f4f4" indicator-active-color="#ec6933"
+            autoplay="true" interval='2000' circular='true'>
+        <block wx:for="{{m2.imgToFix(detail)}}" wx:key="item">
+            <swiper-item bindtap='tapGallery' data-url='{{item}}'>
+                <image class="carouselImg" src='{{item}}' mode='aspectFill'></image>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="detail-top-info">
+        <view class="top-info-price">
+            <view class="price-left" wx:if="{{detail.actualPrice}}">
+                <view>
+                    <text class="ppre">￥</text><text
+                        class="cprice">{{detail.actualPrice}}</text>
+                </view>
+                <view class="qafter">券后价</view>
+                <text class="oprice">￥{{detail.originalPrice}}</text>
+            </view>
+            <text class="price-right" wx:if="{{detail.monthSales}}">已拼{{detail.monthSales}}件</text>
+        </view>
+        <view class="top-info-name">
+            <text>{{detail.title}}</text>
+        </view>
+    </view>
+    <view class="detail-discount" wx:if="{{detail.title}}" bindtap="buy">
+        <text class="discount-text"
+              wx:if="{{detail.originalPrice-detail.actualPrice===0}}">无可用优惠券</text>
+        <text class="discount-text"
+              wx:if="{{detail.originalPrice-detail.actualPrice> 0}}">￥{{detail.originalPrice - detail.actualPrice}}</text>
+        <view class="discount-time" wx:if="{{detail.couponStartTime}}">
+            <text>优惠券使用期限</text>
+            <text wx:if="{{couponStartTime}}"> {{couponStartTime}} ~ {{couponEndTime}}</text>
+            <text wx:if="{{!couponStartTime}}">长期有效</text>
+        </view>
+        <view class="discount-yline" wx:if="{{detail.title}}"></view>
+        <text class="discount-action" wx:if="{{detail.title}}">立即领券</text>
+    </view>
+    <view class="detail-info" wx:if="{{detail.title}}">
+        <text class="detail-name">商品详情</text>
+        <text class="detail-desc">{{detail.desc}}</text>
+        <image wx:for="{{m2.imgToFix(detail)}}" src="{{item}}"/>
+    </view>
+
+    <view class="bottom-actions">
+        <view class="action-home" bindtap="gohome">
+            <image src="/images/home-s.png"/>
+        </view>
+        <view class="share">
+            <button open-type="share">
+                <text class="action-text">分享好友</text>
+            </button>
+        </view>
+        <view class="buy" bindtap="buy">
+            <text class="action-text">立即领券</text>
+        </view>
+    </view>
+</view>
