@@ -73,7 +73,7 @@ Page({
                 products: showEmpty ? products : data,
                 showSearchTitle: "搜索结果",
                 showEmpty,
-                searchHistory,
+                searchHistory:searchHistory_,
             })
         })
     },
