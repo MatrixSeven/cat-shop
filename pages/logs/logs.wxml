@@ -47,7 +47,7 @@
 
     <view class="content">
         <view class="left">
-            <view wx:for="{{products}}" wx:key="*this" class="product-item">
+            <view wx:for="{{products}}" data-item="{{item}}" bind:tap="goDetails" wx:key="*this" class="product-item">
                 <view class="product-img">
                     <image mode="widthFix" src="{{item.mainPic}}"></image>
                 </view>

@@ -86,7 +86,7 @@
                   id="tabs"
                   bind:change="onTabChange">
             <van-tab title="{{v.name}}" wx:for="{{category}}" wx:for-item="v" wx:key="{{v.type}}">
-                <view wx:for="{{products}}" wx:for-item="p" wx:key="{{p.syncId}}" wx:if="{{v.type===type}}"
+                <view wx:for="{{products}}" bind:tap="goBuy" data-item="{{p}}" wx:for-item="p" wx:key="{{p.syncId}}" wx:if="{{v.type===type}}"
                       style="display:flex;justify-content: center">
                     <view class="card-view">
                         <view class="pic-price-view">
@@ -102,9 +102,6 @@
                                     </view>
                                     <view style="margin-left:2vw;border-right: 100% solid #5EB95E;border-top: 100% solid transparent;border-bottom:100% solid transparent;  "/>
                                     <van-tag type="success" plain color="#5EB95E" style="align-self:center">包邮</van-tag>
-                                    <!--                                    <view style="align-items:center;background-color: #5EB95E;font-size: smaller;color:#FFFF;text-align:center">-->
-                                    <!--                                        包邮-->
-                                    <!--                                    </view>-->
                                 </view>
                                 <view style="display: flex;width:97%;justify-content: flex-start">
                                     <button bind:tap="goBuy" data-item="{{p}}"

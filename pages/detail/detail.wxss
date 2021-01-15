@@ -33,7 +33,7 @@
 }
 
 .oprice {
-  font-size: 22rpx !important;
+  font-size: 35rpx !important;
   color: gray !important;
   text-decoration: line-through;
 }
@@ -128,19 +128,20 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  margin-left: 1vh;
   margin-bottom: 100rpx;
 }
 .detail-name {
-  font-size: 24rpx;
+  /*font-size: 24rpx;*/
   width: calc(100vw - 40rpx);
-  margin: 20rpx;
+  margin: 10rpx;
 }
 .detail-info image {
   width: 100vw;
   height: 100vw;
 }
 .detail-desc {
-  margin: 20rpx;
+  margin-left:1vw;
   font-size: 28rpx;
 }
 .bottom-actions {

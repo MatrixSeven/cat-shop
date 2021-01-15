@@ -51,8 +51,12 @@
         <text class="discount-action" wx:if="{{detail.title}}">立即领券</text>
     </view>
     <view class="detail-info" wx:if="{{detail.title}}">
-        <text class="detail-name">商品详情</text>
-        <text class="detail-desc">{{detail.desc}}</text>
+        <view style="align-self: flex-start; margin-bottom:2vh;align-items: flex-start;just-content:flex-start;display: flex;flex-direction: column;border-width: thin;border-style: dashed; width:98%;border-color: #dd514c;border-bottom-style: dot-dash;">
+            <text class="detail-name">商品详情:</text>
+            <text class="detail-desc">{{detail.desc}}</text>
+            <text class="detail-name">群友发车记录:</text>
+            <text class="detail-desc">{{detail.syncMsg}}</text>
+        </view>
         <image wx:for="{{m2.imgToFix(detail)}}" src="{{item}}"/>
     </view>
 

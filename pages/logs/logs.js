@@ -28,6 +28,13 @@ Page({
             delta: 1
         });
     },
+
+    goDetails: function (e) {
+        const {syncId}=getArgs(e)
+        wx.navigateTo({
+            url: `/pages/detail/detail?id=${syncId}`,
+        })
+    },
     onChange(e) {
         if (e.detail && e.detail !== '') {
             this.setData({
