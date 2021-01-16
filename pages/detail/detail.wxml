@@ -8,7 +8,47 @@
         return [value.mainPic]
     }
     module.exports.imgToFix = imgToFix;
+
+    var numToFix = function (value) {
+        return value.toFixed(2)
+    }
+    module.exports.numToFix = numToFix;
 </wxs>
+
+
+<van-popup
+        show="{{ showBuy }}"
+        closeable
+        round
+        duration="500"
+        overlay="{{true}}"
+        bind:close="closeBuy">
+    <view class="buy_plan">
+        <view class="buy_title">
+            口令购买
+        </view>
+        <view class="buy_ling">
+            <textarea focus="{{false}}"
+                      disabled="{{canEdit}}"
+                      value="{{detail.ling}}"/>
+        </view>
+        <view class="buy_step;" style="flex-direction: column" bind:tap="copyLing">
+            <button  class="buy_button" style="background-color: {{buyColor}}" >
+                一键复制
+            </button>
+            <view class="buy_button_text">
+                如果复制失败,请手动复制口令
+            </view>
+
+        </view>
+        <view class="buy_step">
+            <van-steps style="width:100%" steps="{{ buySteps }}" active="{{ 3 }}"/>
+        </view>
+    </view>
+
+</van-popup>
+
+
 <navBar searchBar="{{false}}" bindback="gotoBack" bindHome="gotoHome" title="商品详情"
         background='#fff' back="{{!showGoHome}}" home="{{showGoHome}}"/>
 
@@ -23,13 +63,13 @@
     </swiper>
     <view class="detail-top-info">
         <view class="top-info-price">
-            <view class="price-left" wx:if="{{detail.actualPrice}}">
+            <view class="price-left" wx:if="{{m2.numToFix(detail.actualPrice)}}">
                 <view>
                     <text class="ppre">￥</text><text
                         class="cprice">{{detail.actualPrice}}</text>
                 </view>
                 <view class="qafter">券后价</view>
-                <text class="oprice">￥{{detail.originalPrice}}</text>
+                <text class="oprice">￥{{m2.numToFix(detail.originalPrice)}}</text>
             </view>
             <text class="price-right" wx:if="{{detail.monthSales}}">已拼{{detail.monthSales}}件</text>
         </view>
@@ -41,7 +81,7 @@
         <text class="discount-text"
               wx:if="{{detail.originalPrice-detail.actualPrice===0}}">无可用优惠券</text>
         <text class="discount-text"
-              wx:if="{{detail.originalPrice-detail.actualPrice> 0}}">￥{{detail.originalPrice - detail.actualPrice}}</text>
+              wx:if="{{detail.originalPrice-detail.actualPrice> 0}}">￥{{m2.numToFix(detail.originalPrice - detail.actualPrice)}}</text>
         <view class="discount-time" wx:if="{{detail.couponStartTime}}">
             <text>优惠券使用期限</text>
             <text wx:if="{{couponStartTime}}"> {{couponStartTime}} ~ {{couponEndTime}}</text>

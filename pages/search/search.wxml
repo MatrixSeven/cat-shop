@@ -1,4 +1,3 @@
-<!--logs.wxml-->
 <navBar searchBar="{{false}}" bindback="gotoBack" title="搜索" background='#fff' back="{{true}}" home="{{false}}"/>
 
 <view class="all_page">
@@ -14,10 +13,12 @@
                 placeholder="请输入搜索关键词"
         />
     </van-sticky>
-    <view class="search_near">
-        最近搜索
+    <view class="all_page" wx:if="{{showSearchHistory}}">
+        <view class="search_near">
+            最近搜索
+        </view>
+        <van-icon bind:tap="clearSearchHistory" name="delete"/>
     </view>
-    <van-icon bind:tap="clearSearchHistory" name="delete"/>
     <view>
         <van-tag type="primary"
                  size="medium"

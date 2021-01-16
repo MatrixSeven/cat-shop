@@ -4,7 +4,7 @@
     "pages/index/index",
     "pages/home/home",
     "pages/subscribe/subscribe",
-    "pages/logs/logs",
+    "pages/search/search",
     "pages/detail/detail"
   ],
   "window": {

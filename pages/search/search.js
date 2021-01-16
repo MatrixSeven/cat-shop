@@ -5,6 +5,7 @@ const app = getApp();
 Page({
     data: {
         searchHistory: [],
+        showSearchHistory: false,
         products: [],
         page: 1,
         size: 10,
@@ -14,8 +15,10 @@ Page({
         navHeight: ((app.menu.top - app.system.statusBarHeight) * 2 + app.menu.height + app.system.statusBarHeight + 1),
     },
     onLoad: function () {
+        const searchHistory = wx.getStorageSync('searchHistory') || []
         this.setData({
-            searchHistory: wx.getStorageSync('searchHistory') || []
+            searchHistory,
+            showSearchHistory: searchHistory.length > 0
         })
         requestSyncR(`${reqUrls}/shop/goods/random`).then(({data}) => {
             this.setData({
@@ -30,7 +33,7 @@ Page({
     },
 
     goDetails: function (e) {
-        const {syncId}=getArgs(e)
+        const {syncId} = getArgs(e)
         wx.navigateTo({
             url: `/pages/detail/detail?id=${syncId}`,
         })
@@ -44,7 +47,8 @@ Page({
     },
     clearSearchHistory: function () {
         this.setData({
-            searchHistory: []
+            searchHistory: [],
+            showSearchHistory: false,
         })
         wx.setStorageSync("searchHistory", [])
     },
@@ -73,7 +77,8 @@ Page({
                 products: showEmpty ? products : data,
                 showSearchTitle: "搜索结果",
                 showEmpty,
-                searchHistory:searchHistory_,
+                showSearchHistory: true,
+                searchHistory: searchHistory_,
             })
         })
     },

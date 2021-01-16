@@ -9,9 +9,25 @@ Page({
      * 页面的初始数据
      */
     detail: {},
+    buyColor: '#dd514c',
+    showBuy: false,
+    canEdit:false,
     loadDown: false,
     empty: false,
     showGoHome: false,
+    buySteps: [{
+        // text: '',
+        desc: '选择全部',
+        inactiveIcon: 'arrow'
+    }, {
+
+        desc: '复制',
+        inactiveIcon: 'arrow'
+    },
+        {
+            desc: '打开Tao宝',
+            inactiveIcon: 'arrow'
+        }],
 
     /**
      * 生命周期函数--监听页面加载
@@ -69,7 +85,7 @@ Page({
         });
     },
 
-    onShareTimeline:function(){
+    onShareTimeline: function () {
         let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
         const {detail: {syncMsg, mainPic}} = this.data
         return {
@@ -86,6 +102,44 @@ Page({
             path: path,
             imageUrl: mainPic,
         };
+    },
+    buy() {
+        this.setData({
+            showBuy: true
+        })
+    },
+    closeBuy() {
+        this.setData({
+            showBuy: false
+        })
+
+    },
+
+    copyLing: function (e) {
+        const {detail: {ling}} = this.data
+        wx.setClipboardData({
+            data: ling,
+            success: () => {
+                wx.showToast({
+                    title: "恭喜,现在打开淘宝即可领取优惠券,赶紧出发吧！GO",
+                    duration: 3000,
+                    icon: 'none',
+                });
+                this.setData({
+                    buyColor: '#669933',
+                })
+            },
+            fail: (e) => {
+                wx.showToast({
+                    title: "复制失败了,请手动复制吧",
+                    duration: 3000,
+                    icon: 'none',
+                });
+                this.setData({
+                    canEdit: true,
+                })
+            }
+        })
     },
     gohome() {
         wx.switchTab({

@@ -142,22 +142,6 @@ Page({
         wx.navigateTo({
             url: `/pages/detail/detail?id=${syncId}`,
         })
-        // wx.setClipboardData({
-        //     data: ling, success: () => {
-        //         wx.showToast({
-        //             title: "恭喜,现在打开淘宝即可领取优惠券,赶紧出发吧！GO",
-        //             duration: 3000,
-        //             icon: 'none',
-        //         })
-        //         setTimeout(() => this.setData({
-        //                 showBuy: {
-        //                     show: true,
-        //                     ling: ling.substr(0, 45)
-        //                 }
-        //             })
-        //             , 3000);
-        //     }
-        // })
     }
     ,
 
@@ -177,7 +161,7 @@ Page({
     ,
     onSearch: function (e) {
         wx.navigateTo({
-            url: '/pages/logs/logs',
+            url: '/pages/search/search',
         });
     }
     ,

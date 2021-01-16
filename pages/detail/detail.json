@@ -1,5 +1,7 @@
 {
   "usingComponents": {
+    "van-popup": "/@vant/weapp/dist/popup/index",
+    "van-steps": "/@vant/weapp/dist/steps/index"
   },
   "navigationBarTitleText": "商品详情",
   "enablePullDownRefresh": true
