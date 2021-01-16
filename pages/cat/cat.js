@@ -100,11 +100,10 @@ Page({
     }
     ,
     onClosePopup: function () {
-            console.log(1)
-            this.setData({
-                showPopupInfo: {show: false},
-            })
-        }
+        this.setData({
+            showPopupInfo: {show: false},
+        })
+    }
 
     ,
     onBuyPopup: function () {
@@ -138,7 +137,7 @@ Page({
     ,
 
     goBuy: function (e) {
-        const {ling,syncId} = getArgs(e)
+        const {ling, syncId} = getArgs(e)
         wx.navigateTo({
             url: `/pages/detail/detail?id=${syncId}`,
         })
@@ -241,5 +240,14 @@ Page({
                 next: data.length === size
             })
         })
+    },
+    onShareAppMessage: function (e) {
+        const name = wx.getStorageSync("userName")
+        let path = `/pages/cat/cat?from=${name}`;
+        return {
+            title: "哇~今日发车",
+            path: path,
+            // imageUrl: mainPic,
+        };
     }
 })
