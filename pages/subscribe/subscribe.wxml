@@ -1,10 +1,74 @@
-<view class="pages">
-    <view class="content">
-        <van-search
-                value="{{ value }}"
-                shape="round"
-                background="white"
-                placeholder="请输入搜索关键词"
-        />
+<wxs module="m2">
+    var fixType = function () {
+        var index = Math.floor((Math.random() * 4));
+        return ['primary', 'success', 'danger', 'warning'][index]
+    }
+    module.exports.fixType = fixType;
+    var fixTemp = function (value) {
+        return value.length === 0
+    }
+    module.exports.fixTemp = fixTemp;
+</wxs>
+
+
+<navBar title='我的订阅' background='#fff' back="{{true}}" home="{{true}}" bindback="handlerGobackClick"
+        bindhome="handlerGohomeClick"></navBar>
+
+<view class="subscribe_pages">
+    <view class="subscribe_pages_content">
+        <view class="subscribe_pages_content_search">
+            <van-search
+                    value="{{ value }}"
+                    shape="round"
+                    background="white"
+                    bind:change="onKeyChange"
+                    bind:search="addSubKeyFomInput"
+                    placeholder="添加订阅">
+
+            </van-search>
+        </view>
+    </view>
+    <view class="subscribe_pages_content_text">我的订阅:</view>
+    <view class="subscribe_pages_content_text"
+          style="justify-content: center;margin-left:0;margin-top:1vh"
+          wx:if="{{m2.fixTemp(mySubscribe)}}">你还没有订阅，赶紧添加订阅吧
+    </view>
+    <view class="subscribe_pages_content_tag">
+        <van-tag closeable
+                 class="subscribe_pages_content_tag_item"
+                 size="medium"
+                 bind:close="delSubKey"
+                 data-item="{{item}}"
+                 wx:key="{{item.id}}"
+                 type="{{m2.fixType()}}"
+                 wx:for="{{mySubscribe}}">
+            {{item.value}}
+        </van-tag>
+    </view>
+    <view class="subscribe_pages_content_text">推荐订阅:</view>
+    <view class="subscribe_pages_content_tag">
+        <van-tag class="subscribe_pages_content_tag_item"
+                 size="medium"
+                 bind:tap="addSubKeyFromRandom"
+                 data-item="{{item}}"
+                 wx:key="{{item.id}}"
+                 type="{{m2.fixType()}}"
+                 wx:for="{{subscribeRandom}}">
+            {{item.value}}
+        </van-tag>
+    </view>
+    <view class="subscribe_pages_content_button">
+        <button class="subscribe_pages_content_button_item">
+            激活订阅
+        </button>
+    </view>
+    <view class="subscribe_pages_content_info">
+        <van-panel title="订阅须知" desc="订阅必读！！！" status="警告！">
+            <view style="display: flex;width: 90vw;color:#006600"
+                  wx:for="{{subKnow}}"
+                  wx:key="{{item}}">
+                {{item}}
+            </view>
+        </van-panel>
     </view>
 </view>

@@ -109,7 +109,7 @@
     flex-wrap: wrap;
     width: 100vw;
     margin-top: 2vh;
-    margin-bottom: 2vh;
+    /*margin-bottom: 2vh;*/
 }
 
 .other_item {
@@ -166,7 +166,6 @@
     align-items: center;
     align-self: center;
     flex-wrap: wrap;
-    /*background-color: darkgrey;*/
     box-shadow: 0 0 15px #d0d0d0
 }
 

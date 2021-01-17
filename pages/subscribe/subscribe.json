@@ -1,9 +1,9 @@
 {
   "navigationBarTitleText": "查看启动日志",
   "usingComponents": {
-    "van-card": "/@vant/weapp/dist/card/index",
     "van-button": "/@vant/weapp/dist/button/index",
-    "van-divider": "/@vant/weapp/dist/divider/index",
-    "van-search": "/@vant/weapp/dist/search/index"
+    "van-search": "/@vant/weapp/dist/search/index",
+    "van-tag": "/@vant/weapp/dist/tag/index",
+    "van-panel": "/@vant/weapp/dist/panel/index"
   }
 }

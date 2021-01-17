@@ -81,7 +81,7 @@
     <!--        <view class="info_view_card" style="background: red;"></view>-->
     <!--    </view>-->
     <view style=" position: sticky; z-index: 1;  top:{{navHeight}};">
-        <van-tabs offset-top="{{navHeight}}" z-index="9999" active="{{ active }}" style="margin-top:5vh" sticky
+        <van-tabs offset-top="{{navHeight}}" z-index="9999" active="{{ active }}" style="margin-top:2vh" sticky
                   swipeable
                   id="tabs"
                   bind:change="onTabChange">
@@ -104,7 +104,7 @@
                                     <van-tag type="success" plain color="#5EB95E" style="align-self:center">包邮</van-tag>
                                 </view>
                                 <view style="display: flex;width:97%;justify-content: flex-start">
-                                    <button bind:tap="goBuy" data-item="{{p}}"
+                                    <button data-item="{{p}}"
                                             style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;padding-bottom: 5px;padding-top: 5px">
                                         领劵购买
                                         <van-icon name="cart"/>

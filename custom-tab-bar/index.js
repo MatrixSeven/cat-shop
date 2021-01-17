@@ -14,10 +14,10 @@ Component({
                 // normal: '/images/tabbar/idcard.png',
                 // active: '/images/tabbar/idcard-green.png'
             },
-            {
-                pagePath: "/pages/subscribe/subscribe",
-                text: "豆瓣开车",
-            },
+            // {
+            //     pagePath: "/pages/subscribe/subscribe",
+            //     text: "猫咪百科",
+            // },
             {
                 pagePath: "/pages/home/home",
                 text: "我的",

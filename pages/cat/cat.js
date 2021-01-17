@@ -189,8 +189,8 @@ Page({
         const {type, size} = this.data
         const page = 1;
         makeAsyncFunc(async () => {
-                const {data: product} = await requestSyncR(`${reqUrls} / shop / goods / list /${type}/${page}/${size}`)
-                const {data: {category, centerCategory, swiper}} = await requestSyncR(`${reqUrls} / shop / tabs`)
+                const {data: product} = await requestSyncR(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
+                const {data: {category, centerCategory, swiper}} = await requestSyncR(`${reqUrls}/shop/tabs`)
                 this.setData({
                     product,
                     swiper,

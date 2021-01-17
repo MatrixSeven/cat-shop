@@ -29,10 +29,6 @@
         "text": "每日猫车"
       },
       {
-        "pagePath": "pages/subscribe/subscribe",
-        "text": "豆瓣开车"
-      },
-      {
         "pagePath": "pages/home/home",
         "text": "我的"
       }
