@@ -121,13 +121,33 @@ Page({
          * 20 page
          */
         const event = {
-            10: () => {
+            0: () => {
                 this.setData({
                     showPopupInfo: {
                         show: true,
                         ...data
                     }
                 })
+            },
+            //转跳
+            10: () => {
+                wx.navigateTo({
+                    url: data.path,
+                });
+            },
+            //webview
+            20: () => {
+                wx.navigateTo({
+                    url: `/pages/web/web?url=${args}`,
+                })
+            },
+            //转跳不带返回
+            30: () => {
+
+            },
+            //提示
+            40: () => {
+                wx.showToast({title: args, icon: 'none'});
             }
         }
         event[type]()
