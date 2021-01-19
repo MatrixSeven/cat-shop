@@ -57,7 +57,9 @@ Page({
     },
 
     gotoHome: function () {
-        wx.receiver
+        wx.redirectTo({
+            url:"/pages/cat/cat"
+        })
     },
     gotoBack: function () {
         wx.navigateBack({

@@ -11,14 +11,15 @@
 </wxs>
 
 
-<navBar title='我的订阅' background='#fff' back="{{true}}" home="{{true}}" bindback="handlerGobackClick"
-        bindhome="handlerGohomeClick"></navBar>
+<navBar title='我的订阅' background='#fff' back="{{true}}" home="{{true}}" bindback="gotoBack"
+        bindhome="gotoHome"></navBar>
 
 <view class="subscribe_pages">
     <view class="subscribe_pages_content">
         <view class="subscribe_pages_content_search">
             <van-search
                     value="{{ value }}"
+                    style="width:95vw"
                     shape="round"
                     background="white"
                     bind:change="onKeyChange"
@@ -37,6 +38,7 @@
         <van-tag closeable
                  class="subscribe_pages_content_tag_item"
                  size="medium"
+                 bind:tap="delSubKey"
                  bind:close="delSubKey"
                  data-item="{{item}}"
                  wx:key="{{item.id}}"

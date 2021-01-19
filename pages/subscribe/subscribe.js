@@ -35,10 +35,10 @@ Page({
     },
     addSubKey: function (value) {
         const {mySubscribe} = this.data
-        if(value&&value.trim()===''){
+        if (value && value.trim() === '') {
             wx.showToast({title: '你添加的啥子哦～', icon: 'none'});
         }
-        if(value&&value.trim().length<1){
+        if (value && value.trim().length < 1) {
             wx.showToast({title: '至少两次字哦～', icon: 'none'});
         }
         const newSub = mySubscribe.filter(it => it.value === value)
@@ -61,5 +61,15 @@ Page({
             mySubscribe: newSub,
         })
 
-    }
+    },
+    gotoHome: function () {
+        wx.navigateBack({
+            delta: 1
+        });
+    },
+    gotoBack: function () {
+        wx.navigateBack({
+            delta: 1
+        });
+    },
 })

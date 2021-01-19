@@ -119,6 +119,7 @@ Page({
          * 0 webView
          * 10 mask-->{data:{title|content|img}}
          * 20 page
+         * 50 weapp {data:{appid|path}}
          */
         const event = {
             0: () => {
@@ -148,6 +149,15 @@ Page({
             //提示
             40: () => {
                 wx.showToast({title: args, icon: 'none'});
+            },
+            //提示
+            50: () => {
+                const {appId, path} = adatargs
+                //打开其他小程序
+                wx.navigateToMiniProgram({
+                    appId: appId,
+                    path: path
+                });
             }
         }
         event[type]()
