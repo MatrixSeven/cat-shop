@@ -4,5 +4,5 @@
     "van-steps": "/@vant/weapp/dist/steps/index"
   },
   "navigationBarTitleText": "商品详情",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": false
 }

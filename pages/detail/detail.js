@@ -12,6 +12,8 @@ Page({
     buyColor: '#dd514c',
     loadDown: false,
     empty: false,
+    showBuy: false,
+    canEdit:false,
     showGoHome: false,
     buySteps: [{
         // text: '',
