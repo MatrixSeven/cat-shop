@@ -2,15 +2,21 @@
 
 <wxs module="m2">
     var imgToFix = function (value) {
-        if (value.imgs) {
+        if (value&&value.imgs) {
             return value.imgs.split(',')
         }
-        return [value.mainPic]
+        if (value&&value.mainPic) {
+            return [value.mainPic]
+        }
+        return value
     }
     module.exports.imgToFix = imgToFix;
 
     var numToFix = function (value) {
-        return value.toFixed(2)
+        if (value) {
+            return value.toFixed(2)
+        }
+        return value
     }
     module.exports.numToFix = numToFix;
 </wxs>
@@ -33,7 +39,7 @@
                       value="{{detail.ling}}"/>
         </view>
         <view class="buy_step;" style="flex-direction: column" bind:tap="copyLing">
-            <button  class="buy_button" style="background-color: {{buyColor}}" >
+            <button class="buy_button" style="background-color: {{buyColor}}">
                 一键复制
             </button>
             <view class="buy_button_text">
