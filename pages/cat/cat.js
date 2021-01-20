@@ -1,4 +1,4 @@
-import {getArgs, makeAsyncFunc, requestSyncR, requestSync} from '../../utils/util'
+import {getArgs, makeAsyncFunc, requestSyncR, requestSync, gotoEvent} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
 
 const app = getApp();
@@ -70,33 +70,7 @@ Page({
     },
 
     onClickOtherItem: function (e) {
-        const {type, args} = getArgs(e)
-        const mapping = {
-            //啥都不做
-            0: () => {
-            },
-            //转跳
-            10: () => {
-                wx.navigateTo({
-                    url: args,
-                });
-            },
-            //webview
-            20: () => {
-                wx.navigateTo({
-                    url: `/pages/web/web?url=${args}`,
-                })
-            },
-            //转跳不带返回
-            30: () => {
-
-            },
-            //提示
-            40: () => {
-                wx.showToast({title: args, icon: 'none'});
-            }
-        }
-        mapping[type]()
+        gotoEvent(getArgs(e))
     }
     ,
     onClosePopup: function () {
@@ -113,64 +87,20 @@ Page({
     }
     ,
     onClickSwiper: function (e) {
-        const {type, data} = getArgs(e)
-        console.log(getArgs(e))
-        /**
-         * 0 webView
-         * 10 mask-->{data:{title|content|img}}
-         * 20 page
-         * 50 weapp {data:{appid|path}}
-         */
-        const event = {
-            0: () => {
-                this.setData({
-                    showPopupInfo: {
-                        show: true,
-                        ...data
-                    }
-                })
-            },
-            //转跳
-            10: () => {
-                wx.navigateTo({
-                    url: data.path,
-                });
-            },
-            //webview
-            20: () => {
-                wx.navigateTo({
-                    url: `/pages/web/web?url=${args}`,
-                })
-            },
-            //转跳不带返回
-            30: () => {
-
-            },
-            //提示
-            40: () => {
-                wx.showToast({title: args, icon: 'none'});
-            },
-            //提示
-            50: () => {
-                const {appId, path} = adatargs
-                //打开其他小程序
-                wx.navigateToMiniProgram({
-                    appId: appId,
-                    path: path
-                });
-            }
-        }
-        event[type]()
-
-
+        gotoEvent(getArgs(e))
     }
     ,
 
     goBuy: function (e) {
-        const {ling, syncId} = getArgs(e)
+        const {ling, syncId, ev = true} = getArgs(e)
+        if (!ev) {
+            wx.showToast({title: '功能开发中,请打开拼多多搜索该商品', 'icon': "none"})
+            return
+        }
         wx.navigateTo({
             url: `/pages/detail/detail?id=${syncId}`,
         })
+
     }
     ,
 

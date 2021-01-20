@@ -66,10 +66,53 @@ const makeAsyncFunc = function (fn, complete = () => {
 
 const getArgs = data => data.currentTarget.dataset.item
 
+const gotoEvent = (args) => {
+    const {type, data: {path, title, appId}} = args
+    const event = {
+        //啥都不干
+        0: () => {
+
+        },
+        //转跳Page
+        10: () => {
+            wx.navigateTo({
+                url: path,
+            });
+        },
+        //转跳webview
+        20: () => {
+            wx.navigateTo({
+                url: `/pages/web/web?url=${args}`,
+            })
+        },
+        //转跳Page不带返回
+        30: () => {
+            wx.redirectTo({
+                url: path,
+            })
+        },
+        //提示
+        40: () => {
+            wx.showToast({title: title, icon: 'none'});
+        },
+        //打开其他小程序
+        50: () => {
+            //打开其他小程序
+            wx.navigateToMiniProgram({
+                appId: appId,
+                path: path
+            });
+        }
+    }
+    event[type]()
+
+}
+
 module.exports = {
     formatTime: formatTime,
     requestSync: requestSync,
     requestSyncR: requestSyncR,
     makeAsyncFunc: makeAsyncFunc,
-    getArgs: getArgs
+    getArgs: getArgs,
+    gotoEvent: gotoEvent,
 }

@@ -33,7 +33,11 @@ Page({
     },
 
     goDetails: function (e) {
-        const {syncId} = getArgs(e)
+        const {syncId, ev = true} = getArgs(e)
+        if (!ev) {
+            wx.showToast({title: '功能开发中,请打开拼多多搜索该商品', 'icon': "none"})
+            return
+        }
         wx.navigateTo({
             url: `/pages/detail/detail?id=${syncId}`,
         })

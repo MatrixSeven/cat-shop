@@ -10,8 +10,6 @@ Page({
      */
     detail: {},
     buyColor: '#dd514c',
-    showBuy: false,
-    canEdit:false,
     loadDown: false,
     empty: false,
     showGoHome: false,

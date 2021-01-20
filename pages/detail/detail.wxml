@@ -14,41 +14,6 @@
     }
     module.exports.numToFix = numToFix;
 </wxs>
-
-
-<van-popup
-        show="{{ showBuy }}"
-        closeable
-        round
-        duration="500"
-        overlay="{{true}}"
-        bind:close="closeBuy">
-    <view class="buy_plan">
-        <view class="buy_title">
-            口令购买
-        </view>
-        <view class="buy_ling">
-            <textarea focus="{{false}}"
-                      disabled="{{canEdit}}"
-                      value="{{detail.ling}}"/>
-        </view>
-        <view class="buy_step;" style="flex-direction: column" bind:tap="copyLing">
-            <button  class="buy_button" style="background-color: {{buyColor}}" >
-                一键复制
-            </button>
-            <view class="buy_button_text">
-                如果复制失败,请手动复制口令
-            </view>
-
-        </view>
-        <view class="buy_step">
-            <van-steps style="width:100%" steps="{{ buySteps }}" active="{{ 3 }}"/>
-        </view>
-    </view>
-
-</van-popup>
-
-
 <navBar searchBar="{{false}}" bindback="gotoBack" bindHome="gotoHome" title="商品详情"
         background='#fff' back="{{!showGoHome}}" home="{{showGoHome}}"/>
 
