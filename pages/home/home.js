@@ -6,6 +6,13 @@ Page({
         isLogin: false,
         userInfo: {}
     },
+
+    onShow() {
+        const {isLogin} = this.data
+        if (!isLogin) {
+            this.onLoad()
+        }
+    },
     onLoad: function () {
         const userInfo = wx.getStorageSync("userInfo")
         if (userInfo) {
@@ -44,7 +51,7 @@ Page({
     },
     loadMore: function () {
         wx.showLoading({
-            mask:false,
+            mask: false,
             title: "loading"
         })
         requestSync(`${reqUrls}/wai_mai/product`).then(res => {

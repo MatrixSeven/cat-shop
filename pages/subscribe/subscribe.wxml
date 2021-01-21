@@ -9,6 +9,18 @@
     }
     module.exports.fixTemp = fixTemp;
 </wxs>
+<van-dialog id="van-dialog" />
+
+<van-dialog
+        bind:getuserinfo="getUserInfo_"
+        bind:tap=""
+        show-cancel-button
+        title="提醒"
+        message="登录后即可订阅消息通知,点击下方按钮进行登录"
+        confirm-button-open-type="getUserInfo"
+        confirmButtonText="登录"
+        bind:cancel="loginCancel"
+        show="{{ showLogin }}"/>
 
 
 <navBar title='我的订阅' background='#fff' back="{{true}}" home="{{true}}" bindback="gotoBack"

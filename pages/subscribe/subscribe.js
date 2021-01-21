@@ -1,14 +1,17 @@
 import {formatTime, requestSync, getArgs, makeAsyncFunc, requestSyncR} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
+import Dialog from '../../@vant/weapp/dist/dialog/dialog';
 
 Page({
     data: {
         value: '',
         subKnow: [],
+        showLogin: false,
         mySubscribe: [{id: 1, value: "垃圾"}],
         subscribeRandom: [],
     },
     onLoad: function () {
+        const userInfo = wx.getStorageSync("userInfo")
         requestSync(`${reqUrls}/shop/subscribe/random`).then(({data}) => {
             console.log(data)
             this.setData({
@@ -16,6 +19,53 @@ Page({
                 subscribeRandom: data.subscribeRandom
             })
         })
+        if (userInfo) {
+            console.log(userInfo)
+        } else {
+            this.setData({
+                showLogin: true
+            })
+        }
+
+
+    },
+    loginCancel: function () {
+        wx.navigateBack({
+            delta: 1
+        });
+    },
+    getUserInfo_: function (res) {
+        const {detail} = res
+        const {userInfo} = detail
+        const back = () => Dialog.alert({
+            title: '提示',
+            message: '你取消了登录,暂时无法订阅\n[如果近期你拒绝过登录,可到小程序->设置->用户信息内修改授权选项进行修改,即可成功登录]',
+        }).then(() => {
+            wx.navigateBack({
+                delta: 1
+            });
+        });
+        console.log(userInfo)
+        //获取成功
+        if (userInfo) {
+            wx.login({
+                fail: msg => {
+                    back()
+                },
+                success: ({code, errMsg}) => {
+                    wx.showLoading({title: "登录中..."})
+                    requestSync(`${reqUrls}/shop/user/login`,
+                        {
+                            method: 'POST', data: {userInfo, code}
+                        })
+                        .then(({data}) => {
+                            wx.setStorageSync("userInfo", userInfo)
+                        })
+                }
+            })
+        } else {
+            back()
+        }
 
     },
 

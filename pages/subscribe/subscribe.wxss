@@ -1,3 +1,8 @@
+/*vant dialog bug*/
+/*button {*/
+/*    width: 100% !important;*/
+/*}*/
+
 .subscribe_pages {
     display: flex;
     width: 100vw;
@@ -21,7 +26,7 @@
     align-content: center;
 }
 
-.subscribe_pages_content_text{
+.subscribe_pages_content_text {
     display: flex;
     width: 100%;
     padding-left: 3vh;
@@ -42,7 +47,7 @@
     margin-top: 1vh;
 }
 
-.subscribe_pages_content_button{
+.subscribe_pages_content_button {
     display: flex;
     width: 100vw;
     justify-content: center;
@@ -63,7 +68,8 @@
     margin-top: 2vh;
     background-color: #dd514c;
 }
-.subscribe_pages_content_info{
+
+.subscribe_pages_content_info {
     display: flex;
     width: 100vw;
     margin-top: 2vh;
