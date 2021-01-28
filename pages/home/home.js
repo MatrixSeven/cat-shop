@@ -1,6 +1,7 @@
 import {formatTime, requestSync} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
 
+const app = getApp()
 Page({
     data: {
         isLogin: false,
@@ -8,6 +9,14 @@ Page({
     },
 
     onShow() {
+
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+            this.getTabBar().setData({
+                active: app.globalData.activeIdx
+            })
+
+        }
+
         const {isLogin} = this.data
         if (!isLogin) {
             this.onLoad()

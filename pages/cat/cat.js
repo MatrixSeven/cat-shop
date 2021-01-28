@@ -201,6 +201,15 @@ Page({
             })
         })
     },
+    onShow: function () {
+        if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+            this.getTabBar().setData({
+                active: app.globalData.activeIdx
+            })
+
+        }
+    },
+
     onShareAppMessage: function (e) {
         const name = wx.getStorageSync("userName")
         let path = `/pages/cat/cat?from=${name}`;

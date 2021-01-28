@@ -21,10 +21,6 @@
     "backgroundColor": "#000000",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "外卖优惠"
-      },
-      {
         "pagePath": "pages/cat/cat",
         "text": "每日猫车"
       },

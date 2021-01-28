@@ -40,6 +40,9 @@ App({
         })
     },
     globalData: {
-        userInfo: null
+        userInfo: null,
+        globalData: {
+            activeIdx: 0
+        }
     }
 })
