@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "查看启动日志",
+  "navigationBarTitleText": "",
   "usingComponents": {
     "van-card": "/@vant/weapp/dist/card/index",
     "van-button": "/@vant/weapp/dist/button/index",

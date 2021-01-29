@@ -1,5 +1,5 @@
 <view>
-    <navBar title='有返回和home' background='#fff' back="{{true}}" home="{{true}}" bindback="handlerGobackClick"
+    <navBar background='#fff' back="{{false}}" home="{{false}}" bindback="handlerGobackClick"
             bindhome="handlerGohomeClick"></navBar>
     <view class="all_page">
         <view class="page_info">
