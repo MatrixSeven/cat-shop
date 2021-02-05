@@ -13,7 +13,7 @@ Page({
     loadDown: false,
     empty: false,
     showBuy: false,
-    canEdit:false,
+    canEdit: false,
     showGoHome: false,
     buySteps: [{
         // text: '',
@@ -23,11 +23,10 @@ Page({
 
         desc: '复制',
         inactiveIcon: 'arrow'
-    },
-        {
-            desc: '打开Tao宝',
-            inactiveIcon: 'arrow'
-        }],
+    }, {
+        desc: '打开Tao宝',
+        inactiveIcon: 'arrow'
+    }],
 
     /**
      * 生命周期函数--监听页面加载
@@ -58,7 +57,7 @@ Page({
 
     gotoHome: function () {
         wx.redirectTo({
-            url:"/pages/cat/cat"
+            url: "/pages/cat/cat"
         })
     },
     gotoBack: function () {

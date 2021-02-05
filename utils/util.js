@@ -20,6 +20,7 @@ const requestSync = (url, {data = {}, method = "GET", whenComplete = x => wx.hid
             url: url,
             data: data,
             method: method,
+            header: {channel: "weapp"},
             success: function (res) {
                 if (res.statusCode === 200) {
                     console.log(`wx.request() is success : 200 ok`);
@@ -67,7 +68,7 @@ const makeAsyncFunc = function (fn, complete = () => {
 const getArgs = data => data.currentTarget.dataset.item
 
 const gotoEvent = (args) => {
-    const {type, data: {path, title, appId}} = args
+    const {actionType, path, appId, h5Router, forwardUrl, noticeMsg} = args
     const event = {
         //啥都不干
         0: () => {
@@ -82,7 +83,7 @@ const gotoEvent = (args) => {
         //转跳webview
         20: () => {
             wx.navigateTo({
-                url: `/pages/web/web?url=${args}`,
+                url: `/pages/web/web?url=${forwardUrl}`,
             })
         },
         //转跳Page不带返回
@@ -93,7 +94,7 @@ const gotoEvent = (args) => {
         },
         //提示
         40: () => {
-            wx.showToast({title: title, icon: 'none'});
+            wx.showToast({title: noticeMsg, icon: 'none'});
         },
         //打开其他小程序
         50: () => {
@@ -104,7 +105,7 @@ const gotoEvent = (args) => {
             });
         }
     }
-    event[type]()
+    event[actionType]()
 
 }
 

@@ -55,7 +55,7 @@
                 interval='3000' circular='true'>
             <swiper-item wx:for="{{swiper}}" wx:for-item="v" wx:key="{{v.id}}">
                 <image bind:tap="onClickSwiper" data-item="{{v}}" class="swiper_item" mode="scaleToFill"
-                       src="{{v.img}}"/>
+                       src="{{v.imgUrl}}"/>
             </swiper-item>
         </swiper>
     </view>
