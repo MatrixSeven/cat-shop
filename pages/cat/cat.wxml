@@ -47,7 +47,7 @@
 
 
 <view class="page">
-    <navBar searchBar="{{true}}" background='#FFF' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
+    <navBar searchBar="{{true}}" background='#dd514c' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
     <view style="display:flex;margin-top:1vh;justify-content: center;width:100vw">
         <swiper class="swiper" indicator-color="#f4f4f4"
                 indicator-dots="true"
@@ -59,14 +59,21 @@
             </swiper-item>
         </swiper>
     </view>
+    <van-notice-bar
+            wx:if="{{noticeMsg.length>0}}"
+            speed="50"
+            left-icon="volume-o"
+            text="{{noticeMsg[0].noticeMsg}}"
+            mode="link">
+    </van-notice-bar>
     <view class="other_info">
         <view class="other_item" wx:for="{{centerCategory}}"
               bind:tap="onClickOtherItem"
               data-item="{{v}}"
               wx:for-item="v"
-              wx:key="{{v.name}}">
-            <image style="width:75%" mode="widthFix" src="{{v.icon}}"/>
-            <text style="width:100%;text-align:center;margin-top:1vh;font-size: smaller;">{{v.name}}</text>
+              wx:key="{{v.descShow}}">
+            <image style="width:75%" mode="widthFix" src="{{v.imgUrl}}"/>
+            <text style="width:100%;text-align:center;margin-top:1vh;font-size: smaller;">{{v.descShow}}</text>
         </view>
     </view>
     <!--    <view class="info_view">-->
@@ -84,7 +91,8 @@
                   id="tabs"
                   bind:change="onTabChange">
             <van-tab title="{{v.name}}" wx:for="{{category}}" wx:for-item="v" wx:key="{{v.type}}">
-                <view wx:for="{{products}}" bind:tap="goBuy" data-item="{{p}}" wx:for-item="p" wx:key="{{p.syncId}}" wx:if="{{v.type===type}}"
+                <view wx:for="{{products}}" bind:tap="goBuy" data-item="{{p}}" wx:for-item="p" wx:key="{{p.syncId}}"
+                      wx:if="{{v.type===type}}"
                       style="display:flex;justify-content: center">
                     <view class="card-view">
                         <view class="pic-price-view">

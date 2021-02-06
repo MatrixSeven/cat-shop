@@ -8,6 +8,7 @@ Page({
         products: [],
         centerCategory: [],
         swiper: [],
+        noticeMsg:[],
         showPopupInfo: {show: false},
         type: 1,
         page: 1,
@@ -54,13 +55,14 @@ Page({
         })
         makeAsyncFunc(async () => {
             const {page, size} = this.data
-            const {data: {category, centerCategory, swiper}} = await requestSync(`${reqUrls}/shop/tabs`)
+            const {data: {category,noticeMsg, centerCategory, swiper}} = await requestSync(`${reqUrls}/shop/tabs`)
             const defaultType = category[0].type
             const {data} = await requestSync(`${reqUrls}/shop/goods/list/${defaultType}/${page}/${size}`)
             this.setData({
                 category,
                 centerCategory,
                 swiper,
+                noticeMsg,
                 type: defaultType,
                 products: [...this.data.products, ...data],
                 page: page + 1
@@ -80,6 +82,9 @@ Page({
     }
 
     ,
+    onClickNotice:function (e){
+        gotoEvent(getArgs(e))
+    },
     onBuyPopup: function () {
         this.setData({
             showBuy: {show: false}

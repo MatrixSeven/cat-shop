@@ -7,7 +7,8 @@
     "van-icon": "/@vant/weapp/dist/icon/index",
     "van-tag": "/@vant/weapp/dist/tag/index",
     "van-steps": "/@vant/weapp/dist/steps/index",
-    "van-toast": "/@vant/weapp/dist/toast/index"
+    "van-toast": "/@vant/weapp/dist/toast/index",
+    "van-notice-bar": "/@vant/weapp/dist/notice-bar/index"
   },
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 60

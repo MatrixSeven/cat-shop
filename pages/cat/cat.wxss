@@ -76,6 +76,19 @@
 
     padding-bottom: 20vh;
 }
+.page::after {
+    width: 100vw;
+    height: 25vh;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    content: "";
+    border-radius: 0 0 50% 50%;
+    /* background: linear-gradient(#dd514c, #ffffff 80%); */
+    background-color: #dd514c;
+}
 
 /*.page::after {*/
 /*    width: 140vw;*/
@@ -91,7 +104,7 @@
 
 .swiper {
     display: flex;
-    width: 90%;
+    width: 95%;
     border-radius: 2vh 2vh 2vh 2vh;
 }
 
