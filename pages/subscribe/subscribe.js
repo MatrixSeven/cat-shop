@@ -7,20 +7,23 @@ Page({
         value: '',
         subKnow: [],
         showLogin: false,
-        mySubscribe: [{id: 1, value: "垃圾"}],
+        mySubscribe: [],
         subscribeRandom: [],
     },
     onLoad: function () {
         const userInfo = wx.getStorageSync("userInfo")
         requestSync(`${reqUrls}/shop/subscribe/random`).then(({data}) => {
-            console.log(data)
             this.setData({
                 subKnow: data.subKnow,
                 subscribeRandom: data.subscribeRandom
             })
         })
         if (userInfo) {
-            console.log(userInfo)
+            requestSync(`${reqUrls}/shop/subscribe`).then(({data}) => {
+                this.setData({
+                    mySubscribe: data.mySubscribe
+                })
+            })
         } else {
             this.setData({
                 showLogin: true
@@ -59,8 +62,14 @@ Page({
                             method: 'POST', data: {userInfo, code}
                         })
                         .then(({data}) => {
-                            wx.setStorageSync("userInfo", userInfo)
+                            wx.setStorageSync("userInfo", data)
+                        }).then(_ => {
+                        requestSync(`${reqUrls}/shop/subscribe`).then(({data}) => {
+                            this.setData({
+                                mySubscribe: data.mySubscribe
+                            })
                         })
+                    })
                 }
             })
         } else {
@@ -91,26 +100,42 @@ Page({
         if (value && value.trim().length < 1) {
             wx.showToast({title: '至少两次字哦～', icon: 'none'});
         }
+        if (value && value.trim().length > 5) {
+            wx.showToast({title: '关键字太长了～', icon: 'none'});
+        }
         const newSub = mySubscribe.filter(it => it.value === value)
         if (newSub.length > 0) {
             wx.showToast({title: '已经添加过了,不要重复添加哦', icon: 'none'});
             return
         }
-        requestSync(`${reqUrls}/shop/subscribe?keyword=${value}`, {method: "POST"}).then(({data}) => {
+        requestSync(`${reqUrls}/shop/subscribe`,
+            {
+                method: "POST", data: {
+                    keyword: value,
+                    templateId: "1",
+                }
+            }).then(({data: {id}}) => {
             this.setData({
-                mySubscribe: [{id: data, value: value}, ...mySubscribe],
+                mySubscribe: [{keyId: id, keyWord: value}, ...mySubscribe],
             })
             wx.showToast({title: '添加订阅词成功,记得点击下方激活订阅', icon: 'none'});
         })
     },
     delSubKey: function (e) {
-        const {id} = getArgs(e)
+        const {keyId} = getArgs(e)
         const {mySubscribe} = this.data
-        const newSub = mySubscribe.filter(it => it.id !== id)
-        this.setData({
-            mySubscribe: newSub,
+        const newSub = mySubscribe.filter(it => it.keyId !== keyId)
+        requestSync(`${reqUrls}/shop/subscribe`,
+            {
+                method: "DELETE", data: {
+                    keyId: keyId,
+                    templateId: "1",
+                }
+            }).then(_ => {
+            this.setData({
+                mySubscribe: newSub,
+            })
         })
-
     },
     gotoHome: function () {
         wx.navigateBack({

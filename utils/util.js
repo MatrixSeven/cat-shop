@@ -16,22 +16,26 @@ const formatNumber = n => {
 
 const requestSync = (url, {data = {}, method = "GET", whenComplete = x => wx.hideLoading()} = {}) => {
     return new Promise(function (resolve, reject) {
+        const {token = "no-login"} = wx.getStorageSync("userInfo") || {}
         wx.request({
             url: url,
             data: data,
             method: method,
-            header: {channel: "weapp"},
+            header: {channel: "weapp", token},
             success: function (res) {
-                if (res.statusCode === 200) {
+                // if (res.statusCode === 200) {
+                if (res.data.code === 200) {
                     console.log(`wx.request() is success : 200 ok`);
+                    console.log(res);
                     resolve(res.data); //任务成功就执行resolve(),其他情况下都执行reject()
                 } else {
                     console.log("wx.request() is success : 200 lost.");
-                    reject(res.data);
+                    setTimeout(() => wx.showToast({title: res.data.msg || "操作失败", icon: 'none'}), 5);
                 }
             },
             fail: function (res) {
                 console.log("wx.request() is fail : " + res.errMsg);
+                wx.showToast({title: "操作失败,请稍后在试一试", icon: 'none'});
                 reject(res);
             },
             complete: function (res) {

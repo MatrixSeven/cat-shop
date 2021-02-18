@@ -51,12 +51,11 @@
                  class="subscribe_pages_content_tag_item"
                  size="medium"
                  bind:tap="delSubKey"
-                 bind:close="delSubKey"
                  data-item="{{item}}"
                  wx:key="{{item.id}}"
                  type="{{m2.fixType()}}"
                  wx:for="{{mySubscribe}}">
-            {{item.value}}
+            {{item.keyWord}}
         </van-tag>
     </view>
     <view class="subscribe_pages_content_text">推荐订阅:</view>
