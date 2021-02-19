@@ -99,7 +99,10 @@ Page({
     ,
 
     goBuy: function (e) {
-        const {ling, syncId, ev = true, channel = "-1", searchId, goodsId} = getArgs(e)
+        const {
+            ling, syncId, ev = true, channel = "-1", searchId,
+            goodsId, jdPath, jdAppId
+        } = getArgs(e)
         if (!ev) {
             wx.showToast({title: '功能开发中,暂时无法使用', 'icon': "none"})
             return
@@ -119,6 +122,12 @@ Page({
                     path: page_path
 
                 })
+            })
+        } else if (channel === 'jd') {
+            gotoEvent({
+                actionType: 50,
+                appId: jdAppId,
+                path: jdPath
             })
         } else {
             wx.navigateTo({
@@ -239,7 +248,7 @@ Page({
         const name = wx.getStorageSync("userName")
         let path = `/pages/cat/cat?from=${name}`;
         return {
-            title: "哇~今日发车",
+            title: "哇~今日发车,偶u的猫咪物",
             path: path,
             // imageUrl: mainPic,
         };
