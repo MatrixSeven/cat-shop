@@ -76,6 +76,7 @@ Page({
         wx.requestSubscribeMessage({
             tmplIds: ['SWG5BqXp8MCs4gm8DDchgeltJPsWcunweR5cCOKzGXU'],
             success(res) {
+                console.log(res)
                 requestSync(`${reqUrls}/shop/active-subscribe`,
                     {
                         method: 'POST',
@@ -86,13 +87,16 @@ Page({
                 })
             },
             fail(e) {
+                if (e.errMsg.contain('end')) {
+                    return
+                }
+                console.log(e)
                 if (e.errMsg) {
                     Dialog.alert({
                         message: "订阅失败了,请到右上角小程序设置里面打开订阅通知开关,然后在来订阅哦"
                     })
-                    return
                 }
-                console.log(e)
+
             }
 
         })

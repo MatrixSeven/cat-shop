@@ -70,7 +70,7 @@
             {{item.value}}
         </van-tag>
     </view>
-    <view class="subscribe_pages_content_button" bind:tap="onSubscribe">
+    <view class="subscribe_pages_content_button" bind:tap="onSubscribe"  >
         <button class="subscribe_pages_content_button_item">
             激活订阅
         </button>
