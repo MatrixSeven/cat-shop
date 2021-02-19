@@ -45,8 +45,8 @@
 
 </van-popup>
 
-
-<view class="page">
+<view wx:if="{{initLoad}}"/>
+<view wx:else class="page">
     <navBar searchBar="{{true}}" background='#dd514c' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
     <view style="display:flex;margin-top:1vh;justify-content: center;width:100vw">
         <swiper class="swiper" indicator-color="#f4f4f4"
@@ -61,7 +61,6 @@
     </view>
     <van-notice-bar
             wx:if="{{noticeMsg.length>0}}"
-            speed="50"
             left-icon="volume-o"
             text="{{noticeMsg[0].noticeMsg}}"
             mode="link">

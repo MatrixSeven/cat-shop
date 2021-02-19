@@ -16,6 +16,7 @@ Page({
         value: '',
         active: 0,
         next: true,
+        initLoad:true,
         Hei: '',
         showBuy: {
             show: false,
@@ -65,7 +66,8 @@ Page({
                 noticeMsg,
                 type: defaultType,
                 products: [...this.data.products, ...data],
-                page: page + 1
+                page: page + 1,
+                initLoad:false
             })
             this.selectComponent('#tabs').resize();
         })

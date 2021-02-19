@@ -1,17 +1,21 @@
-.all_page {
+.home_all_page {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
 }
 
+
+
 .page_info {
-    align-content:center;
-    background-color: white;
     display: flex;
-    flex-wrap: wrap;
+    justify-items: center;
     justify-content: center;
+    align-content: center;
     align-items: center;
+    align-self: center;
+    background-color: white;
+    flex-wrap: wrap;
     width: 100%;
     height: 30%;
 }
@@ -39,6 +43,9 @@
 .page_list {
     background-color: white;
     display: flex;
+    margin-top: 5vh;
+    /*align-items: center;*/
     width: 100%;
     height: 70%;
 }
+

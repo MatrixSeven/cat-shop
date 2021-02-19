@@ -1,5 +1,5 @@
 // pages/detail/detail.js
-import {getArgs, makeAsyncFunc, requestSyncR, requestSync} from '../../utils/util'
+import {getArgs, makeAsyncFunc, requestSyncR, requestSync, gotoEvent} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
 
 
@@ -56,8 +56,9 @@ Page({
     },
 
     gotoHome: function () {
-        wx.redirectTo({
-            url: "/pages/cat/cat"
+        gotoEvent({
+            actionType: 60,
+            path: '/pages/cat/cat'
         })
     },
     gotoBack: function () {

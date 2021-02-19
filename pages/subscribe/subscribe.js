@@ -1,4 +1,4 @@
-import {formatTime, requestSync, getArgs, makeAsyncFunc, requestSyncR} from '../../utils/util'
+import {formatTime, requestSync, getArgs, makeAsyncFunc, requestSyncR, wxLogin, gotoEvent} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
 import Dialog from '../../@vant/weapp/dist/dialog/dialog';
 
@@ -51,25 +51,17 @@ Page({
         console.log(userInfo)
         //获取成功
         if (userInfo) {
-            wx.login({
-                fail: msg => {
-                    back()
-                },
-                success: ({code, errMsg}) => {
+            wxLogin(userInfo,{
+                success: data => {
                     wx.showLoading({title: "登录中..."})
-                    requestSync(`${reqUrls}/shop/user/login`,
-                        {
-                            method: 'POST', data: {userInfo, code}
-                        })
-                        .then(({data}) => {
-                            wx.setStorageSync("userInfo", data)
-                        }).then(_ => {
-                        requestSync(`${reqUrls}/shop/subscribe`).then(({data}) => {
-                            this.setData({
-                                mySubscribe: data.mySubscribe
-                            })
+                    requestSync(`${reqUrls}/shop/subscribe`).then(({data}) => {
+                        this.setData({
+                            mySubscribe: data.mySubscribe
                         })
                     })
+                },
+                fail: e => {
+                    back()
                 }
             })
         } else {
@@ -77,7 +69,15 @@ Page({
         }
 
     },
-
+    onSubscribe: function (e) {
+        requestSync(`${reqUrls}/shop/active-subscribe`,
+            {
+                method: 'POST',
+                data: {template_id: "1", code: '1'}
+            }).then(({data: {msg}}) => {
+            wx.showToast({title: msg, icon: 'none', number: 5})
+        })
+    },
     onKeyChange: function (e) {
         if (e.detail && e.detail !== '') {
             this.setData({
@@ -96,14 +96,17 @@ Page({
         const {mySubscribe} = this.data
         if (value && value.trim() === '') {
             wx.showToast({title: '你添加的啥子哦～', icon: 'none'});
+            return
         }
         if (value && value.trim().length < 1) {
             wx.showToast({title: '至少两次字哦～', icon: 'none'});
+            return
         }
         if (value && value.trim().length > 5) {
             wx.showToast({title: '关键字太长了～', icon: 'none'});
+            return
         }
-        const newSub = mySubscribe.filter(it => it.value === value)
+        const newSub = mySubscribe.filter(it => it.keyWord === value)
         if (newSub.length > 0) {
             wx.showToast({title: '已经添加过了,不要重复添加哦', icon: 'none'});
             return
@@ -138,9 +141,10 @@ Page({
         })
     },
     gotoHome: function () {
-        wx.navigateBack({
-            delta: 1
-        });
+        gotoEvent({
+            actionType:60,
+            path:'/pages/cat/cat'
+        })
     },
     gotoBack: function () {
         wx.navigateBack({
