@@ -76,7 +76,7 @@
         </button>
     </view>
     <view class="subscribe_pages_content_info">
-        <van-panel title="订阅须知" desc="订阅必读！！！" status="警告！">
+        <van-panel title="订阅须知" desc="你当前拥有{{pushTimes}}次推送次数" status="警告！">
             <view style="display: flex;width: 90vw;color:#006600"
                   wx:for="{{subKnow}}"
                   wx:key="{{item}}">

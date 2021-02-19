@@ -6,6 +6,7 @@ Page({
     data: {
         value: '',
         subKnow: [],
+        pushTimes: 0,
         showLogin: false,
         mySubscribe: [],
         subscribeRandom: [],
@@ -15,6 +16,7 @@ Page({
         requestSync(`${reqUrls}/shop/subscribe/random`).then(({data}) => {
             this.setData({
                 subKnow: data.subKnow,
+                pushTimes: data.pushTimes,
                 subscribeRandom: data.subscribeRandom
             })
         })
@@ -51,7 +53,7 @@ Page({
         console.log(userInfo)
         //获取成功
         if (userInfo) {
-            wxLogin(userInfo,{
+            wxLogin(userInfo, {
                 success: data => {
                     wx.showLoading({title: "登录中..."})
                     requestSync(`${reqUrls}/shop/subscribe`).then(({data}) => {
@@ -70,13 +72,31 @@ Page({
 
     },
     onSubscribe: function (e) {
-        requestSync(`${reqUrls}/shop/active-subscribe`,
-            {
-                method: 'POST',
-                data: {template_id: "1", code: '1'}
-            }).then(({data: {msg}}) => {
-            wx.showToast({title: msg, icon: 'none', number: 5})
+        const that = this
+        wx.requestSubscribeMessage({
+            tmplIds: ['SWG5BqXp8MCs4gm8DDchgeltJPsWcunweR5cCOKzGXU'],
+            success(res) {
+                requestSync(`${reqUrls}/shop/active-subscribe`,
+                    {
+                        method: 'POST',
+                        data: {template_id: ["SWG5BqXp8MCs4gm8DDchgeltJPsWcunweR5cCOKzGXU"]}
+                    }).then(({data: {msg, pushTimes}}) => {
+                    that.setData({pushTimes})
+                    wx.showToast({title: msg, icon: 'none', number: 5})
+                })
+            },
+            fail(e) {
+                if (e.errMsg) {
+                    Dialog.alert({
+                        message: "订阅失败了,请到右上角小程序设置里面打开订阅通知开关,然后在来订阅哦"
+                    })
+                    return
+                }
+                console.log(e)
+            }
+
         })
+
     },
     onKeyChange: function (e) {
         if (e.detail && e.detail !== '') {
@@ -115,7 +135,7 @@ Page({
             {
                 method: "POST", data: {
                     keyword: value,
-                    templateId: "1",
+                    templateId: "SWG5BqXp8MCs4gm8DDchgeltJPsWcunweR5cCOKzGXU",
                 }
             }).then(({data: {id}}) => {
             this.setData({
@@ -142,8 +162,8 @@ Page({
     },
     gotoHome: function () {
         gotoEvent({
-            actionType:60,
-            path:'/pages/cat/cat'
+            actionType: 60,
+            path: '/pages/cat/cat'
         })
     },
     gotoBack: function () {
