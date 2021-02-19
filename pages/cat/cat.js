@@ -8,7 +8,7 @@ Page({
         products: [],
         centerCategory: [],
         swiper: [],
-        noticeMsg:[],
+        noticeMsg: [],
         showPopupInfo: {show: false},
         type: 1,
         page: 1,
@@ -16,7 +16,7 @@ Page({
         value: '',
         active: 0,
         next: true,
-        initLoad:true,
+        initLoad: true,
         Hei: '',
         showBuy: {
             show: false,
@@ -56,7 +56,7 @@ Page({
         })
         makeAsyncFunc(async () => {
             const {page, size} = this.data
-            const {data: {category,noticeMsg, centerCategory, swiper}} = await requestSync(`${reqUrls}/shop/tabs`)
+            const {data: {category, noticeMsg, centerCategory, swiper}} = await requestSync(`${reqUrls}/shop/tabs`)
             const defaultType = category[0].type
             const {data} = await requestSync(`${reqUrls}/shop/goods/list/${defaultType}/${page}/${size}`)
             this.setData({
@@ -67,7 +67,7 @@ Page({
                 type: defaultType,
                 products: [...this.data.products, ...data],
                 page: page + 1,
-                initLoad:false
+                initLoad: false
             })
             this.selectComponent('#tabs').resize();
         })
@@ -84,7 +84,7 @@ Page({
     }
 
     ,
-    onClickNotice:function (e){
+    onClickNotice: function (e) {
         gotoEvent(getArgs(e))
     },
     onBuyPopup: function () {
@@ -99,14 +99,32 @@ Page({
     ,
 
     goBuy: function (e) {
-        const {ling, syncId, ev = true} = getArgs(e)
+        const {ling, syncId, ev = true, channel = "-1", searchId, goodsId} = getArgs(e)
         if (!ev) {
             wx.showToast({title: '功能开发中,暂时无法使用', 'icon': "none"})
             return
         }
-        wx.navigateTo({
-            url: `/pages/detail/detail?id=${syncId}`,
-        })
+        if (channel === 'pdd_get') {
+            makeAsyncFunc(async () => {
+                const {data: {we_app_info: {app_id, page_path}}} = await requestSync(`${reqUrls}/shop/pdd/gen`,
+                    {
+                        data: {
+                            search_id: searchId,
+                            goods_id_list: goodsId
+                        }
+                    })
+                gotoEvent({
+                    actionType: 50,
+                    appId: app_id,
+                    path: page_path
+
+                })
+            })
+        } else {
+            wx.navigateTo({
+                url: `/pages/detail/detail?id=${syncId}`,
+            })
+        }
 
     }
     ,
@@ -204,7 +222,7 @@ Page({
                 products: p,
                 type: type,
                 page: page + 1,
-                next: data.length === size
+                next: data.length >= size
             })
         })
     },
