@@ -45,10 +45,9 @@
 
 </van-popup>
 
-<view wx:if="{{initLoad}}"/>
-<view wx:else class="page">
+<view class="page">
     <navBar searchBar="{{true}}" background='#dd514c' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
-    <view style="display:flex;margin-top:1vh;justify-content: center;width:100vw">
+     <view style="display:flex;margin-top:1vh;justify-content: center;width:100vw">
         <swiper class="swiper" indicator-color="#f4f4f4"
                 indicator-dots="true"
                 indicator-active-color="#4eb8b8" autoplay="true"
