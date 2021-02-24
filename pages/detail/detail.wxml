@@ -39,22 +39,27 @@
                       value="{{detail.ling}}"/>
         </view>
         <view class="buy_step;" style="flex-direction: column" bind:tap="copyLing">
-            <button class="buy_button" style="background-color: {{buyColor}}">
-                一键复制
-            </button>
+<!--            <button class="buy_button" style="background-color: {{buyColor}}">-->
+<!--                一键复制-->
+<!--            </button>-->
+            <view style="display:flex;justify-content:center">
+                <van-button round custom-style="width:75vw" color="#dd514c">
+                    点击一键复制
+                </van-button>
+            </view>
             <view class="buy_button_text">
                 如果复制失败,请手动复制口令
             </view>
 
         </view>
-        <view class="buy_step">
-            <van-steps style="width:100%" steps="{{ buySteps }}" active="{{ 3 }}"/>
-        </view>
+<!--        <view class="buy_step">-->
+<!--            <van-steps style="width:100%" steps="{{ buySteps }}" active="{{ 3 }}"/>-->
+<!--        </view>-->
     </view>
 
 </van-popup>
 
-<navBar searchBar="{{false}}" bindback="gotoBack" bindHome="gotoHome" title="商品详情"
+<navBar searchBar="{{false}}" bindback="gotoBack" bindHome="gotoHomeReLaunch" title="商品详情"
         background='#fff' back="{{!showGoHome}}" home="{{showGoHome}}"/>
 
 <view class="container detail-container" wx:if="detail">
@@ -105,17 +110,27 @@
         <image wx:for="{{m2.imgToFix(detail)}}" src="{{item}}"/>
     </view>
 
-    <view class="bottom-actions">
-        <view class="action-home" bindtap="gohome">
-            <image src="/images/home-s.png"/>
-        </view>
-        <view class="share">
-            <button open-type="share">
-                <text class="action-text">分享好友</text>
-            </button>
-        </view>
-        <view class="buy" bindtap="buy">
-            <text class="action-text">立即领券</text>
-        </view>
-    </view>
+    <!--    <view class="bottom-actions">-->
+    <!--        <view class="action-home" bindtap="gohome">-->
+    <!--            <image src="/images/home-s.png"/>-->
+    <!--        </view>-->
+    <!--        <view class="share">-->
+    <!--            <button open-type="share">-->
+    <!--                <text class="action-text">分享好友</text>-->
+    <!--            </button>-->
+    <!--        </view>-->
+    <!--        <view class="buy" bindtap="buy">-->
+    <!--            <text class="action-text">立即领券</text>-->
+    <!--        </view>-->
+    <!--    </view>-->
 </view>
+<van-goods-action>
+    <van-goods-action-icon  icon="chat-o" text="客服" bind:click="openWxQr" />
+    <van-goods-action-icon link-type="redirectTo" url="pages/cat/cat" icon="shop-collect-o" text="首页" bind:tap="gotoHome" />
+    <van-goods-action-button
+            open-type="share"
+            text="分享给好友"
+            color="#f47920"
+    />
+    <van-goods-action-button color="#dd514c" text="立即购买" bind:click="buy" />
+</van-goods-action>

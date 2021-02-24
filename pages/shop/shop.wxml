@@ -13,57 +13,8 @@
     </view>
 </van-popup>
 
-<van-popup
-        show="{{ showBuy.show }}"
-        closeable
-        round
-        duration="1000"
-        overlay="{{true}}"
-        bind:close="onBuyPopup">
-    <view class="buy_plan">
-        <view class="buy_title">
-            口令购买
-        </view>
-        <view class="buy_ling">
-            <textarea disabled focus
-                      value="{{showBuy.ling}}"/>
-        </view>
-        <view class="buy_step;" style="flex-direction: column;">
-            <button class="buy_button">
-                一键复制
-            </button>
-            <view class="buy_button_text">
-                如果复制失败,请手动复制口令
-            </view>
-
-        </view>
-        <view class="buy_step">
-
-            <van-steps style="width:100%" steps="{{ buySteps }}" active="{{ 3 }}"/>
-        </view>
-    </view>
-
-</van-popup>
-
 <view class="page">
     <navBar searchBar="{{true}}" background='#dd514c' back="{{false}}" home="{{false}}" bindsearch="onSearch"/>
-     <view style="display:flex;margin-top:1vh;justify-content: center;width:100vw">
-        <swiper class="swiper" indicator-color="#f4f4f4"
-                indicator-dots="true"
-                indicator-active-color="#4eb8b8" autoplay="true"
-                interval='3000' circular='true'>
-            <swiper-item wx:for="{{swiper}}" wx:for-item="v" wx:key="{{v.id}}">
-                <image bind:tap="onClickSwiper" data-item="{{v}}" class="swiper_item" mode="scaleToFill"
-                       src="{{v.imgUrl}}"/>
-            </swiper-item>
-        </swiper>
-    </view>
-    <van-notice-bar
-            wx:if="{{noticeMsg.length>0}}"
-            left-icon="volume-o"
-            text="{{noticeMsg[0].noticeMsg}}"
-            mode="link">
-    </van-notice-bar>
     <view class="other_info">
         <view class="other_item" wx:for="{{centerCategory}}"
               bind:tap="onClickOtherItem"
@@ -74,15 +25,6 @@
             <text style="width:100%;text-align:center;margin-top:1vh;font-size: smaller;">{{v.descShow}}</text>
         </view>
     </view>
-    <!--    <view class="info_view">-->
-    <!--        <view class="info_view_card" style="background: #E0E3DA;">-->
-    <!--            <image-->
-    <!--                    style="width: 100%; height: 100%;"-->
-    <!--                    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F9vo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fa5c27d1ed21b0ef45aa62aced1c451da80cb3ed7.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1612787545&t=35fedd95aa527059164c93a330c4bafb">-->
-    <!--            </image>-->
-    <!--        </view>-->
-    <!--        <view class="info_view_card" style="background: red;"></view>-->
-    <!--    </view>-->
     <view style=" position: sticky; z-index: 1;  top:{{navHeight}};">
         <van-tabs offset-top="{{navHeight}}" z-index="9999" active="{{ active }}" style="margin-top:2vh" sticky
                   swipeable
@@ -131,8 +73,6 @@
                     </view>
                 </view>
             </van-tab>
-
-
         </van-tabs>
     </view>
 </view>

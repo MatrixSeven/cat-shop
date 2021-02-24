@@ -56,10 +56,19 @@ Page({
     },
 
     gotoHome: function () {
-        gotoEvent({
-            actionType: 60,
-            path: '/pages/cat/cat'
-        })
+        const {showGoHome=false}=this.data
+        if(showGoHome){
+            wx.reLaunch({url:"/pages/cat/cat"})
+        }
+        else {
+            gotoEvent({
+                actionType: 60,
+                path: '/pages/cat/cat'
+            })
+        }
+    },
+    gotoHomeReLaunch:function (){
+      wx.reLaunch({url:"/pages/cat/cat"})
     },
     gotoBack: function () {
         wx.navigateBack({
@@ -79,6 +88,10 @@ Page({
 
             })
         })
+    },
+
+    openWxQr(){
+
     },
     onShow() {
         wx.showShareMenu({

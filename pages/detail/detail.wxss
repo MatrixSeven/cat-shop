@@ -157,10 +157,10 @@
 .detail-discount {
   margin: 20rpx;
   border-radius: 10rpx;
-  background-image: 
+  background-image:
   radial-gradient(
-    circle at calc(100vw - 40rpx) 8rpx, 
-    transparent 6rpx, 
+    circle at calc(100vw - 40rpx) 8rpx,
+    transparent 6rpx,
     #dd514c 6rpx,
     #dd514c 0rpx);
     background-position: 0 0;

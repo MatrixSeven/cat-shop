@@ -1,7 +1,10 @@
 {
   "usingComponents": {
     "van-popup": "/@vant/weapp/dist/popup/index",
-    "van-steps": "/@vant/weapp/dist/steps/index"
+    "van-button": "/@vant/weapp/dist/button/index",
+    "van-goods-action": "/@vant/weapp/dist/goods-action/index",
+    "van-goods-action-icon": "/@vant/weapp/dist/goods-action-icon/index",
+    "van-goods-action-button": "/@vant/weapp/dist/goods-action-button/index"
   },
   "navigationBarTitleText": "商品详情",
   "enablePullDownRefresh": false
