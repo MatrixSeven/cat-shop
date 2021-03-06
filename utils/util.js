@@ -38,9 +38,7 @@ const requestSync = (url, {
                     console.log(res);
                     resolve(res.data); //任务成功就执行resolve(),其他情况下都执行reject()
 
-                }
-
-                if (code === 1001404) {
+                } else if (code === 1001404) {
                     setTimeout(() => wx.showToast({
                         title: msg,
                         icon: 'none',
