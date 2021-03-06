@@ -56,7 +56,15 @@ Page({
         })
         makeAsyncFunc(async () => {
             const {page, size} = this.data
-            const {data: {category, noticeMsg, centerCategory, swiper}} = await requestSync(`${reqUrls}/shop/tabs`)
+            const {
+                data: {
+                    category,
+                    noticeMsg,
+                    centerCategory,
+                    swiper,
+                    share
+                }
+            } = await requestSync(`${reqUrls}/shop/tabs`)
             const defaultType = category[0].type
             const {data} = await requestSync(`${reqUrls}/shop/goods/list/${defaultType}/${page}/${size}`)
             this.setData({
@@ -64,6 +72,7 @@ Page({
                 centerCategory,
                 swiper,
                 noticeMsg,
+                share,
                 type: defaultType,
                 products: [...this.data.products, ...data],
                 page: page + 1,
@@ -244,13 +253,23 @@ Page({
         }
     },
 
+    onShareTimeline: function () {
+        const name = wx.getStorageSync("userName")
+        let path = `/pages/cat/cat?from=${name}`;
+        const {share: {shareTitle}} = this.data
+        return {
+            title: shareTitle,
+            path: path,
+        };
+    },
+
     onShareAppMessage: function (e) {
         const name = wx.getStorageSync("userName")
         let path = `/pages/cat/cat?from=${name}`;
+        const {share: {shareTitle}} = this.data
         return {
-            title: "哇~今日发车,偶u的猫咪物",
+            title: shareTitle,
             path: path,
-            // imageUrl: mainPic,
         };
     }
 })

@@ -102,7 +102,7 @@ Page({
 
     onTabChange: function (e) {
         // title index name
-        const args=e.detail
+        const args = e.detail
         wx.showLoading({
             mask: false,
             title: "优惠加载中ing"
@@ -118,11 +118,11 @@ Page({
     }
     ,
     onClickOtherItem: function (args) {
-        const e=getArgs(args)
+        const e = getArgs(args)
         this.setData({
-            active : e.actionType - 1
+            active: e.actionType - 1
         })
-        this.onTabChange({detail:{index:e.actionType - 1}});
+        this.onTabChange({detail: {index: e.actionType - 1}});
     },
 
     onSearch: function (e) {
@@ -156,7 +156,7 @@ Page({
         const page = 1;
         makeAsyncFunc(async () => {
                 const {data: products} = await requestSyncR(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
-                const {data: {category, centerCategory}} = await  requestSync(`${reqUrls}/shop/xr/index`)
+                const {data: {category, centerCategory}} = await requestSync(`${reqUrls}/shop/xr/index`)
                 this.setData({
                     products,
                     category,
@@ -213,6 +213,16 @@ Page({
             })
 
         }
+    },
+
+
+    onShareTimeline: function () {
+        const name = wx.getStorageSync("userName")
+        let path = `/pages/cat/cat?from=${name}`;
+        return {
+            title: "哇~今日发车,偶u的猫咪物",
+            path: path,
+        };
     },
 
     onShareAppMessage: function (e) {

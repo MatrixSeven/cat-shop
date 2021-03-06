@@ -175,4 +175,19 @@ Page({
             delta: 1
         });
     },
+    onShareTimeline: function () {
+        let path = `/pages/subscribe/subscribe`;
+        return {
+            title: "订阅监控商品!豪车不错过！及时推送～",
+            path: path,
+        };
+    },
+
+    onShareAppMessage: function (e) {
+        let path = `/pages/subscribe/subscribe`;
+        return {
+            title: "订阅监控商品!豪车不错过！及时推送～",
+            path: path,
+        };
+    }
 })

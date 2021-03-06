@@ -86,4 +86,22 @@ Page({
             })
         })
     },
+    onShareTimeline: function () {
+        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
+        const {detail: {syncMsg, mainPic}} = this.data
+        return {
+            title: syncMsg,
+            path: path,
+        };
+
+    },
+    onShareAppMessage: function (e) {
+        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
+        const {detail: {syncMsg, mainPic}} = this.data
+        return {
+            title: syncMsg,
+            path: path,
+            imageUrl: mainPic,
+        };
+    },
 })

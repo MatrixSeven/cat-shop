@@ -134,21 +134,19 @@ Page({
     },
 
     onShareTimeline: function () {
-        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
-        const {detail: {syncMsg, mainPic}} = this.data
+        let path = `/pages/search/search`;
         return {
-            title: syncMsg,
+            title: "猫咪屋搜索今日豪车～",
             path: path,
         };
 
     },
     onShareAppMessage: function (e) {
-        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
+        let path = `/pages/search/search`;
         const {detail: {syncMsg, mainPic}} = this.data
         return {
-            title: syncMsg,
+            title: "猫咪屋搜索今日豪车～",
             path: path,
-            imageUrl: mainPic,
         };
     },
     buy() {
