@@ -17,7 +17,12 @@ const formatNumber = n => {
     return n[1] ? n : '0' + n
 }
 
-const requestSync = (url, {data = {}, method = "GET",loginFail=gotoLogin, whenComplete = x => wx.hideLoading()} = {}) => {
+const requestSync = (url, {
+    data = {},
+    method = "GET",
+    loginFail = gotoLogin,
+    whenComplete = x => wx.hideLoading()
+} = {}) => {
     return new Promise(function (resolve, reject) {
         const {token = "no-login"} = wx.getStorageSync("userInfo") || {}
         wx.request({
@@ -32,6 +37,15 @@ const requestSync = (url, {data = {}, method = "GET",loginFail=gotoLogin, whenCo
                     console.log(`wx.request() is success : 200 ok`);
                     console.log(res);
                     resolve(res.data); //任务成功就执行resolve(),其他情况下都执行reject()
+
+                }
+
+                if (code === 1001404) {
+                    setTimeout(() => wx.showToast({
+                        title: msg,
+                        icon: 'none',
+                        complete: wx.reLaunch({url: "/pages/cat/cat"})
+                    }), 5);
                 } else {
                     console.log("wx.request() is success : 200 lost.");
                     if (code === 7777) {
@@ -115,7 +129,7 @@ const gotoEvent = (args) => {
                 path: path
             });
         },
-        60:()=>{
+        60: () => {
             wx.switchTab({
                 url: path,
             });
@@ -138,7 +152,7 @@ const gotoLogin = () => {
             // on cancel
         });
 }
-const wxLogin = (userInfo,{success, fail} = {
+const wxLogin = (userInfo, {success, fail} = {
     success: e => {
     },
     fail: e => {
