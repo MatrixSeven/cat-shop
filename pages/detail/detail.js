@@ -36,7 +36,7 @@ Page({
      */
     onLoad: function (options) {
         console.log(options)
-        const {id, showGoHome = false, fromType = "1", subKey = ''} = options
+        const {id, showGoHome = "false", fromType = "1", subKey = ''} = options
         const url = `${reqUrls}/shop/alliance/goodInfo/${id}`
         wx.showLoading({
             title: '加载中'
@@ -50,7 +50,7 @@ Page({
             this.setData({
                 detail: data, id,
                 loadDown: true,
-                showGoHome,
+                showGoHome: showGoHome === "true",
                 subKey,
                 showSub: fromType === "3",
                 couponStartTime: couponStartTime,
@@ -76,9 +76,14 @@ Page({
         wx.reLaunch({url: "/pages/cat/cat"})
     },
     gotoBack: function () {
-        wx.navigateBack({
-            delta: 1
-        });
+        const {showGoHome = false} = this.data
+        if (showGoHome) {
+            wx.reLaunch({url: "/pages/cat/cat"})
+        } else {
+            wx.navigateBack({
+                delta: 1
+            })
+        }
     },
     onPullDownRefresh: function () {
         wx.showLoading({
@@ -134,19 +139,21 @@ Page({
     },
 
     onShareTimeline: function () {
-        let path = `/pages/search/search`;
+        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
+        const {detail: {syncMsg, mainPic}} = this.data
         return {
-            title: "猫咪屋搜索今日豪车～",
+            title: syncMsg,
             path: path,
         };
 
     },
     onShareAppMessage: function (e) {
-        let path = `/pages/search/search`;
+        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
         const {detail: {syncMsg, mainPic}} = this.data
         return {
-            title: "猫咪屋搜索今日豪车～",
+            title: syncMsg,
             path: path,
+            imageUrl: mainPic,
         };
     },
     buy() {
