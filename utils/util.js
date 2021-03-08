@@ -144,7 +144,8 @@ const gotoLogin = () => {
     })
         .then(() => {
             wx.setStorageSync("userInfo", null)
-            wx.switchTab({url: '/pages/home/home'})
+            // wx.switchTab({url: '/pages/home/home'})
+            wx.reLaunch({url:'/pages/home/home'})
         })
         .catch(() => {
             // on cancel
