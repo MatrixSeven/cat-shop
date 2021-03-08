@@ -56,9 +56,6 @@ Page({
     }
 
     ,
-    onClickNotice: function (e) {
-        gotoEvent(getArgs(e))
-    },
 
     goBuy: function (e) {
         const {

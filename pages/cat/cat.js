@@ -93,8 +93,8 @@ Page({
     }
 
     ,
-    onClickNotice: function (e) {
-        gotoEvent(getArgs(e))
+    onClickNotice: function () {
+        gotoEvent(this.data.noticeMsg[0])
     },
     onBuyPopup: function () {
         this.setData({

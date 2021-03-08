@@ -59,6 +59,7 @@
         </swiper>
     </view>
     <van-notice-bar
+            bind:tap="onClickNotice"
             wx:if="{{noticeMsg.length>0}}"
             left-icon="volume-o"
             text="{{noticeMsg[0].noticeMsg}}"
