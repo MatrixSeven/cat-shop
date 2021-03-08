@@ -115,7 +115,7 @@ Page({
                 })
             },
             fail(e) {
-                if (e.errMsg.contain('end')) {
+                if (e.errMsg.indexOf('end') === -1) {
                     return
                 }
                 that.setData({showSub: false})
