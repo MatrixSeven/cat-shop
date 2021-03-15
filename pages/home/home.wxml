@@ -31,6 +31,7 @@
         <view class="page_list">
             <van-cell-group clickable style="width:100%">
                 <van-cell icon="location-o" title="我的订阅" bind:tap="gotoSub" is-link style="width:100%;height:150%"/>
+                <van-cell icon="location-o" title="我的豆瓣订阅" bind:tap="gotoDoubanSub" is-link style="width:100%;height:150%"/>
                 <van-cell icon="smile-comment-o" title="联系我" is-link style="width:100%;height:150%"/>
                 <van-cell icon="share-o" title="分享给好友" is-link style="width:100%;height:150%"/>
                 <van-cell icon="smile-o" title="关于" is-link style="width:100%;height:150%"/>

@@ -41,7 +41,14 @@ Page({
     gotoSub:function (e) {
         gotoEvent({
             actionType:10,
-            path:'/pages/subscribe/subscribe'
+            path:'/pages/subscribe/tao/subscribe'
+        })
+    },
+
+    gotoDoubanSub:function (e) {
+        gotoEvent({
+            actionType:10,
+            path:'/pages/subscribe/douban/subscribe'
         })
     },
     bindGetUserInfo: function (e) {

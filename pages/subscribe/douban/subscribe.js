@@ -1,6 +1,6 @@
-import {formatTime, requestSync, getArgs, makeAsyncFunc, requestSyncR, wxLogin, gotoEvent} from '../../utils/util'
-import {reqUrls} from '../../utils/config'
-import Dialog from '../../@vant/weapp/dist/dialog/dialog';
+import {formatTime, requestSync, getArgs, makeAsyncFunc, requestSyncR, wxLogin, gotoEvent} from '../../../utils/util'
+import {reqUrls} from '../../../utils/config'
+import Dialog from '../../../@vant/weapp/dist/dialog/dialog';
 
 Page({
     data: {

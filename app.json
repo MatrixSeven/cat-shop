@@ -4,7 +4,8 @@
     "pages/shop/shop",
     "pages/index/index",
     "pages/home/home",
-    "pages/subscribe/subscribe",
+    "pages/subscribe/tao/subscribe",
+    "pages/subscribe/douban/subscribe",
     "pages/search/search",
     "pages/detail/detail"
   ],

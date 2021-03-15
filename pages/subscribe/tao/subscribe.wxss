@@ -1,0 +1,79 @@
+/*vant dialog bug*/
+/*button {*/
+/*    width: 100% !important;*/
+/*}*/
+
+.subscribe_pages {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.subscribe_pages_content {
+    display: flex;
+    width: 100vw;
+    margin-top: 5vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.subscribe_pages_content_search {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+}
+
+.subscribe_pages_content_text {
+    display: flex;
+    width: 100%;
+    padding-left: 3vh;
+    color: #666633;
+    justify-content: flex-start;
+}
+
+.subscribe_pages_content_tag {
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.subscribe_pages_content_tag_item {
+    margin-left: 1vh;
+    margin-top: 1vh;
+}
+
+.subscribe_pages_content_button {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.subscribe_pages_content_button_item {
+    width: max-content;
+    color: white;
+    font-size: x-large;
+    height: min-content;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 2vh 2vh 2vh 2vh;
+    margin-top: 2vh;
+    background-color: #dd514c;
+}
+
+.subscribe_pages_content_info {
+    display: flex;
+    width: 100vw;
+    margin-top: 2vh;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
