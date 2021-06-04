@@ -1,6 +1,7 @@
 // pages/detail/detail.js
-import {getArgs, makeAsyncFunc, requestSyncR, requestSync} from '../../utils/util'
+import {getArgs, makeAsyncFunc, requestSyncR, requestSync, gotoEvent} from '../../utils/util'
 import {reqUrls} from '../../utils/config'
+import Dialog from "../../@vant/weapp/dist/dialog/dialog";
 
 
 Page({
@@ -13,7 +14,9 @@ Page({
     loadDown: false,
     empty: false,
     showBuy: false,
-    canEdit:false,
+    showSub: false,
+    subKey: '',
+    canEdit: false,
     showGoHome: false,
     buySteps: [{
         // text: '',
@@ -23,17 +26,17 @@ Page({
 
         desc: '复制',
         inactiveIcon: 'arrow'
-    },
-        {
-            desc: '打开Tao宝',
-            inactiveIcon: 'arrow'
-        }],
+    }, {
+        desc: '打开Tao宝',
+        inactiveIcon: 'arrow'
+    }],
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const {id, showGoHome = false} = options
+        console.log(options)
+        const {id, showGoHome = "false", fromType = "1", subKey = ''} = options
         const url = `${reqUrls}/shop/alliance/goodInfo/${id}`
         wx.showLoading({
             title: '加载中'
@@ -47,7 +50,9 @@ Page({
             this.setData({
                 detail: data, id,
                 loadDown: true,
-                showGoHome,
+                showGoHome: showGoHome === "true",
+                subKey,
+                showSub: fromType === "3",
                 couponStartTime: couponStartTime,
                 couponEndTime: couponEndTime,
 
@@ -57,14 +62,28 @@ Page({
     },
 
     gotoHome: function () {
-        wx.redirectTo({
-            url:"/pages/cat/cat"
-        })
+        const {showGoHome = false} = this.data
+        if (showGoHome) {
+            wx.reLaunch({url: "/pages/cat/cat"})
+        } else {
+            gotoEvent({
+                actionType: 60,
+                path: '/pages/cat/cat'
+            })
+        }
+    },
+    gotoHomeReLaunch: function () {
+        wx.reLaunch({url: "/pages/cat/cat"})
     },
     gotoBack: function () {
-        wx.navigateBack({
-            delta: 1
-        });
+        const {showGoHome = false} = this.data
+        if (showGoHome) {
+            wx.reLaunch({url: "/pages/cat/cat"})
+        } else {
+            wx.navigateBack({
+                delta: 1
+            })
+        }
     },
     onPullDownRefresh: function () {
         wx.showLoading({
@@ -79,6 +98,38 @@ Page({
 
             })
         })
+    },
+
+    onSubscribe: function (e) {
+        const that = this
+        wx.requestSubscribeMessage({
+            tmplIds: ['SWG5BqXp8MCs4gm8DDchgeltJPsWcunweR5cCOKzGXU'],
+            success(res) {
+                requestSync(`${reqUrls}/shop/active-subscribe`,
+                    {
+                        method: 'POST',
+                        data: {template_id: ["SWG5BqXp8MCs4gm8DDchgeltJPsWcunweR5cCOKzGXU"]}
+                    }).then(({data: {msg, pushTimes}}) => {
+                    that.setData({showSub: false})
+                    wx.showToast({title: "恭喜续订成功～", icon: 'none', number: 5})
+                })
+            },
+            fail(e) {
+                if (e.errMsg.indexOf('end') === -1) {
+                    return
+                }
+                that.setData({showSub: false})
+                if (e.errMsg) {
+                    Dialog.alert({
+                        message: "订阅失败了,请到右上角小程序设置里面打开订阅通知开关,然后在来订阅哦"
+                    })
+                }
+            }
+        })
+    },
+
+    openWxQr() {
+
     },
     onShow() {
         wx.showShareMenu({

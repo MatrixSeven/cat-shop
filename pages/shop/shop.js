@@ -7,9 +7,6 @@ Page({
         category: [],
         products: [],
         centerCategory: [],
-        swiper: [],
-        noticeMsg: [],
-        showPopupInfo: {show: false},
         type: 1,
         page: 1,
         size: 10,
@@ -18,25 +15,6 @@ Page({
         next: true,
         initLoad: true,
         Hei: '',
-        showBuy: {
-            show: false,
-            ling: ''
-        },
-        buySteps: [{
-            // text: '',
-            desc: '选择全部',
-            inactiveIcon: 'arrow'
-        },
-            {
-                // text: '复制',
-                desc: '复制',
-                inactiveIcon: 'arrow'
-            },
-            {
-                // text: '',
-                desc: '打开Tao宝',
-                inactiveIcon: 'arrow'
-            }],
         navHeight: ((app.menu.top - app.system.statusBarHeight) * 2 + app.menu.height + app.system.statusBarHeight + 1),
     },
     imgH: function (e) {
@@ -56,23 +34,12 @@ Page({
         })
         makeAsyncFunc(async () => {
             const {page, size} = this.data
-            const {
-                data: {
-                    category,
-                    noticeMsg,
-                    centerCategory,
-                    swiper,
-                    share
-                }
-            } = await requestSync(`${reqUrls}/shop/tabs`)
+            const {data: {category, centerCategory}} = await requestSync(`${reqUrls}/shop/xr/index`)
             const defaultType = category[0].type
             const {data} = await requestSync(`${reqUrls}/shop/goods/list/${defaultType}/${page}/${size}`)
             this.setData({
                 category,
                 centerCategory,
-                swiper,
-                noticeMsg,
-                share,
                 type: defaultType,
                 products: [...this.data.products, ...data],
                 page: page + 1,
@@ -80,10 +47,6 @@ Page({
             })
             this.selectComponent('#tabs').resize();
         })
-    },
-
-    onClickOtherItem: function (e) {
-        gotoEvent(getArgs(e))
     }
     ,
     onClosePopup: function () {
@@ -92,19 +55,6 @@ Page({
         })
     }
 
-    ,
-    onClickNotice: function () {
-        gotoEvent(this.data.noticeMsg[0])
-    },
-    onBuyPopup: function () {
-        this.setData({
-            showBuy: {show: false}
-        })
-    }
-    ,
-    onClickSwiper: function (e) {
-        gotoEvent(getArgs(e))
-    }
     ,
 
     goBuy: function (e) {
@@ -148,11 +98,14 @@ Page({
     ,
 
     onTabChange: function (e) {
+        // title index name
+        const args = e.detail
         wx.showLoading({
             mask: false,
             title: "优惠加载中ing"
         })
-        const {index, title} = e.detail
+        const {index} = args
+        console.log(index)
         const {size, category} = this.data
         this.loadMoreAux({
             ...this.data,
@@ -161,6 +114,14 @@ Page({
         })
     }
     ,
+    onClickOtherItem: function (args) {
+        const e = getArgs(args)
+        this.setData({
+            active: e.actionType - 1
+        })
+        this.onTabChange({detail: {index: e.actionType - 1}});
+    },
+
     onSearch: function (e) {
         wx.navigateTo({
             url: '/pages/search/search',
@@ -183,7 +144,6 @@ Page({
     }
     ,
 
-
     refresher: function () {
         wx.showLoading({
             mask: false,
@@ -193,10 +153,9 @@ Page({
         const page = 1;
         makeAsyncFunc(async () => {
                 const {data: products} = await requestSyncR(`${reqUrls}/shop/goods/list/${type}/${page}/${size}`)
-                const {data: {category, centerCategory, swiper}} = await requestSyncR(`${reqUrls}/shop/tabs`)
+                const {data: {category, centerCategory}} = await requestSync(`${reqUrls}/shop/xr/index`)
                 this.setData({
                     products,
-                    swiper,
                     category,
                     centerCategory,
                 })
@@ -253,12 +212,12 @@ Page({
         }
     },
 
+
     onShareTimeline: function () {
         const name = wx.getStorageSync("userName")
         let path = `/pages/cat/cat?from=${name}`;
-        const {share: {shareTitle}} = this.data
         return {
-            title: shareTitle,
+            title: "哇~今日发车,偶u的猫咪物",
             path: path,
         };
     },
@@ -266,10 +225,10 @@ Page({
     onShareAppMessage: function (e) {
         const name = wx.getStorageSync("userName")
         let path = `/pages/cat/cat?from=${name}`;
-        const {share: {shareTitle}} = this.data
         return {
-            title: shareTitle,
+            title: "哇~今日发车,偶u的猫咪物",
             path: path,
+            // imageUrl: mainPic,
         };
     }
 })

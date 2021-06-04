@@ -51,12 +51,11 @@
                  class="subscribe_pages_content_tag_item"
                  size="medium"
                  bind:tap="delSubKey"
-                 bind:close="delSubKey"
                  data-item="{{item}}"
                  wx:key="{{item.id}}"
                  type="{{m2.fixType()}}"
                  wx:for="{{mySubscribe}}">
-            {{item.value}}
+            {{item.keyWord}}
         </van-tag>
     </view>
     <view class="subscribe_pages_content_text">推荐订阅:</view>
@@ -71,13 +70,13 @@
             {{item.value}}
         </van-tag>
     </view>
-    <view class="subscribe_pages_content_button">
+    <view class="subscribe_pages_content_button" bind:tap="onSubscribe"  >
         <button class="subscribe_pages_content_button_item">
             激活订阅
         </button>
     </view>
     <view class="subscribe_pages_content_info">
-        <van-panel title="订阅须知" desc="订阅必读！！！" status="警告！">
+        <van-panel title="订阅须知" desc="你当前拥有{{pushTimes}}次推送次数" status="警告！">
             <view style="display: flex;width: 90vw;color:#006600"
                   wx:for="{{subKnow}}"
                   wx:key="{{item}}">

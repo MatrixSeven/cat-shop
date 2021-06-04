@@ -1,7 +1,7 @@
-<view>
-    <navBar background='#fff' back="{{false}}" home="{{false}}" bindback="handlerGobackClick"
-            bindhome="handlerGohomeClick"></navBar>
-    <view class="all_page">
+<view class="home_all_page">
+    <van-dialog id="van-dialog"/>
+    <navBar background='#fff' back="{{false}}" home="{{false}}"/>
+    <view style="display:flex;height:100vh;flex-wrap: wrap;">
         <view class="page_info">
             <view class="person_logo">
                 <van-image wx:if="{{isLogin}}"
@@ -22,23 +22,16 @@
             </van-button>
 
         </view>
-        <van-grid>
-            <van-grid-item icon="photo-o" text="喵身份" use-slot>
-                <image
-                        style="width: 100%; height: 90px;"
-                        src="https://img.yzcdn.cn/vant/apple-2.jpg"
-                />
-            </van-grid-item>
-            <van-grid-item icon="photo-o" text="拼拼专享券" use-slot>
-                <image
-                        style="width: 100%; height: 90px;"
-                        src="https://img.yzcdn.cn/vant/apple-1.jpg"
-                />
-            </van-grid-item>
+        <van-grid clickable column-num="4" style="width:100%">
+            <van-grid-item icon="paid" text="全部"/>
+            <van-grid-item icon="pending-payment" text="已付款"/>
+            <van-grid-item icon="other-pay" text="已结算"/>
+            <van-grid-item icon="cash-on-deliver" text="已失效"/>
         </van-grid>
         <view class="page_list">
-            <van-cell-group style="width:100%">
-                <van-cell icon="location-o" title="我的订阅" is-link style="width:100%;height:150%"/>
+            <van-cell-group clickable style="width:100%">
+                <van-cell icon="location-o" title="我的订阅" bind:tap="gotoSub" is-link style="width:100%;height:150%"/>
+                <van-cell icon="location-o" title="我的豆瓣订阅" bind:tap="gotoDoubanSub" is-link style="width:100%;height:150%"/>
                 <van-cell icon="smile-comment-o" title="联系我" is-link style="width:100%;height:150%"/>
                 <van-cell icon="share-o" title="分享给好友" is-link style="width:100%;height:150%"/>
                 <van-cell icon="smile-o" title="关于" is-link style="width:100%;height:150%"/>

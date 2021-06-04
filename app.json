@@ -1,9 +1,11 @@
 {
   "pages": [
     "pages/cat/cat",
+    "pages/shop/shop",
     "pages/index/index",
     "pages/home/home",
-    "pages/subscribe/subscribe",
+    "pages/subscribe/tao/subscribe",
+    "pages/subscribe/douban/subscribe",
     "pages/search/search",
     "pages/detail/detail"
   ],
@@ -24,13 +26,16 @@
         "pagePath": "pages/cat/cat",
         "text": "每日猫车"
       },
+     {
+        "pagePath": "pages/shop/shop",
+        "text": "商城"
+      },
       {
         "pagePath": "pages/home/home",
         "text": "我的"
       }
     ]
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "navBar": "/components/navBar/navBar"

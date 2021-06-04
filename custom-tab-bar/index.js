@@ -11,7 +11,7 @@ Component({
                 active: '/images/tabbar/cat_green.png'
             },
             {
-                pagePath: "/pages/index/index",
+                pagePath:"/pages/shop/shop",
                 text: "商城",
                 normal: '/images/tabbar/shop.png',
                 active: '/images/tabbar/shop_green.png'

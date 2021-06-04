@@ -35,7 +35,7 @@ Page({
     goDetails: function (e) {
         const {syncId, ev = true} = getArgs(e)
         if (!ev) {
-            wx.showToast({title: '功能开发中,请打开拼多多搜索该商品', 'icon': "none"})
+            wx.showToast({title: '功能开发中,暂时无法使用', 'icon': "none"})
             return
         }
         wx.navigateTo({
@@ -85,5 +85,23 @@ Page({
                 searchHistory: searchHistory_,
             })
         })
+    },
+    onShareTimeline: function () {
+        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
+        const {detail: {syncMsg, mainPic}} = this.data
+        return {
+            title: syncMsg,
+            path: path,
+        };
+
+    },
+    onShareAppMessage: function (e) {
+        let path = `/pages/detail/detail?id=${this.data.id}&showGoHome=true`;
+        const {detail: {syncMsg, mainPic}} = this.data
+        return {
+            title: syncMsg,
+            path: path,
+            imageUrl: mainPic,
+        };
     },
 })
