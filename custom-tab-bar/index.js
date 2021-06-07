@@ -3,7 +3,6 @@ Component({
     data: {
         active: 0,
         list: [
-
             {
                 pagePath: "/pages/cat/cat",
                 text: "每日猫车",

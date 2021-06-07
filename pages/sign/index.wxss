@@ -1,0 +1,1304 @@
+page {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    background: #e6e6e6;
+}
+
+.head {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.head .bg {
+    display: flex;
+    width: 100%;
+}
+
+.head .tips {
+    display: flex;
+    height: 90rpx;
+    align-items: center;
+    position: absolute;
+}
+
+.head .tips {
+    display: flex;
+    width: 620rpx;
+    height: 70rpx;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+    padding: 0 30rpx;
+    border-radius: 50rpx;
+    color: #fff;
+    font-size: 24rpx;
+    justify-content: center;
+    align-items: center;
+    top: 20rpx;
+    left: 50%;
+    margin-left: -310rpx;
+}
+
+.head .tips .leftText {
+    display: flex;
+    align-items: center;
+}
+
+.head .tips .leftText image {
+    display: flex;
+    width: 50rpx;
+    margin: 0 10rpx;
+}
+
+.head .tips .close {
+    display: flex;
+    width: 20rpx;
+    align-self: flex-end；;
+}
+
+.head .right {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 9;
+    background: rgba(255,255,255,0.6);
+    padding: 15rpx 75rpx 15rpx 15rpx;
+    border-radius: 70rpx;
+    top: 50rpx;
+    right: -50rpx;
+}
+
+.head .right .pic {
+    display: flex;
+    overflow: hidden;
+    border-radius: 80rpx;
+    border: 4rpx solid #F5F5F5;
+    margin-right: 20rpx;
+}
+
+.head .right .pic .avatar {
+    display: flex;
+    width: 60rpx;
+    height: 60rpx;
+    overflow: hidden;
+    border-radius: 80rpx;
+    border: 1rpx solid #fff;
+}
+
+.head .right .text {
+    display: flex;
+    font-size: 24rpx;
+    color: #196FD8;
+    justify-content: center;
+    align-items: center;
+}
+
+.head .right .text text {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-right: 16rpx;
+}
+
+.head .right button {
+    display: flex;
+    color: #fff;
+    background-image: linear-gradient(-90deg,#196FD8 2%,#19B0FB 97%);
+    font-size: 28rpx;
+    height: 60rpx;
+    padding: 0 20rpx;
+    border-radius: 40rpx;
+    margin-left: 20rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+@-webkit-keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1);
+    }
+
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55);
+    }
+
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1);
+    }
+}
+
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1);
+    }
+
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55);
+    }
+
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1);
+    }
+}
+
+.waveWrapper {
+    display: flex;
+    width: 100%;
+    height: 200rpx;
+    position: relative;
+}
+
+.waveWrapperInner {
+    display: flex;
+    width: 100%;
+    height: 200rpx;
+    position: absolute;
+}
+
+.bgTop {
+    z-index: 15;
+    opacity: 0.5;
+}
+
+.bgMiddle {
+    z-index: 10;
+    opacity: 0.75;
+}
+
+.bgBottom {
+    z-index: 5;
+}
+
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+}
+
+.waveTop {
+    background-size: 100% 80rpx;
+}
+
+.waveAnimation .waveTop {
+    animation: move-wave 3s;
+    animation-delay: 1s;
+}
+
+.waveMiddle {
+    background-size: 100% 100px;
+}
+
+.waveAnimation .waveMiddle {
+    animation: move_wave 10s linear infinite;
+}
+
+.waveBottom {
+    background-size: 100% 80px;
+}
+
+.waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+}
+
+.waveWrapper .signIn {
+    display: flex;
+    background: #fffcf7;
+    position: absolute;
+    width: 260rpx;
+    height: 260rpx;
+    border-radius: 200rpx;
+    bottom: -40rpx;
+    z-index: 20;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    margin-left: -130rpx;
+}
+
+.waveWrapper .signIn .inner {
+    display: flex;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 100rpx;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.waveWrapper .signIn .inner .icon {
+    display: flex;
+    width: 70rpx;
+    height: 70rpx;
+}
+
+.waveWrapper .signIn .inner text {
+    display: flex;
+    width: 100%;
+    font-size: 28rpx;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.content .userList {
+    display: flex;
+    width: 100%;
+    background: #fffcf7;
+    padding: 30rpx;
+    padding-top: 50rpx;
+}
+
+.content .userList .leftText {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20rpx;
+}
+
+.content .userList .num {
+    display: flex;
+    width: 100%;
+    font-size: 28rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .userList .num text {
+    margin: 0 10rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.content .userList .text {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    margin-top: 10rpx;
+}
+
+.content .userList .rightUser {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    padding-left: 25rpx;
+    align-items: center;
+}
+
+.content .userList .rightUser .userPic {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50rpx;
+    border: 4rpx solid #fff;
+}
+
+.content .userList .rightUser .userPic image {
+    display: flex;
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50rpx;
+}
+
+.content .rule {
+    display: flex;
+    width: 100%;
+    background: #fffcf7;
+    padding: 30rpx;
+    flex-direction: column;
+}
+
+.content .rule .title {
+    display: flex;
+    width: 100%;
+    background: #fffcf7;
+    padding: 30rpx;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .rule .title .text {
+    display: flex;
+    font-size: 30rpx;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+
+.content .rule .title .line {
+    display: flex;
+    width: 60rpx;
+    height: 4rpx;
+    background: #d5f0e1;
+    border-radius: 2rpx;
+}
+
+.content .rule .context {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.content .rule .context .line {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10rpx;
+}
+
+.content .rule .context .line text {
+    display: flex;
+    width: 38rpx;
+    height: 38rpx;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+    color: #555;
+    background: #fdf3cd;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10rpx;
+    margin-top: 5rpx;
+}
+
+.content .rule .context .line .rightText {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10rpx;
+    font-size: 28rpx;
+    line-height: 48rpx;
+}
+
+.top .city .select {
+    display: flex;
+    width: 40rpx;
+    height: 40rpx;
+    transform: rotate(90deg);
+}
+
+.top .city .select::before {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: iconfont;
+    content: "\e606";
+    color: #555;
+    font-size: 22rpx;
+}
+
+.top .searchLine {
+    display: flex;
+    background: #eeeeee;
+    border-radius: 70rpx;
+    padding: 0 20rpx;
+    height: 64rpx;
+    margin: 0 20rpx;
+}
+
+.top .searchLine .search {
+    display: flex;
+    background: #eeeeee;
+    border-radius: 70rpx;
+    height: 64rpx;
+}
+
+.top .searchLine .search::before {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: iconfont;
+    content: "\e635";
+    color: #898989;
+    font-size: 30rpx;
+}
+
+.top .searchLine .right {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    align-items: center;
+    margin-left: 20rpx;
+    font-size: 28rpx;
+    color: #898989;
+}
+
+.top .progressCode {
+    display: flex;
+    justify-content: center;
+}
+
+.top .progressCode image {
+    width: 64rpx;
+}
+
+.swiper {
+    display: flex;
+    width: 100%;
+    background: #fff;
+}
+
+.swiper swiper-item {
+    display: flex;
+    width: 100%;
+}
+
+.swiper swiper-item image {
+    width: 100%;
+}
+
+.iconBar {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 30rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.iconBar .bar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.iconBar .bar .iconBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.iconBar .bar .iconBox image {
+    display: flex;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 120rpx;
+}
+
+.iconBar .bar .iconBox .text {
+    display: flex;
+    width: 90rpx;
+    margin-top: 10rpx;
+    justify-content: center;
+    font-size: 30rpx;
+}
+
+.iconBar .notice {
+    display: flex;
+    width: 100%;
+    background: #fdf0e0;
+    margin-top: 30rpx;
+    border-radius: 10rpx;
+    padding-right: 10rpx;
+}
+
+.iconBar .notice .noticeIcon {
+    display: flex;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.iconBar .notice .noticeIcon::before {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: iconfont;
+    content: "\e602";
+    color: #f08200;
+    font-size: 36rpx;
+}
+
+.iconBar .notice .NoticeSwiper {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    height: 80rpx;
+}
+
+.iconBar .notice .NoticeSwiper swiper-item {
+    display: block;
+    width: 100%;
+}
+
+.iconBar .notice .NoticeSwiper swiper-item .text {
+    display: block;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.indexShop {
+    display: flex;
+    width: 100%;
+    padding: 30rpx;
+    background: #fff;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+
+.indexShop .left {
+    transform: rotate(180deg);
+    width: 50rpx;
+}
+
+.indexShop .right {
+    width: 50rpx;
+}
+
+.indexShop .shopSwiper {
+    display: flex;
+    width: 100%;
+    height: 140rpx;
+}
+
+.indexShop .iconBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.indexShop .iconBox image {
+    display: flex;
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.indexShop .iconBox .text {
+    display: block;
+    width: 90rpx;
+    margin-top: 10rpx;
+    text-align: center;
+    font-size: 28rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.changeBox {
+    display: flex;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+}
+
+.changeBox .tab {
+    display: flex;
+    width: 100%;
+    padding: 0 50rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.changeBox .tab .text {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    width: 1px;
+    height: 80rpx;
+    line-height: 80rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.changeBox .tab .text.this {
+    color: #f08200;
+}
+
+.changeBox .changeSwiper {
+    display: flex;
+    width: 100%;
+}
+
+.changeBox .changeSwiper .item {
+    display: block;
+    width: 100%;
+}
+
+.changeBox .changeSwiper .ad {
+    display: flex;
+    margin: 30rpx;
+}
+
+.changeBox .changeSwiper .ad image {
+    width: 100%;
+}
+
+.changeBox .changeSwiper .list {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.changeBox .changeSwiper .list .li {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    border-bottom: 1px solid #eee;
+    padding: 0 30rpx;
+}
+
+.changeBox .changeSwiper .list .li .userMes {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10rpx;
+    margin-top: 30rpx;
+}
+
+.changeBox .changeSwiper .list .li .userMes .userPic {
+    display: flex;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
+    background-position: center center;
+    background-size: contain;
+}
+
+.changeBox .changeSwiper .list .li .userMes .right {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    width: 0px;
+    flex-direction: column;
+}
+
+.changeBox .changeSwiper .list .li .userMes .right .userName {
+    display: flex;
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    align-items: center;
+}
+
+.changeBox .changeSwiper .list .li .userMes .right .userName .up {
+    display: flex;
+    width: 34rpx;
+    height: 34rpx;
+    line-height: 34rpx;
+    justify-content: center;
+    align-items: center;
+    background: #f08200;
+    border-radius: 4rpx;
+    margin-left: 10rpx;
+    font-size: 22rpx;
+    color: #fff;
+}
+
+.changeBox .changeSwiper .list .li .userMes .right .time {
+    display: flex;
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    align-items: center;
+}
+
+.changeBox .changeSwiper .list .li .userMes .right .time text {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.changeBox .changeSwiper .list .li .userMes .right .time .addFocus {
+    display: flex;
+    width: 110rpx;
+    height: 50rpx;
+    font-size: 28rpx;
+    color: #f08200;
+    border: 1px solid #f08200;
+    border-radius: 80rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.changeBox .changeSwiper .list .li .content {
+    display: block;
+    width: 100%;
+    margin-bottom: 10rpx;
+}
+
+.changeBox .changeSwiper .list .li .content .topic {
+    display: inline;
+    color: #f08200;
+}
+
+.changeBox .changeSwiper .list .li .address {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+
+.changeBox .changeSwiper .list .li .address .text {
+    display: flex;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.changeBox .changeSwiper .list .li .address .tag {
+    display: flex;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.changeBox .changeSwiper .list .li .address .tag text {
+    display: flex;
+    padding: 0 10rpx;
+    font-size: 22rpx;
+    color: #fff;
+    background: #ff0013;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40rpx;
+    margin-left: 10rpx;
+}
+
+.changeBox .changeSwiper .list .li .address .right {
+    display: flex;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.changeBox .changeSwiper .list .li .line {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30rpx;
+    align-items: center;
+}
+
+.changeBox .changeSwiper .list .li .line .left {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+}
+
+.changeBox .changeSwiper .list .li .line .left text {
+    display: flex;
+    padding: 6rpx 20rpx;
+    font-size: 28rpx;
+    color: #fff;
+    background: #f08200;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4rpx;
+    margin-right: 20rpx;
+}
+
+.changeBox .changeSwiper .list .li .line .distance {
+    display: flex;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.bottomBar {
+    display: flex;
+    width: 100%;
+    height: 108rpx;
+    background: #fff;
+}
+
+.bottomBar .bar {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    width: 1px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottomBar .bar image {
+    display: flex;
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.bottomBar .bar .text {
+    display: flex;
+    font-size: 28rpx;
+}
+
+.bottomBar .bar.this .text {
+    color: #f08200;
+}
+
+.selectCity {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    z-index: 999;
+}
+
+.selectCity .headBack {
+    display: flex;
+    width: 100%;
+    margin-top: 144rpx;
+    height: 70rpx;
+    border-bottom: 1px solid #eee;
+    padding: 0 30rpx;
+    align-items: center;
+}
+
+.selectCity .headBack .arrow {
+    transform: rotate(180deg);
+    color: #000;
+}
+
+.selectCity .headBack .title {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.selectCity .cityList {
+    display: flex;
+    overflow: scroll;
+}
+
+.selectCity .cityList .srollLeft {
+    display: flex;
+    width: 200rpx;
+    background: #eeeeee;
+    overflow: scroll;
+}
+
+.selectCity .cityList .srollLeft .left {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectCity .cityList .srollLeft .left text {
+    display: box;
+    font-size: 30rpx;
+    height: 74rpx;
+    line-height: 74rpx;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-align: center;
+    border-left: 3px solid #eeeeee;
+    padding: 0 10rpx;
+}
+
+.selectCity .cityList .srollLeft .left text.this {
+    color: #f08200;
+    background: #fff;
+    border-left: 3px solid #f08200;
+}
+
+.selectCity .thisCity {
+    display: flex;
+    margin-top: 20rpx;
+}
+
+.selectCity .thisCity .location {
+    display: flex;
+    width: 100%;
+    padding: 0 30rpx 30rpx 30rpx;
+    border-bottom: 20rpx solid #efefef;
+}
+
+.selectCity .thisCity .location:last-child {
+    border-bottom: 0;
+}
+
+.selectCity .thisCity .location .city {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.selectCity .thisCity .location .city .title {
+    display: flex;
+    width: 100%;
+    font-size: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.selectCity .thisCity .location .city .box {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.selectCity .thisCity .location .city .box .list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.selectCity .thisCity .location .city .box .list text {
+    display: flex;
+    height: 60rpx;
+    font-size: 28rpx;
+    background: #efefef;
+    border-radius: 30rpx;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+    margin-bottom: 20rpx;
+}
+
+.selectCity .thisCity .location .city .box .list text.locationCity {
+    background: #f08200;
+    color: #fff;
+}
+
+.selectCity .thisCity .location .city .box .list text:nth-child(3n) {
+    margin: 0;
+}
+
+.selectCity .thisCity .location .city .box .getLocation {
+    display: flex;
+    position: absolute;
+    height: 60rpx;
+    line-height: 60rpx;
+    right: 0;
+    top: 0;
+    color: #f08200;
+    font-size: 28rpx;
+}
+
+.selectCity .cityList .location {
+    display: flex;
+    width: 100%;
+    padding: 0 30rpx 30rpx 30rpx;
+}
+
+.selectCity .cityList .location:last-child {
+    border-bottom: 0;
+}
+
+.selectCity .cityList .location .city {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.selectCity .cityList .location .city .title {
+    display: flex;
+    width: 100%;
+    font-size: 30rpx;
+    margin-bottom: 30rpx;
+    color: #999;
+}
+
+.selectCity .cityList .location .city .box {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.selectCity .cityList .location .city .box .list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.selectCity .cityList .location .city .box .list text {
+    display: box;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    border-radius: 30rpx;
+    width: 31%;
+    margin-right: 3%;
+    margin-bottom: 20rpx;
+    border: 1rpx solid #efefef;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-align: center;
+    padding: 0 10rpx;
+}
+
+.selectCity .cityList .location .city .box .list text.locationCity {
+    background: #f08200;
+    color: #fff;
+}
+
+.selectCity .cityList .location .city .box .list text:nth-child(3n) {
+    margin: 0;
+}
+
+.selectCity .cityList .location .city .box .getLocation {
+    display: flex;
+    position: absolute;
+    height: 60rpx;
+    line-height: 60rpx;
+    right: 0;
+    top: 0;
+    color: #f08200;
+    font-size: 28rpx;
+}
+
+.showBox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.showBox .inner {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.showBox .inner {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.showBox .center {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.showBox .center .showBoxContent {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.showBox .center .showBoxContent .bookmark {
+    width: 100%;
+}
+
+.showBox .center .btnLine {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #eee;
+}
+
+.showBox .center .btnLine button {
+    display: flex;
+    width: 100%;
+    height: 80rpx;
+    justify-content: center;
+    align-items: center;
+    color: #4390EA;
+    font-size: 28rpx;
+}
+
+.content .signNum {
+    display: flex;
+    width: 100%;
+    background: #fffcf7;
+    padding-top: 39rpx;
+    color: #4390EA;
+    justify-content: center;
+    align-items: center;
+    font-size: 26rpx;
+}
+
+.nav_01 {
+    position: absolute;
+    left: 0rpx;
+    top: 200rpx;
+    z-index: 99;
+}
+
+.nav_01 image {
+    width: 75rpx;
+    height: 75rpx;
+}
+
+.exchangeRoll {
+    padding: 0 30rpx;
+    height: 50rpx;
+    background-color: rgba(255,70,9,.1);
+    z-index: 10;
+}
+
+.exchangeRoll .roll-item {
+    font-size: 28rpx;
+    color: #FF4609;
+    text-align: center;
+    line-height: 50rpx;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 10;
+}
+
+.exchangeRoll .roll-item .headImg {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 18rpx;
+    vertical-align: middle;
+    margin-top: -4rpx;
+}
+
+.exchangeRoll-swiper {
+    height: 50rpx;
+}
+
+.content .three {
+    display: flex;
+    width: 100%;
+    background: #fffcf7;
+    padding: 30rpx;
+    justify-content: space-between;
+}
+
+.content .three .userBox {
+    display: flex;
+    flex: 1;
+    -webkit-box-flex: 1;
+    width: 1px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content .three .userBox .pic {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+}
+
+.content .three .userBox .pic .userPic {
+    display: flex;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 120rpx;
+}
+
+.content .three .userBox .pic .tags {
+    display: flex;
+    width: 200rpx;
+    height: 46rpx;
+    line-height: 46rpx;
+    color: #fff;
+    font-size: 24rpx;
+    position: absolute;
+    bottom: -20rpx;
+    padding: 0 20rpx 0 10rpx;
+    border-radius: 40rpx;
+    left: 50%;
+    margin-left: -100rpx;
+}
+
+.content .three .userBox .pic .tags .icon {
+    width: 50rpx;
+    height: 50rpx;
+    transform: translateY(-10rpx);
+    margin-right: 10rpx;
+}
+
+.content .three .userBox .username {
+    display: block;
+    width: 100%;
+    margin-top: 34rpx;
+    font-size: 24rpx;
+    color: #555;
+    justify-content: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+
+.content .three .userBox .text {
+    display: flex;
+    width: 100%;
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    color: #fc7d3d;
+    justify-content: center;
+}
+
+.ADcontant {
+    width: 100%;
+    overflow: hidden;
+    background: #FFFCF7;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ADiconItem {
+    font-size: 24rpx;
+    color: #606060;
+   /*  float: left;
+    width: 20%; */
+    text-align: center;
+    display: inline;
+}
+
+.ADiconImage {
+    height: 80rpx;
+    width: 80rpx;
+    display: inline-block;
+}
+/* 骗审样式 */
+.form_div {
+    width: 100%;
+
+}
+
+.form_div view {
+    width: 100%;
+    margin: 25rpx auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #f8f8f8;
+}
+
+.pclass {
+    color: #808080;
+}
+
+.form_div view input {
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-left: 15rpx;
+    font-size: 14px;
+    color: #333;
+}
+
+.fb-btn {
+    margin-left: 275rpx;
+    width: 200rpx;
+    border-radius: 0px;
+    margin-top: 25rpx;
+}

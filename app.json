@@ -1,13 +1,15 @@
 {
   "pages": [
     "pages/cat/cat",
+    "pages/sign/index",
     "pages/shop/shop",
     "pages/index/index",
     "pages/home/home",
     "pages/subscribe/tao/subscribe",
     "pages/subscribe/douban/subscribe",
     "pages/search/search",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/web/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +28,7 @@
         "pagePath": "pages/cat/cat",
         "text": "每日猫车"
       },
-     {
+      {
         "pagePath": "pages/shop/shop",
         "text": "商城"
       },

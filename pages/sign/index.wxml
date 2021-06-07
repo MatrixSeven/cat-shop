@@ -1,0 +1,155 @@
+<!-- <nav-bar id="global-nav" navBGColor="{{share.nav_bg_color}}" showHome="{{false}}" title="{{config.xcx_title}}"></nav-bar> -->
+
+<!-- <view class="exchangeRoll" style="background-color:{{config.roll_content_bg}}" wx:if="{{config.roll_content&&config.roll_content.length>0}}">
+    <swiper autoplay="{{true}}" circular="{{true}}" class="exchangeRoll-swiper" interval="{{2000}}" vertical="{{true}}">
+        <swiper-item wx:for="{{config.roll_content}}" wx:key="index">
+            <view class="roll-item">
+                <image class="headImg" src="{{item.image}}"></image>
+            {{item.content}}
+          </view>
+        </swiper-item>
+    </swiper>
+</view> -->
+ <navBar background='#95CAFF'bindback="gotoBack"  back="{{true}}" home="{{true}}"/>
+<scroll-view class="container"  scrollIntoView="{{gdtext}}" scrollY="true">
+    <view class="head">
+        <image class="bg" src="{{images.home_bg_image}}" style="height:378px"></image>
+        <view class="tips" style="top:{{m_height+10}}px" wx:if="{{showAddMeBtn}}">
+            <view class="flex flex-1 leftText">点击右上角
+       <image mode="widthFix" src="/images/add_to_min_program_more.png" style="height:10px"></image>添加到我的小程序,进入更方便</view>
+            <image bindtap="onClickAddToMinProgramCloseBtn" class="close" mode="widthFix" src="/images/add_to_min_program_close.png" style="height:10px"></image>
+        </view>
+        <view class="right" style="top:{{m_height}}px">
+            <view class="pic">
+                <open-data class="avatar" type="userAvatarUrl"></open-data>
+            </view>
+            <view class="text">
+                <text>{{today.currency}}</text> {{config.currency_name}}</view>
+            <button bindtap="swRule" class="buttonfix">{{is_rule==1?'打卡':'收起'}}规则</button>
+        </view>
+    </view>
+    <view class="content" style="transform: translateY({{is_rule==1?-200:-460}}rpx);">
+        <view class="waveWrapper waveAnimation">
+            <view bindtap="signIn" class="signIn" wx:if="{{surplus<1}}">
+                <view class="inner" style="background:{{config.click_bg_color}}">
+                    <image class="icon" mode="widthFix" src="{{images.resize}}" style="height:35px"></image>
+                    <text>{{config.clock_text}}</text>
+                </view>
+            </view>
+            <view class="signIn" wx:else>
+                <view class="inner" style="background:#FFFFFF">
+                    <image class="icon" mode="widthFix" src="{{images.resize}}"></image>
+                    <text>{{surplus}}秒后</text>
+                </view>
+            </view>
+            <view class="waveWrapperInner bgTop">
+                <view class="wave waveTop" style="background-image: url('{{images.wave_top}}')"></view>
+            </view>
+            <view class="waveWrapperInner bgMiddle">
+                <view class="wave waveMiddle" style="background-image: url('{{images.wave_mid}}')"></view>
+            </view>
+            <view class="waveWrapperInner bgBottom">
+                <view class="wave waveBottom" style="background-image: url('{{images.wave_bot}}')"></view>
+            </view>
+        </view>
+        <view class="signNum" wx:if="{{today.clock>0}}">今天打卡共计<text decode="{{true}}" space="{{true}}" style="font-weight:bold">&nbsp;{{today.clock}} / {{config.clock_num}}&nbsp;</text>次</view>
+        <!-- <view class="ADcontant" wx:if="{{program&&program.length>0}}">
+            <view class="ADiconItem" data-index="{{index}}" data-type="upper" wx:for="{{program}}" wx:key="f">
+                <navigator appId="{{item.appid}}" hoverClass="none" openType="navigate" path="{{item.path}}" target="miniProgram">
+                    <image class="ADiconImage" src="{{item.icon}}"></image>
+                    <view>{{item.name}}</view>
+                </navigator>
+            </view>
+        </view> -->
+        <view class="userList">
+            <view class="leftText">
+                <view class="num">今日共 <text>{{all_num}}</text> 人</view>
+                <view class="text">参与打卡</view>
+            </view>
+            <view class="rightUser">
+                <view class="userPic" wx:for="{{clock_user}}" wx:key="f">
+                    <image mode="widthFix" src="{{item.head}}" style="height:30px;"></image>
+                </view>
+                <view bindtap="gotoRank" class="userPic" wx:if="{{all_num>0}}">
+                    <image mode="widthFix" src="{{images.more}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="three" wx:if="{{star}}">
+            <view class="userBox" wx:if="{{star.earliest}}">
+                <view class="pic">
+                    <image class="userPic" mode="widthFix" src="{{star.earliest.member.head}}" style="height:65px"></image>
+                    <view class="tags" style="background:#ff7735">
+                        <image class="icon" mode="widthFix" src="/images/zaoqi.png" style="height:27px"></image>
+              早起之星
+            </view>
+                </view>
+                <view class="username">{{star.earliest.member.nickname}}</view>
+                <view class="text">{{star.earliest.created}} 打卡</view>
+            </view>
+            <view class="userBox" wx:if="{{star.palm}}">
+                <view class="pic">
+                    <image class="userPic" mode="widthFix" src="{{star.palm.head}}" style="height:65px"></image>
+                    <view class="tags" style="background:#2e99a3">
+                        <image class="icon" mode="widthFix" src="/images/shouqi.png" style="height:27px"></image>
+              手气之星
+            </view>
+                </view>
+                <view class="username">{{star.palm.nickname}}</view>
+                <view class="text">{{star.palm.currency}} {{config.currency_name}}</view>
+            </view>
+            <view class="userBox" wx:if="{{star.will}}">
+                <view class="pic">
+                    <image class="userPic" mode="widthFix" src="{{star.will.head}}" style="height:65px"></image>
+                    <view class="tags" style="background:#fbb93b">
+                        <image class="icon" mode="widthFix" src="/images/yili.png" style="height:27px"></image>
+              毅力之星
+            </view>
+                </view>
+                <view class="username">{{star.will.nickname}}</view>
+                <view class="text">连续打卡{{star.will.click}}次</view>
+            </view>
+        </view>
+        <ad adTheme="white" adType="{{config.ad_type==1?'grid':''}}" gridCount="5" gridOpacity="0.8" unitId="{{config.grid_ad}}" wx:if="{{config.grid_ad}}"></ad>
+        <view class="rule" id="page-home-frien">
+            <view class="title">
+                <text class="text">打卡规则</text>
+                <text class="line"></text>
+            </view>
+            <view class="context">
+                <view class="line" wx:for="{{rule}}" wx:key="r">
+                    <text>{{index+1}}</text>
+                    <view class="rightText">{{item.content}}</view>
+                </view>
+            </view>
+        </view> 
+    </view>
+
+</scroll-view> 
+
+<view class="showEmpower" wx:if="{{false}}">
+    <view class="center">
+        <view class="showBoxContent">
+            <image class="headPic" mode="widthFix" src="{{images.login_image}}" style="height:150px"></image>
+            <text>您的信息和数据将受到保护</text>
+        </view>
+        <view class="btnLine">
+            <button bindgetuserinfo="getUserInfo" class="buttonfix confirm" lang="zh_CN" openType="getUserInfo">授权并登陆</button>
+            <button bindtap="cancel_login" class="buttonfix cancel">取消</button>
+        </view>
+    </view>
+</view>
+
+<view class="showBox" wx:if="{{show_bd}}">
+    <view class="center">
+        <view class="showBoxContent">
+            <image class="bookmark" mode="widthFix" src="{{bd_img}}"></image>
+        </view>
+        <view class="btnLine">
+            <button bindtap="hideBd" class="buttonfix">确定</button>
+        </view>
+    </view>
+</view>
+
+<tab-bar bind:navigatorSwitch="navigatorSwitch" list="{{navigation_list}}"></tab-bar>
+
