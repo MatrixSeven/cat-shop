@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/douban/douban",
     "pages/cat/cat",
     "pages/sign/index",
     "pages/shop/shop",
     "pages/index/index",
     "pages/home/home",
+
     "pages/subscribe/tao/subscribe",
     "pages/subscribe/douban/subscribe",
     "pages/search/search",
@@ -24,6 +26,10 @@
     "selectedColor": "#000000",
     "backgroundColor": "#000000",
     "list": [
+      {
+        "pagePath": "pages/douban/douban",
+        "text": "豆瓣发车"
+      },
       {
         "pagePath": "pages/cat/cat",
         "text": "每日猫车"

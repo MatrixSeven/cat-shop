@@ -1,0 +1,189 @@
+.my-swipe .van-swipe-item {
+    color: #fff;
+    font-size: 20px;
+    line-height: 150px;
+    text-align: center;
+    background-color: #39a9ed;
+  }
+  
+  .buy_button {
+    width: max-content;
+    color: white;
+    font-size: x-large;
+    height: min-content;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 1vw 1vw 1vw 1vw;
+    margin-top: 2vh;
+    border: 1px solid transparent;
+    background-color: #dd514c;
+  }
+  .buy_button:hover {
+    background: #ff9933;
+  }
+  .buy_button_text {
+    width: max-content;
+    color: gray;
+    font-size: x-small;
+    height: min-content;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+    margin-top: 1vh;
+  }
+  
+  .buy_step {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+  
+  .page {
+    /* height:auto; */
+    padding-bottom: 0vh;
+  }
+  
+  .page::after {
+    width: 100vw;
+    height: 20vh;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    content: "";
+    border-radius: 0 0 50% 50%;
+    /* background: linear-gradient(#dd514c, #ffffff 80%); */
+    background-color: #dd514c;
+  }
+  
+  .swiper {
+    display: flex;
+    width: 90%;
+    border-radius: 2vh 2vh 2vh 2vh;
+  }
+  
+  .swiper_item {
+    z-index: 1;
+    border-radius: 2vh 2vh 2vh 2vh;
+    box-shadow: 0 0 5px #d0d0d0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .other_info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin-top: 2vh;
+    /*margin-bottom: 2vh;*/
+  }
+  
+  .other_item {
+    display: flex;
+    width: 15%;
+    margin-top: 1vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    font-size: smaller;
+    color: rgba(59, 59, 59, 0.53);
+    margin-left: 1vh;
+  }
+  
+  .info_view {
+    display: flex;
+    justify-content: space-around;
+    height: 8vh;
+    width: 100vw;
+    margin: 1vh 0 1vh 0;
+  }
+  
+  .category_cat {
+    width: 100vw;
+    margin: 2vh;
+    height: 8vh;
+    white-space: nowrap;
+    /*border-bottom: 2rpx solid #f0f0f0;*/
+  }
+  
+  .category_item {
+    display: inline-block;
+    margin-left: 2vh;
+    width: 30vw;
+    height: 100%;
+    background: green;
+    border-radius: 1vh;
+    box-shadow: 0 0 5px #d0d0d0;
+  }
+  
+  .info_view_card {
+    display: flex;
+    width: 45%;
+    border-radius: 1vh;
+    box-shadow: 0 0 5px #d0d0d0;
+  }
+  
+  .dou-card-view {
+    margin-top: 1vh;
+    display: flex;
+    width: 100vw;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex-wrap: wrap;
+    padding: 1vh 1vh 1vh 1vh;
+    box-shadow: 0 10px 0 #f1f1f1;
+  }
+  
+  .dou-pic-price-view {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vh;
+    justify-content: center;
+  }
+  
+  .pic-view {
+    display: flex;
+    width: 30%;
+  }
+  
+  .dou-text-view {
+    /* margin-left: 10%; */
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .divLine {
+    background: #e0e3da;
+    width: 100%;
+    height: 1px;
+    text-align: left;
+    color: #aaa;
+  }
+  
+  .foot {
+    margin: 1vh;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vh;
+    font-size: smaller;
+  }
+  
+  .van-image__img {
+    border-radius: 3vw 3vw 3vw 3vw;
+  }
+  .notice-swipe {
+    height: 40px;
+    line-height: 40px;
+  }

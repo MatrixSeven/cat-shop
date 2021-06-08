@@ -4,6 +4,12 @@ Component({
         active: 0,
         list: [
             {
+                pagePath: "/pages/douban/douban",
+                text: "豆瓣发车",
+                normal: '/images/tabbar/cat.png',
+                active: '/images/tabbar/cat_green.png'
+            },
+            {
                 pagePath: "/pages/cat/cat",
                 text: "每日猫车",
                 normal: '/images/tabbar/cat.png',

@@ -1,0 +1,67 @@
+<view class="page">
+    <navBar searchBar="{{true}}" background='#dd514c' back="{{false}}" home="{{false}}" bindsearch="onSearch" />
+    <view style="display:flex;margin-top:1vh;justify-content: center;width:100vw">
+        <swiper class="swiper" indicator-color="#f4f4f4" indicator-dots="true" indicator-active-color="#4eb8b8" autoplay="true" interval='3000' circular='true'>
+            <swiper-item wx:for="{{swiper}}" wx:for-item="v" wx:key="{{v.id}}">
+                <image bind:tap="onClickSwiper" data-item="{{v}}" class="swiper_item" mode="scaleToFill" src="{{v.imgUrl}}" />
+            </swiper-item>
+        </swiper>
+    </view>
+    <!-- <van-notice-bar bind:tap="onClickNotice" wx:if="{{noticeMsg.length>0}}" left-icon="volume-o" text="{{noticeMsg[0].noticeMsg}}" mode="link"></van-notice-bar> -->
+    <!-- <view class="other_info">
+        <view class="other_item" wx:for="{{centerCategory}}" bind:tap="onClickOtherItem" data-item="{{v}}" wx:for-item="v" wx:key="{{v.descShow}}">
+            <image style="width:75%" mode="widthFix" src="{{v.imgUrl}}" />
+            <text style="width:100%;text-align:center;margin-top:1vh;font-size: smaller;">
+                {{v.descShow}}
+            </text>
+        </view>
+    </view> -->
+    <view style=" position: sticky; z-index: 1;  top:{{navHeight}};">
+        <van-tabs offset-top="{{navHeight}}" z-index="9999" active="{{ active }}" style="margin-top:2vh" sticky swipeable id="tabs" bind:change="onTabChange">
+            <van-tab title="{{v.name}}" wx:for="{{tab}}" wx:for-item="v" wx:key="{{v.type}}">
+                <view wx:for="{{products}}" bind:tap="goDetail" data-item="{{p}}" wx:for-item="p" wx:key="{{p.id}}" wx:if="{{v.type===type}}" style="display:flex;justify-content: center">
+                    <view class="dou-card-view">
+                        <view class="dou-pic-price-view">
+                            <view class="dou-text-view">
+                                <view style="display: flex;width: 100%;font-size: large;color: rgb(103 80 80);">
+                                    {{p.title}}
+                                </view>
+                                <view style="display: flex; justify-content: space-between; width: 100%">
+                                    <view style="display: flex;align-items:baseline;">
+                                        <view style="font-size: smaller">来源小组:</view>
+                                        <view style="color: #dd514c; margin-left: 5px; font-size: small">
+                                            {{ p.groupName }}
+                                        </view>
+                                    </view>
+                                    <view style="display: flex; align-items: baseline">
+                                        <view style="font-size: smaller">发帖人:</view>
+                                        <view style="color: #dd514c; margin-left: 5px; font-size: small">
+                                            {{ p.createName }}
+                                        </view>
+                                    </view>
+                                </view>
+                                <view style="display: flex; width: 100%; align-items: baseline">
+                                    <view style="font-size: smaller">获取时间:</view>
+                                    <view style="color: #dd514c; margin-left: 5px; font-size: small">
+                                        {{ p.createTime }}
+                                    </view>
+                                    <view style=" margin-left: 2vw; border-right: 100% solid #5eb95e;border-top: 100% solid transparent;border-bottom: 100% solid transparent;" />
+                                </view>
+                                <view style="display: flex; width: 93%; justify-content: center">
+                                    <button data-item="{{p}}" style="color:white;background-color: #dd514c;width: 100%;font-size: smaller;height:min-content">
+                                        点击转跳豆瓣[不要疯狂点击]
+                                        <van-icon name="cart" />
+                                    </button>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="divLine" />
+                        <view style="display:flex;width: 100%;font-size:smaller;color: #8f8f8f">
+                            {{p.syncMsg}}
+                        </view>
+                    </view>
+                </view>
+            </van-tab>
+        </van-tabs>
+    </view>
+</view>
