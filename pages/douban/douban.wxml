@@ -8,14 +8,14 @@
         </swiper>
     </view>
     <!-- <van-notice-bar bind:tap="onClickNotice" wx:if="{{noticeMsg.length>0}}" left-icon="volume-o" text="{{noticeMsg[0].noticeMsg}}" mode="link"></van-notice-bar> -->
-    <!-- <view class="other_info">
+    <view class="other_info">
         <view class="other_item" wx:for="{{centerCategory}}" bind:tap="onClickOtherItem" data-item="{{v}}" wx:for-item="v" wx:key="{{v.descShow}}">
             <image style="width:75%" mode="widthFix" src="{{v.imgUrl}}" />
-            <text style="width:100%;text-align:center;margin-top:1vh;font-size: smaller;">
+            <text style="width:100%;text-align:center;font-size: smaller;">
                 {{v.descShow}}
             </text>
         </view>
-    </view> -->
+    </view>
     <view style=" position: sticky; z-index: 1;  top:{{navHeight}};">
         <van-tabs offset-top="{{navHeight}}" z-index="9999" active="{{ active }}" style="margin-top:2vh" sticky swipeable id="tabs" bind:change="onTabChange">
             <van-tab title="{{v.name}}" wx:for="{{tab}}" wx:for-item="v" wx:key="{{v.type}}">

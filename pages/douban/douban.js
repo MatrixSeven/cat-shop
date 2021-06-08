@@ -30,7 +30,17 @@ Page({
         })
     },
 
-    onLoad: function () {
+    checkToken:function({adUid}){
+        if(!adUid){
+            return
+        }
+        const adId = wx.getStorageSync("adUid") || '-1'
+        if(adId=='-1'){
+            wx.setStorageSync('adUid',adId)
+        }
+    },
+    onLoad: function (option) {
+        checkToken(option)
         wx.showLoading({
             mask: false,
             title: "豆瓣加载ing"
@@ -39,7 +49,7 @@ Page({
             const {page, size} = this.data
             const {
                 data: {
-                    tab, swiper = [], noticeMsg = []
+                    tab, swiper = [], noticeMsg = [],centerCategory=[]
                 }
             } = await requestSync( `${reqUrls}/history/kai/list/config`)
             const defaultType = tab[0].type;
@@ -48,7 +58,7 @@ Page({
                 tab,
                 swiper,
                 category:tab,
-                centerCategory:{},
+                centerCategory,
                 type:defaultType,
                 noticeMsg:noticeMsg,
                 type: defaultType,
